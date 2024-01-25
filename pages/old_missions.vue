@@ -1,11 +1,14 @@
 <template>
     <body>
         <h1>How to meet aliens ?</h1>
-        <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>        
+        <h2>Historique de mission</h2>
 
-        <RouterLink to="/old_missions">Acciennes Missions</RouterLink>
+        <ul>
+            <li v-for="j in historique.jours_debloques">{{ j.nom }}</li>
+        </ul>
+        
+        <RouterLink to="/desktop">Retour Bureau</RouterLink>
 
-        {{ store.token }}
     </body>
 </template>
 
@@ -18,12 +21,12 @@ import {API} from '@/utils/axios'
 
 const store = useGlobalStore()
 
-const user = ref([])
+const historique = ref([])
 
 // récupération de toutes les tables nécéessaires à l'affichage des montres et des filtres
-const getUser = async () => {
-    const response = await API.get(`/user/${store.token}`)
-    user.value = response.data
+const getHistorique = async () => {
+    const response = await API.get(`/user/${store.token}/old_missions`)
+    historique.value = response.data
 }
 
 // chargement de la base de données
@@ -32,7 +35,7 @@ onMounted(async() => {
     await store.token
 
     if (store.token) {
-        await getUser()
+        await getHistorique()
     }
 })
 </script>
