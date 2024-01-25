@@ -11,14 +11,12 @@
             <input type="text" name="mdp" id="mdp" required placeholder="Mot de Passe" v-model="userCo.mdp">
             <input class="login__form--bouton" type="submit" value="Je me connecte">
         </form>
-
-
-        <RouterLink to="desktop">Aller sur le bureau</RouterLink>
     </body>
 </template>
 
 <script setup>
 import {API} from '@/utils/axios'
+const store = useGlobalStore()
 
 const router = useRouter()
 const userNew = ref({})
@@ -40,7 +38,7 @@ const connexion = async () => {
     try {
         const response = await API.post(`/login`, userCo.value)
         const { token } = response.data // Récupérer le token depuis la réponse API
-        // store.setToken(token) // Enregistrer le token dans le store Pinia
+        store.setToken(token) // Enregistrer le token dans le store Pinia
         message.value = "Vous êtes bien connecté. Bonjour"
         router.push('/desktop')
     } catch (error) {
