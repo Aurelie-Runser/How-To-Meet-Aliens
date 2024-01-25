@@ -1,0 +1,14 @@
+@import '@/scss/foundations/reset';
+@import '@/scss/foundations/variables';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1{
+    font-weight: 900;
+    color: green;
+    text-transform: uppercase;
+}
