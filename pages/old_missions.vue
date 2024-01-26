@@ -47,6 +47,12 @@ onMounted(async() => {
     }
 })
 
+// suppression du token pour déconnecter l'utilisateur
+const deconnexion = async () => {
+    store.clearToken()
+    router.push('/login')
+}
+
 // renvoie l'user sur l'index s'il n'est pas connecté
 definePageMeta({
   middleware: [
