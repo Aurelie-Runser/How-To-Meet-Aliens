@@ -18,6 +18,7 @@
 .layout{
     width: 100%;
     height: 100%;
+    position: fixed;
     display: grid;
     grid-template: 
         "header"
@@ -26,35 +27,40 @@
 
     > * {
         margin: 0;
-        width: 100%;
     }
 
     &__header {
-        background: blue;
+        // background: blue;
         grid-area: header;
+        height: fit-content;
     }
 
     &__aside {
-        background: red;
+        // background: red;
         grid-area: aside;  
+        height: auto;
     }
 
     &__main {
+        // background-color: plum;
         grid-area: main;
         overflow: scroll;
+        height: auto;
     }
 
     @include medium {
         grid-template:
-            "header header header"
-            "aside main main";
+            "header header header header"
+            "aside main main main";
 
         &__aside {
-            width: 400px;
+            min-width: 33vw;
         }
 
         &__main {
-            width: 100%;
+            background: red;
+            min-width: 67vw;
+            height: auto;
         }
     }
 }

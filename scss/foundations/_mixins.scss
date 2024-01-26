@@ -29,17 +29,17 @@
 }
 
 @mixin ecran{
-    width: 100%;
-    max-width: $xl2;
-    height: 100%;
-    outline: 5px solid rgba(white, 20%);
-    border-radius: 40px;
-    overflow: hidden;
+    width: 100vw;
+    // max-width: $xl2;
+    height: 100vh;
+    // outline: 5px solid rgba(white, 20%);
+    // border-radius: 40px;
+    // overflow: hidden;
 
-    @include medium {
-        outline-width: 15px;
-        border-radius: 60px;
-    }
+    // @include medium {
+    //     outline-width: 15px;
+    //     border-radius: 60px;
+    // }
 }
 
 @mixin h1{
