@@ -8,17 +8,20 @@
             <slot name="aside"></slot>  
         </aside>
 
-        <body class="layout__main">
+        <div class="layout__main">
             <slot/>  
-        </body>
+        </div>
     </main>
 </template>
 
 <style lang="scss" scoped>
 .layout{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    max-width: $xl2;
+    height: 100%;
+    outline: 5px solid rgba(black, 50%);
+    border-radius: 40px;
+    overflow: hidden;
     display: grid;
     grid-template: 
         "header"
@@ -26,18 +29,17 @@
         "main";
 
     > * {
-        border: 2px solid red;
         margin: 0;
         width: 100%;
     }
 
     &__header {
-        // background: blue;
+        background: blue;
         grid-area: header;
     }
 
     &__aside {
-        // background: red;
+        background: red;
         grid-area: aside;  
     }
 
@@ -47,16 +49,19 @@
     }
 
     @include medium {
+        outline-width: 15px;
+        border-radius: 60px;
+
         grid-template:
             "header header header"
             "aside main main";
 
         &__aside {
-            width: 33vw;
+            width: 400px;
         }
 
         &__main {
-            width: 67vw;
+            width: 100%;
         }
     }
 }
