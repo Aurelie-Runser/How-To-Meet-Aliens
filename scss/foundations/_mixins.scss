@@ -1,0 +1,85 @@
+@mixin small {
+    @media screen and (max-width: $sm) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media screen and (min-width: $md) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media screen and (min-width: $lg) {
+        @content;
+    }
+}
+
+@mixin xlarge{
+    @media screen and (min-width: $xl) {
+        @content;
+    }
+}
+
+@mixin xxlarge {
+    @media screen and (min-width: $xl2) {
+        @content;
+    }
+}
+
+@mixin h1{
+    font-size: $pc-f-md;
+    font-weight: $fw-bold;
+    color: $c-main;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@mixin h2{
+    font-size: $pc-f-xl2;
+    font-weight: $fw-bold;
+    color: $c-main;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+@mixin p{
+    max-width: 1000px;
+    font-size: $pc-f-sm;
+    font-weight: $fw-regular;
+    color: $c-main;
+    text-transform: none;
+    margin: $pc-m-sm auto;
+    line-height: 150%;
+}
+
+@mixin titre_texte{
+    font-size: $pc-f-sm;
+    font-weight: $fw-bold;
+    color: $c-main;
+    text-transform: capitalize;
+}
+
+@mixin recap_texte{
+    font-size: $pc-f-xs;
+    font-weight: $fw-regular;
+    color: $c-white;
+}
+
+@mixin my_button{
+    font-family: $font, monospace;
+    padding: $pc-m-sm $pc-m-md;
+    border-radius: $pc-r-md;
+    background: $c-main;
+    font-size: $pc-f-md;
+    font-weight: $fw-bold;
+    color: $c-black;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+
+    &:hover{
+        background: darken($c-main, 10%);
+    }
+}

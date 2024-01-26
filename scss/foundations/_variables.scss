@@ -1,14 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Gothic+A1:wght@400;800&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 // couleurs
+$c-main: #00FF47;
+$c-black: #233129;
+$c-white: #EAEAEA;
 
 // taille texte
+$pc-f-xs: 0.75rem;
+$pc-f-sm: 1rem;
+$pc-f-md: 1.25rem;
+$pc-f-lg: 1.5rem;
+$pc-f-xl: 2rem;
+$pc-f-xl2: 6rem;
 
 // gras texte
+$fw-regular: 400;
+$fw-bold: 700;
 
 // familles texte
+$font: "Anonymous Pro";
 
 // marges
+$pc-m-sm: 20px;
+$pc-m-md: 40px;
+$pc-m-lg: 60px;
+$pc-m-xl: 80px;
+$pc-m-xl2: 100px;
+
+// arrondits
+$pc-r-md: 10px;
+$pc-r-lg: 15px;
 
 // media query / tailles d'écrans
 $sm: 640px;

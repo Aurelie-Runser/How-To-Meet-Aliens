@@ -7,8 +7,34 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: $font, monospace;
+    background: $c-black linear-gradient(transparent, rgba($c-main, 10%));
+    color: $c-white;
+}
+
 h1{
-    font-weight: 900;
-    color: green;
-    text-transform: uppercase;
+    @include h1
+}
+
+h2{
+    @include h2
+}
+
+p{
+    @include p    
+}
+
+ul {
+    @include p;
+    list-style: none;
+    padding: 0;
+}
+
+li::before {
+    content: "_";
+}
+
+.global-titre_texte{
+    @include titre_texte
 }
