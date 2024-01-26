@@ -1,9 +1,9 @@
 
 <template>
     <button class="myButton" :class="className">
-        <RouterLink :to="link" v-if="link">
+        <nuxt-link :to="link" v-if="link">
             <slot/>
-        </RouterLink>
+        </nuxt-link>
         
         <a :href="href" v-else-if="href" target="_blank" rel="noopener noreferrer"><slot/></a>
         

@@ -1,19 +1,21 @@
 <template>
-    <NuxtLayout>
-        <template #header>
-            <h1>How to meet aliens ?</h1>
-            <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>
-        </template>
-
-        <template #aside>
-            <myButton type="t_button" link="old_missions">Anciennes Missions</myButton>
-            <br/>
-            <br/>
-            <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
-        </template>
-
-        <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>
-    </NuxtLayout>
+    <div class="global-ecran">
+        <NuxtLayout>
+            <template #header>
+                <h1>How to meet aliens ?</h1>
+                <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>
+            </template>
+    
+            <template #aside>
+                <myButton type="t_button" link="old_missions">Anciennes Missions</myButton>
+                <br/>
+                <br/>
+                <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+            </template>
+    
+            <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>
+        </NuxtLayout>
+    </div>
 </template>
 
 <style lang="scss">

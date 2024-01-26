@@ -1,21 +1,23 @@
 <template>
-    <NuxtLayout>
-        <template #header>
-            <h1>How to meet aliens ?</h1>
-            <h2>Historique de mission</h2>
-        </template>
-
-        <template #aside>
-            <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
-            <br/>
-            <br/>
-            <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
-        </template>
-
-        <ul>
-            <li v-for="j in historique.jours_debloques">{{ j.nom }}</li>
-        </ul>
-    </NuxtLayout>
+    <div class="global-ecran">
+        <NuxtLayout>
+            <template #header>
+                <h1>How to meet aliens ?</h1>
+                <h2>Historique de mission</h2>
+            </template>
+    
+            <template #aside>
+                <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
+                <br/>
+                <br/>
+                <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+            </template>
+    
+            <ul>
+                <li v-for="j in historique.jours_debloques">{{ j.nom }}</li>
+            </ul>
+        </NuxtLayout>
+    </div>
 </template>
 
 <style lang="scss">

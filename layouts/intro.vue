@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 .layout_intro{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 </style>

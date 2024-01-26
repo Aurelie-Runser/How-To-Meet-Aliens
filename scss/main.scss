@@ -35,6 +35,10 @@ li::before {
     content: "_";
 }
 
+.global-ecran{
+    @include ecran;
+}
+
 .global-titre_texte{
     @include titre_texte
 }

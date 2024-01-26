@@ -28,6 +28,20 @@
     }
 }
 
+@mixin ecran{
+    width: 100%;
+    max-width: $xl2;
+    height: 100%;
+    outline: 5px solid rgba(white, 20%);
+    border-radius: 40px;
+    overflow: hidden;
+
+    @include medium {
+        outline-width: 15px;
+        border-radius: 60px;
+    }
+}
+
 @mixin h1{
     font-size: $pc-f-md;
     font-weight: $fw-bold;

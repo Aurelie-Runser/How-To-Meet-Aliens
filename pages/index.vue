@@ -1,9 +1,11 @@
 <template>
-    <NuxtLayout name="intro" class="index">
-        <h1>How to meet aliens ?</h1>
-
-        <RouterLink to="login">Se connecter</RouterLink>
-    </NuxtLayout >
+    <div class="global-ecran index">
+        <NuxtLayout name="intro" class="index">
+            <h1>How to meet aliens ?</h1>
+    
+            <myButton link="/login" type="t_button" size="big">Se connecter</myButton>
+        </NuxtLayout >
+    </div>
 </template>
 
 <style lang="scss">

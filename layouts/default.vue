@@ -17,11 +17,7 @@
 <style lang="scss" scoped>
 .layout{
     width: 100%;
-    max-width: $xl2;
     height: 100%;
-    outline: 5px solid rgba(black, 50%);
-    border-radius: 40px;
-    overflow: hidden;
     display: grid;
     grid-template: 
         "header"
@@ -49,9 +45,6 @@
     }
 
     @include medium {
-        outline-width: 15px;
-        border-radius: 60px;
-
         grid-template:
             "header header header"
             "aside main main";
