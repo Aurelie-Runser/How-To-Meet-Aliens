@@ -1,18 +1,17 @@
 
 <template>
-    <button class="myButton" :class="className">
-        <nuxt-link :to="link" v-if="link">
-            <slot/>
-        </nuxt-link>
+    <button>
+        <nuxt-link class="myButton" :class="className" :to="link" v-if="link"><slot/></nuxt-link>
         
-        <a :href="href" v-else-if="href" target="_blank" rel="noopener noreferrer"><slot/></a>
+        <a class="myButton" :class="className" :href="href" v-else-if="href" target="_blank" rel="noopener noreferrer"><slot/></a>
         
-        <span v-else><slot/></span>
+        <span class="myButton" :class="className" v-else><slot/></span>
     </button>
 </template>
 
 <style lang="scss">
 .myButton{
+    display: block;
     cursor: pointer;
 
     &.-t_button{
@@ -29,12 +28,13 @@
     }
 
     &.-t_link{
+        width: fit-content;
+        height: fit-content;
         font-size: $pc-f-md;
         font-weight: $fw-bold;
         font-style: italic;
         color: $c-main;
         text-transform: uppercase;
-        cursor: pointer;
     
         &:hover{
             color: darken($c-main, 10%);
