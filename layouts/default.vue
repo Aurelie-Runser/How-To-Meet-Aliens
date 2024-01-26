@@ -78,6 +78,7 @@
 
         &__main {
             // background: red;
+            padding: 0 $pc-m-xl2;
         }
     }
 }
