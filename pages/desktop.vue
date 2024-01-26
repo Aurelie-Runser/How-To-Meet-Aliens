@@ -7,13 +7,24 @@
             </template>
     
             <template #aside>
-                <myButton type="t_button" link="old_missions">Anciennes Missions</myButton>
+                <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
                 <br/>
                 <br/>
                 <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
             </template>
     
             <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>
+
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
+
+            <p>FIN</p>
         </NuxtLayout>
     </div>
 </template>

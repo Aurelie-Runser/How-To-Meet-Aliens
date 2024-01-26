@@ -52,15 +52,14 @@
         grid-template:
             "header header header header"
             "aside main main main";
+        grid-template-rows: min-content auto;
+        grid-template-columns: 33% auto;
 
         &__aside {
-            min-width: 33vw;
         }
 
         &__main {
             background: red;
-            min-width: 67vw;
-            height: auto;
         }
     }
 }
