@@ -38,4 +38,13 @@ onMounted(async() => {
         await getHistorique()
     }
 })
+
+// renvoie l'user sur l'index s'il n'est pas connecté
+definePageMeta({
+  middleware: [
+    function (to, from) {
+    },
+    'auth',
+  ],
+});
 </script>
