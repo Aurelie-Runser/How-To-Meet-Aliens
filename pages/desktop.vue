@@ -22,15 +22,15 @@ const router = useRouter()
 
 const user = ref([])
 
-// récupération de toutes les tables nécéessaires à l'affichage des montres et des filtres
+// récupération du pseudo de l'utilisateur connecté
 const getUser = async () => {
     const response = await API.get(`/user/${store.token}`)
     user.value = response.data
 }
 
-// enregistrement de la montre modifiée dans la base de données
+// suppression du token pour déconnecter l'utilisateur
 const deconnexion = async () => {
-    store.clearToken() // Enregistrer le token dans le store Pinia
+    store.clearToken()
     router.push('/login')
 }
 

@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useGlobalStore = defineStore("global", {
   state: () => ({
-    token: null, // pour la connection
+    token: null, // pour la connexion
   }),
   actions: {
 
