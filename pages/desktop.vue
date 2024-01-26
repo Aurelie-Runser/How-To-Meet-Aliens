@@ -1,18 +1,16 @@
 <template>
-    <body>
+    <body class="desktop">
         <h1>How to meet aliens ?</h1>
         <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>        
 
-        <RouterLink to="/old_missions">Acciennes Missions</RouterLink>
-
+        <myButton type="t_button" size="big" link="old_missions">Aciennes Missions</myButton>
         <br/>
-
-        <button @click="deconnexion()">Fermer la session</button>
+        <br/>
+        <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
     </body>
 </template>
 
 <style lang="scss">
-
 </style>
   
 <script setup>

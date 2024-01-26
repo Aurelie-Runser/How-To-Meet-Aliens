@@ -7,7 +7,7 @@
             <li v-for="j in historique.jours_debloques">{{ j.nom }}</li>
         </ul>
         
-        <RouterLink to="/desktop">Retour Bureau</RouterLink>
+        <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
 
     </body>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <body>
+    <body class="login">
         <h1>How to meet aliens ?</h1>
 
         <p>Pour accéder à votre bureau, veuillez vous connecter.</p>
@@ -22,6 +22,17 @@
         <p>Message : {{ message }}</p>
     </body>
 </template>
+
+<style lang="scss">
+.login{
+    &__form{
+
+        &--bouton{
+            @include my_button;
+        }
+    }
+}
+</style>
 
 <script setup>
 import {API} from '@/utils/axios'
