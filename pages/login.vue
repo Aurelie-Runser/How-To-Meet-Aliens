@@ -37,7 +37,7 @@ const inscription = async () => {
         const response = await API.post(`/user/add`, userNew.value);        
 
         if(response.data.message == "deja inscrit"){
-            message.value = "Ce pseudo est déjà enregistré"
+            message.value = "Ce pseudo est déjà enregistré dans la base de données."
         } else {
             const { token } = response.data
             store.setToken(token)
@@ -46,20 +46,27 @@ const inscription = async () => {
         
     } catch (error) {
         console.error("Erreur lors de l'inscription :", error.message)
-        message.value = "Erreur lors de l'inscription"
+        message.value = "Erreur lors de l'inscription."
     }
 }
 
 const connexion = async () => {
     try {
         const response = await API.post(`/login`, userCo.value)
-        const { token } = response.data
-        store.setToken(token)
-        message.value = "Vous êtes bien connecté. Bonjour"
-        router.push('/desktop')
+
+        if(response.data.message == "pas inscrit"){
+            message.value = "Ce pseudo n'est pas enregistré dans la base de données."
+        } else if(response.data.message == "mauvais mdp"){
+            message.value = "Mauvais mot de passe"
+        } else {
+            const { token } = response.data
+            store.setToken(token)
+            router.push('/desktop')
+        }
+
     } catch (error) {
         console.error("Erreur lors de la connexion :", error.message)
-        message.value = "Erreur lors de la connexion"
+        message.value = "Erreur lors de la connexion."
     }
 }
 </script>
