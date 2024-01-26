@@ -5,7 +5,7 @@
 
         <RouterLink to="/old_missions">Acciennes Missions</RouterLink>
 
-        {{ store.token }}
+        <button @click="deconnexion()">Fermer la session</button>
     </body>
 </template>
 
@@ -18,12 +18,20 @@ import {API} from '@/utils/axios'
 
 const store = useGlobalStore()
 
+const router = useRouter()
+
 const user = ref([])
 
 // récupération de toutes les tables nécéessaires à l'affichage des montres et des filtres
 const getUser = async () => {
     const response = await API.get(`/user/${store.token}`)
     user.value = response.data
+}
+
+// enregistrement de la montre modifiée dans la base de données
+const deconnexion = async () => {
+    store.clearToken() // Enregistrer le token dans le store Pinia
+    router.push('/login')
 }
 
 // chargement de la base de données
