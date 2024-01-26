@@ -30,19 +30,11 @@
 
 @mixin ecran{
     width: 100vw;
-    // max-width: $xl2;
     height: 100vh;
-    // outline: 5px solid rgba(white, 20%);
-    // border-radius: 40px;
-    // overflow: hidden;
-
-    // @include medium {
-    //     outline-width: 15px;
-    //     border-radius: 60px;
-    // }
 }
 
 @mixin h1{
+    margin: $pc-m-sm 0;
     font-size: $pc-f-md;
     font-weight: $fw-bold;
     color: $c-main;
@@ -51,6 +43,7 @@
 }
 
 @mixin h2{
+    margin-bottom: $pc-m-lg;
     font-size: $pc-f-xl2;
     font-weight: $fw-bold;
     color: $c-main;

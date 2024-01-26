@@ -10,5 +10,6 @@
 .layout_intro{
     width: 100%;
     height: 100%;
+    padding: $pc-m-sm;
 }
 </style>
