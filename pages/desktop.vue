@@ -1,13 +1,19 @@
 <template>
-    <body class="desktop">
-        <h1>How to meet aliens ?</h1>
-        <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>        
+    <NuxtLayout>
+        <template #header>
+            <h1>How to meet aliens ?</h1>
+            <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>
+        </template>
 
-        <myButton type="t_button" size="big" link="old_missions">Aciennes Missions</myButton>
-        <br/>
-        <br/>
-        <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
-    </body>
+        <template #aside>
+            <myButton type="t_button" link="old_missions">Anciennes Missions</myButton>
+            <br/>
+            <br/>
+            <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+        </template>
+
+        <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>
+    </NuxtLayout>
 </template>
 
 <style lang="scss">
@@ -46,10 +52,9 @@ onMounted(async() => {
 
 // renvoie l'user sur l'index s'il n'est pas connecté
 definePageMeta({
-  middleware: [
-    function (to, from) {
-    },
-    'auth',
-  ],
+    middleware: [
+        function (to, from) {},
+        'auth',
+    ],
 });
 </script>

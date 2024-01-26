@@ -1,5 +1,5 @@
 <template>
-    <body class="login">
+    <NuxtLayout name="intro" class="login">
         <h1>How to meet aliens ?</h1>
 
         <p>Pour accéder à votre bureau, veuillez vous connecter.</p>
@@ -20,7 +20,7 @@
         </form>
 
         <p>Message : {{ message }}</p>
-    </body>
+    </NuxtLayout>
 </template>
 
 <style lang="scss">

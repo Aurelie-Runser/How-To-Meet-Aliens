@@ -7,9 +7,9 @@
     box-sizing: border-box;
 }
 
-body{
+main{
+    background: $c-black linear-gradient(transparent, rgba($c-main, 20%));
     font-family: $font, monospace;
-    background: $c-black linear-gradient(transparent, rgba($c-main, 10%));
     color: $c-white;
 }
 
