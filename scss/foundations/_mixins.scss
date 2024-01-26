@@ -82,10 +82,12 @@
 }
 
 @mixin my_button{
-    font-family: $font, monospace;
+    width: fit-content;
+    height: fit-content;
     padding: $pc-m-sm $pc-m-md;
     border-radius: $pc-r-md;
     background: $c-main;
+    font-family: $font, monospace;
     font-size: $pc-f-md;
     font-weight: $fw-bold;
     color: $c-black;

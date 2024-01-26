@@ -36,9 +36,22 @@
     }
 
     &__aside {
+        position: relative;
         // background: red;
         grid-area: aside;  
         height: auto;
+
+        &::after{
+            content: "";
+            position: absolute;
+            top: 10%;
+            right: 0;
+            display: block;
+            width: 1px;
+            height: 80%;
+            background: $c-main;
+
+        }
     }
 
     &__main {
@@ -56,10 +69,15 @@
         grid-template-columns: 33% auto;
 
         &__aside {
+            padding: $pc-m-md;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: $pc-m-sm;
         }
 
         &__main {
-            background: red;
+            // background: red;
         }
     }
 }

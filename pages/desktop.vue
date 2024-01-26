@@ -7,10 +7,14 @@
             </template>
     
             <template #aside>
-                <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
-                <br/>
-                <br/>
-                <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+                <div class="global-aside__boutons">
+                    <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
+                    <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+                </div>
+                <div class="global-aside__links">
+                    <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
+                    <myButton type="t_link" size="small" link="/Conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
+                </div>
             </template>
     
             <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>

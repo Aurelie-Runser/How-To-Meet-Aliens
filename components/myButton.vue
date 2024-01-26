@@ -11,6 +11,7 @@
 
 <style lang="scss">
 .myButton{
+    flex: none;
     display: block;
     cursor: pointer;
 
@@ -28,13 +29,13 @@
     }
 
     &.-t_link{
-        width: fit-content;
         height: fit-content;
         font-size: $pc-f-md;
         font-weight: $fw-bold;
         font-style: italic;
         color: $c-main;
         text-transform: uppercase;
+        word-wrap: break-word;
     
         &:hover{
             color: darken($c-main, 10%);

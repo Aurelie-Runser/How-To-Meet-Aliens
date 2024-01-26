@@ -42,3 +42,18 @@ li::before {
 .global-titre_texte{
     @include titre_texte
 }
+
+.global-aside__boutons{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $pc-m-md;
+}
+
+.global-aside__links{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $pc-m-sm;
+}
+    
