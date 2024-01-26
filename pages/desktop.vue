@@ -5,6 +5,8 @@
 
         <RouterLink to="/old_missions">Acciennes Missions</RouterLink>
 
+        <br/>
+
         <button @click="deconnexion()">Fermer la session</button>
     </body>
 </template>
