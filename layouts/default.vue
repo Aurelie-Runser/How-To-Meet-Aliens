@@ -24,7 +24,7 @@
         "header"
         "aside"
         "main";
-    grid-template-rows: min-content min-content fit-content;
+    grid-template-rows: min-content min-content auto;
 
     > * {
         margin: 0;
@@ -33,14 +33,13 @@
     &__header {
         // background: blue;
         grid-area: header;
-        height: fit-content;
+        padding: $ph-m-md;
     }
 
     &__aside {
         // background: red;
         position: relative;
         grid-area: aside;  
-        height: auto;
         padding: $ph-m-md;
 
         &::before{
@@ -88,15 +87,15 @@
             justify-content: space-between;
             gap: $pc-m-sm;
 
+            &::before{
+                display: none;
+            }
+
             &::after{
-                content: "";
-                position: absolute;
                 top: 10%;
                 right: 0;
-                display: block;
                 width: 1px;
                 height: 80%;
-                background: $c-main;
             }
         }
 

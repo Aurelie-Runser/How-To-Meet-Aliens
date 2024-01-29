@@ -8,7 +8,7 @@
 }
 
 main{
-    background: $c-black linear-gradient(transparent, rgba($c-main, 20%));
+    background: $c-black linear-gradient(transparent 50%, rgba($c-main, 15%));
     font-family: $font, monospace;
     color: $c-white;
 }
