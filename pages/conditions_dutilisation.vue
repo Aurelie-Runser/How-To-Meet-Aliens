@@ -10,7 +10,7 @@
                 <div class="global-aside__boutons">
                     <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
                     <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
-                    <myButton type="t_button" @click="store.clearToken()">Fermer la session</myButton>
+                    <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">
                     <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
@@ -28,4 +28,10 @@
   
 <script setup>
 const store = useGlobalStore()
+
+// suppression du token pour déconnecter l'utilisateur
+const deconnexion = async () => {
+    store.clearToken()
+    router.push('/login')
+}
 </script>
