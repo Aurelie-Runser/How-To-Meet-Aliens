@@ -9,7 +9,7 @@
             <template #aside>              
                 <div class="global-aside__boutons">
                     <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
-                    <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+                    <myButton type="t_button" @click="store.clearToken()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">
                     <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
@@ -35,7 +35,7 @@ const store = useGlobalStore()
 
 const historique = ref([])
 
-// récupération de toutes les tables nécéessaires à l'affichage des montres et des filtres
+// récupération de toutes les fins débloqué par l'user
 const getHistorique = async () => {
     const response = await API.get(`/user/${store.token}/old_missions`)
     historique.value = response.data
@@ -50,12 +50,6 @@ onMounted(async() => {
         await getHistorique()
     }
 })
-
-// suppression du token pour déconnecter l'utilisateur
-const deconnexion = async () => {
-    store.clearToken()
-    router.push('/login')
-}
 
 // renvoie l'user sur l'index s'il n'est pas connecté
 definePageMeta({

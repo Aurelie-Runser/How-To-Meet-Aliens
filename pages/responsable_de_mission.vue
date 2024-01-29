@@ -3,7 +3,7 @@
         <NuxtLayout>
             <template #header>
                 <h1>How to meet aliens ?</h1>
-                <h2>Condition d'Utilisation</h2>
+                <h2>Responsable de Mission</h2>
             </template>
     
             <template #aside>              
@@ -13,7 +13,7 @@
                     <myButton type="t_button" @click="store.clearToken()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">
-                    <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
+                    <myButton type="t_link" size="small" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
                 </div>
             </template>
     
