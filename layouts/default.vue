@@ -17,7 +17,8 @@
 <style lang="scss" scoped>
 .layout{
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    min-height: 100vh;
     position: fixed;
     display: grid;
     grid-template: 

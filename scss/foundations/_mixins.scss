@@ -66,23 +66,23 @@
     font-weight: $fw-regular;
     color: $c-main;
     text-transform: none;
-    margin: $ph-m-md auto;
+    margin: $ph-m-md 0;
     line-height: 150%;
     
     @include medium{
         font-size: $pc-f-sm;
-        margin: $pc-m-sm auto;
+        margin: $pc-m-sm 0;
     }
 }
 
 @mixin titre_texte{
-    font-size: $ph-f-sm;
+    font-size: $ph-f-md;
     font-weight: $fw-bold;
     color: $c-main;
     text-transform: capitalize;
 
     @include medium{
-        font-size: $pc-f-sm;
+        font-size: $pc-f-md;
     }
 }
 
@@ -97,6 +97,7 @@
 }
 
 @mixin my_button{
+    display: block;
     width: fit-content;
     height: fit-content;
     padding: $ph-m-sm $ph-m-md;
