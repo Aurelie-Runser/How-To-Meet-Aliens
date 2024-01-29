@@ -29,6 +29,8 @@
 <script setup>
 const store = useGlobalStore()
 
+const router = useRouter()
+
 // suppression du token pour déconnecter l'utilisateur
 const deconnexion = async () => {
     store.clearToken()

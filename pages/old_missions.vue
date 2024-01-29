@@ -33,6 +33,8 @@ import {API} from '@/utils/axios'
 
 const store = useGlobalStore()
 
+const router = useRouter()
+
 const historique = ref([])
 
 // récupération de toutes les fins débloqué par l'user

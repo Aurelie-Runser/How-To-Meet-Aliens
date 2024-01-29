@@ -37,6 +37,7 @@
 
     &.-t_link{
         padding: 5px;
+        width: fit-content;
         height: fit-content;
         font-size: $ph-f-md;
         font-weight: $fw-bold;
