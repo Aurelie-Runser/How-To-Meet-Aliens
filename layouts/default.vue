@@ -40,6 +40,7 @@
         // background: red;
         grid-area: aside;  
         height: auto;
+        padding: $ph-m-md;
 
         &::after{
             content: "";
@@ -59,6 +60,7 @@
         grid-area: main;
         overflow: scroll;
         height: auto;
+        padding: 0 $ph-m-md;
     }
 
     @include medium {

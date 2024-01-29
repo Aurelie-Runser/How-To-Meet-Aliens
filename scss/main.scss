@@ -47,13 +47,21 @@ li::before {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: $pc-m-md;
+    gap: $ph-m-md;
+
+    @include medium{
+        gap: $pc-m-md;
+    }
 }
 
 .global-aside__links{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: $pc-m-sm;
+    gap: $ph-m-sm;
+
+    @include medium{
+        gap: $pc-m-sm;
+    }
 }
     

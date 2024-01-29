@@ -35,53 +35,74 @@
 
 @mixin h1{
     margin: $pc-m-sm 0;
-    font-size: $pc-f-md;
+    font-size: $ph-f-md;
     font-weight: $fw-bold;
     color: $c-main;
     text-align: center;
     text-transform: uppercase;
+    
+    @include medium{
+        font-size: $pc-f-md;
+    }
 }
 
 @mixin h2{
     margin-bottom: $pc-m-lg;
-    font-size: $pc-f-xl2;
+    font-size: $ph-f-xl2;
     font-weight: $fw-bold;
     color: $c-main;
     text-align: center;
     text-transform: uppercase;
+
+    @include medium{
+        font-size: $pc-f-xl2;
+    }
 }
 
 @mixin p{
     max-width: 1000px;
-    font-size: $pc-f-sm;
+    font-size: $ph-f-sm;
     font-weight: $fw-regular;
     color: $c-main;
     text-transform: none;
-    margin: $pc-m-sm auto;
+    margin: $ph-m-md auto;
     line-height: 150%;
+    
+    @include medium{
+        font-size: $pc-f-sm;
+        margin: $pc-m-sm auto;
+    }
 }
 
 @mixin titre_texte{
-    font-size: $pc-f-sm;
+    font-size: $ph-f-sm;
     font-weight: $fw-bold;
     color: $c-main;
     text-transform: capitalize;
+
+    @include medium{
+        font-size: $pc-f-sm;
+    }
 }
 
 @mixin recap_texte{
-    font-size: $pc-f-xs;
+    font-size: $ph-f-xs;
     font-weight: $fw-regular;
     color: $c-white;
+
+    @include medium{
+        font-size: $pc-f-xs;
+    }
 }
 
 @mixin my_button{
     width: fit-content;
     height: fit-content;
-    padding: $pc-m-sm $pc-m-md;
-    border-radius: $pc-r-md;
+    padding: $ph-m-sm $ph-m-md;
+    border-radius: $ph-r-md;
     background: $c-main;
     font-family: $font, monospace;
-    font-size: $pc-f-md;
+    font-size: $ph-f-md;
     font-weight: $fw-bold;
     color: $c-black;
     text-transform: uppercase;
@@ -90,5 +111,11 @@
 
     &:hover{
         background: darken($c-main, 10%);
+    }
+
+    @include medium{
+        padding: $pc-m-sm $pc-m-md;
+        border-radius: $pc-r-md;
+        font-size: $ph-f-md;
     }
 }

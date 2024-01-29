@@ -23,15 +23,22 @@
         }
     
         &.-big{
-            padding: $pc-m-sm $pc-m-lg;
-            font-size: $pc-f-xl;
+            padding: $ph-m-md $ph-m-lg;
+            font-size: $ph-f-xl;
+            
+        }
+        @include medium{
+            &.-big{
+                padding: $pc-m-sm $pc-m-lg;
+                font-size: $pc-f-xl;
+            }
         }
     }
 
     &.-t_link{
         padding: 5px;
         height: fit-content;
-        font-size: $pc-f-md;
+        font-size: $ph-f-md;
         font-weight: $fw-bold;
         font-style: italic;
         color: $c-main;
@@ -44,7 +51,15 @@
         }
     
         &.-small{
-            font-size: $pc-f-sm;
+            font-size: $ph-f-sm;
+        }
+
+        @include medium{
+            font-size: $pc-f-md;
+
+            &.-small{
+                font-size: $pc-f-sm;
+            }
         }
     }
 }

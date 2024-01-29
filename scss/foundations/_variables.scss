@@ -7,6 +7,13 @@ $c-white: #EAEAEA;
 $c-bg: #595451;
 
 // taille texte
+$ph-f-xs: 0.75rem;
+$ph-f-sm: 0.85rem;
+$ph-f-md: 1rem;
+$ph-f-lg: 1.25rem;
+$ph-f-xl: 1.5rem;
+$ph-f-xl2: 3rem;
+
 $pc-f-xs: 0.75rem;
 $pc-f-sm: 1rem;
 $pc-f-md: 1.25rem;
@@ -22,6 +29,12 @@ $fw-bold: 700;
 $font: "Anonymous Pro";
 
 // marges
+$ph-m-sm: 10px;
+$ph-m-md: 20px;
+$ph-m-lg: 40px;
+$ph-m-xl: 60px;
+$ph-m-xl2: 80px;
+
 $pc-m-sm: 20px;
 $pc-m-md: 40px;
 $pc-m-lg: 60px;
@@ -29,6 +42,9 @@ $pc-m-xl: 80px;
 $pc-m-xl2: 100px;
 
 // arrondits
+$ph-r-md: 5px;
+$ph-r-lg: 10px;
+
 $pc-r-md: 10px;
 $pc-r-lg: 15px;
 

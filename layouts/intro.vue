@@ -10,6 +10,10 @@
 .layout_intro{
     width: 100%;
     height: 100%;
-    padding: $pc-m-sm;
+    padding: $ph-m-md;
+    
+    @include medium{
+        padding: $pc-m-md;
+    }
 }
 </style>
