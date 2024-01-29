@@ -47,14 +47,15 @@
 }
 
 @mixin h2{
-    margin-bottom: $pc-m-lg;
+    margin-bottom: $ph-m-md;
     font-size: $ph-f-xl2;
     font-weight: $fw-bold;
     color: $c-main;
     text-align: center;
     text-transform: uppercase;
-
+    
     @include medium{
+        margin-bottom: $pc-m-lg;
         font-size: $pc-f-xl2;
     }
 }

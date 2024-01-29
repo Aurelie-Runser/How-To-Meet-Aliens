@@ -24,6 +24,7 @@
         "header"
         "aside"
         "main";
+    grid-template-rows: min-content min-content fit-content;
 
     > * {
         margin: 0;
@@ -36,22 +37,32 @@
     }
 
     &__aside {
-        position: relative;
         // background: red;
+        position: relative;
         grid-area: aside;  
         height: auto;
         padding: $ph-m-md;
 
+        &::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            display: block;
+            width: 90%;
+            height: 1px;
+            background: $c-main;
+        }
+
         &::after{
             content: "";
             position: absolute;
-            top: 10%;
-            right: 0;
+            top: 0;
+            right: 5%;
             display: block;
-            width: 1px;
-            height: 80%;
+            width: 90%;
+            height: 1px;
             background: $c-main;
-
         }
     }
 
@@ -60,7 +71,7 @@
         grid-area: main;
         overflow: scroll;
         height: auto;
-        padding: 0 $ph-m-md;
+        padding: $ph-m-md;
     }
 
     @include medium {
@@ -76,10 +87,20 @@
             flex-direction: column;
             justify-content: space-between;
             gap: $pc-m-sm;
+
+            &::after{
+                content: "";
+                position: absolute;
+                top: 10%;
+                right: 0;
+                display: block;
+                width: 1px;
+                height: 80%;
+                background: $c-main;
+            }
         }
 
         &__main {
-            // background: red;
             padding: 0 $pc-m-xl2;
         }
     }
