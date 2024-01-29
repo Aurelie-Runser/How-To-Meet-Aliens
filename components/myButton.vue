@@ -29,6 +29,7 @@
     }
 
     &.-t_link{
+        padding: 5px;
         height: fit-content;
         font-size: $pc-f-md;
         font-weight: $fw-bold;
@@ -38,7 +39,8 @@
         word-wrap: break-word;
     
         &:hover{
-            color: darken($c-main, 10%);
+            background-color: $c-main;
+            color: $c-black;
         }
     
         &.-small{
