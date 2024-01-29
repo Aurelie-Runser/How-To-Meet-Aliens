@@ -17,8 +17,7 @@
 <style lang="scss" scoped>
 .layout{
     width: 100%;
-    height: fit-content;
-    min-height: 100vh;
+    height: 100%;
     position: fixed;
     display: grid;
     grid-template: 
@@ -83,6 +82,7 @@
 
         &__aside {
             padding: $pc-m-md;
+            padding-top: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -101,7 +101,8 @@
         }
 
         &__main {
-            padding: 0 $pc-m-xl2;
+            padding: $pc-m-xl2;
+            padding-top: 0;
         }
     }
 }

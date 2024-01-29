@@ -9,8 +9,8 @@
 <style lang="scss" scoped>
 .layout_intro{
     width: 100%;
-    height: fit-content;
-    min-height: 100vh;
+    height: 100%;
+    overflow: scroll;
     padding: $ph-m-xl2 $ph-m-md;
     
     @include medium{

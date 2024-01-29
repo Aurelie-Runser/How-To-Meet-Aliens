@@ -16,24 +16,40 @@
                     <myButton type="t_link" size="small" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
                 </div>
             </template>
+
+            <section class="first_section">
+                <h2 class="global-titre_texte index__texte-title">Situation actuelle :</h2>
+                <p class="index__texte-info">l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage.</p>
+            </section>
+            
+            <section class="desktop__section">
+                <h2 class="global-titre_texte index__texte-title">Objectifs de la mission :</h2>
+                <ul class="index__texte-info">
+                    <li>récupérer des ressources pour survivre.</li>
+                    <li>rencontrer et établir de bons rapport avec l'espèces intelligente local, les Bourpis.</li>
+                    <li>entretenir le vaisseau pour redécoller dans 10 jours.</li>
+                </ul>
+            </section>
     
             <myButton type="t_button" size="big" link="#">Commencer la mission</myButton>
-
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit ipsum ipsam omnis soluta placeat aliquam dicta provident voluptates ducimus recusandae voluptate nobis porro qui, perferendis deserunt voluptas. Et, architecto repellendus.</p>
-
-            <p>FIN</p>
         </NuxtLayout>
     </div>
 </template>
 
 <style lang="scss">
+.desktop{
+
+    &__section{
+        margin: $ph-m-lg 0;
+    }
+
+    @include medium{
+
+        &__section{
+            margin: $pc-m-lg auto;
+        }
+    }
+}
 </style>
   
 <script setup>
