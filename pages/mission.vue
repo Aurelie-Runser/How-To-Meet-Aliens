@@ -8,15 +8,13 @@
             <template #aside>
                 <div class="mission__aside--stiuation">
                     <p class="global-titre_texte">Situation : </p>
-                    <p class="mission__texte--aside">Spike vient d'atterrir. Il est seul.</p>
+                    <p class="mission__texte--aside">{{jour_actuel.situation}}</p>
                 </div>
 
                 <div class="mission__aside--objectifs">
                     <p class="global-titre_texte">Objectifs : </p>
                     <ul class="mission__texte--aside">
-                        <li>récupérer des ressources</li>
-                        <li>rencontrer et établir de bons rapport avec les Bourpis</li>
-                        <li>entretenir le vaisseau pour redécoller dans 10 jours</li>
+                        <li v-for="ob in jour_actuel.objectifs">{{ob}}</li>
                     </ul>
                 </div>
 
@@ -52,9 +50,8 @@
                 <div class="mission__jour--buttons" v-if="index + 1 == jours.length">
                     <myButton type="t_button" v-for="choix in etape.jours_suivants"
                         @click="(jour = choix.id_jour) && getJour()">
-
-                        {{ choix.id_jour }}
-                        Choix {{ choix.texte_bouton }}
+                        
+                        {{ choix.texte_bouton }}
                     </myButton>
 
                     <myButton type="t_button" v-if="etape.fin" @click="getDebloque()">Retour Bureau</myButton>
@@ -147,6 +144,7 @@ const store = useGlobalStore()
 
 const router = useRouter()
 
+const jour_actuel = ref([])
 const jours = ref([])
 const jours_id = ref([])
 
@@ -155,6 +153,9 @@ let jour = 1
 // récupération de l'ensemble des jours
 const getJour = async () => {
     const response = await API.get(`/jour/${jour}`)
+    response.data.objectifs = response.data.objectifs.split(',').map(objectif => objectif.trim());
+    jour_actuel.value = response.data
+
     jours.value.push(response.data)
     jours_id.value.push(response.data.id_jour)
 }
