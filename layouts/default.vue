@@ -87,16 +87,12 @@
             flex-direction: column;
             justify-content: space-between;
             gap: $pc-m-sm;
+            overflow: scroll;
+            border-right: 1px solid $c-main;
 
-            &::before{
-                display: none;
-            }
-
+            &::before,
             &::after{
-                top: 10%;
-                right: 0;
-                width: 1px;
-                height: 80%;
+                display: none;
             }
         }
 
