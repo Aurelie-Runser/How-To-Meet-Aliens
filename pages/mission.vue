@@ -29,10 +29,9 @@
                         Choix {{ choix.texte_bouton }}
                     </myButton>
 
-                    <myButton type="t_button" v-if="etape.fin">Retour Bureau</myButton>
+                    <myButton type="t_button" v-if="etape.fin" @click="getDebloque()">Retour Bureau</myButton>
                 </div>
             </div>
-    
         </NuxtLayout>
     </div>
 </template>
@@ -41,7 +40,7 @@
 .mission{
 
     &__section{
-        margin-bottom: $pc-m-xl;
+        margin-bottom: $ph-m-xl;
 
         &--texte{
             color: $c-white;
@@ -59,6 +58,7 @@
     @include medium{
         
         &__section{
+            margin-bottom: $pc-m-xl;
 
             &--buttons{
                 margin-top: $pc-m-xl;
@@ -72,13 +72,34 @@
 <script setup>
 import {API} from '@/utils/axios'
 
+const store = useGlobalStore()
+
+const router = useRouter()
+
 const jours = ref([])
+const jours_id = ref([])
+
 let jour = 1
 
 // récupération de l'ensemble des jours
 const getJour = async () => {
     const response = await API.get(`/jour/${jour}`)
     jours.value.push(response.data)
+    jours_id.value.push(response.data.id_jour)
+}
+
+// envoie la liste des jours pour les ajouter à l'historique
+const getDebloque = async () => {
+    const mission = ref({})
+    mission.value.id_user = store.token
+    mission.value.jours = jours_id
+
+    try{
+        await API.post(`/debloque`, mission.value )
+        router.push("/desktop")
+    } catch (error) {
+        console.error("Erreur lors de l'ajout de la partie à l'historique :", error.message)
+    }
 }
 
 // chargement de la base de données
