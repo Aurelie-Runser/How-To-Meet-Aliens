@@ -80,9 +80,12 @@
     font-weight: $fw-bold;
     color: $c-main;
     text-transform: capitalize;
-
+    text-align: left;
+    margin: $ph-m-sm 0;
+    
     @include medium{
         font-size: $pc-f-md;
+        margin: $pc-m-sm 0;
     }
 }
 

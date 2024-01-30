@@ -18,7 +18,7 @@ export const useGlobalStore = defineStore("global", {
     clearToken() {
       this.token = null
       localStorage.setItem('Token de Connexion', this.token);
-      localStorage.removeItem('Token de Connection');
+      localStorage.removeItem('Token de Connexion');
     },
   },
 });

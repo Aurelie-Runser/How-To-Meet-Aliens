@@ -11,16 +11,16 @@
                 </section>
                 
                 <section class="index__section">
-                    <h2 class="global-titre_texte index__texte-title">Objectifs de la mission :</h2>
+                    <h2 class="global-titre_texte">Objectifs de la mission :</h2>
                     <ul class="index__texte-info">
                         <li>récupérer des ressources pour survivre.</li>
                         <li>rencontrer et établir de bons rapport avec l'espèces intelligente local, les Bourpis.</li>
                         <li>entretenir le vaisseau pour redécoller dans 10 jours.</li>
                     </ul>
                 </section>
-                
+
                 <section class="index__section">
-                    <h2 class="global-titre_texte index__texte-title">Vos objectifs :</h2>
+                    <h2 class="global-titre_texte">Vos objectifs :</h2>
                     <ul class="index__texte-info">
                         <li>bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bon rapport avec les Bourpis.</li>
                         <li>bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de XYZ est programmer dans 10 jours.</li>
