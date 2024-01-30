@@ -1,8 +1,8 @@
 <template>
     <main class="layout_intro">
-        <body class="layout_intro__main">
+        <div class="layout_intro__main">
             <slot/>  
-        </body>
+        </div>
     </main>
 </template>
 

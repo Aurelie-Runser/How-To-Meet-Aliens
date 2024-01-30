@@ -2,14 +2,11 @@
     <div class="global-ecran">
         <NuxtLayout name="intro" class="index">
 
-            
-
-            <h1 class="index__h1">PREMIER TEXTE</h1>
-            <h1 class="index__h1">SECONDE TEXTE</h1>
+            <h1 class="index__h1">How to meet aliens ?</h1>
 
             <div class="index__textes">
                 <section class="index__section">
-                    <h2 class="global-titre_texte index__texte-title">Situation actuelle :</h2>
+                    <h2 class="global-titre_texte index__texte-title">Situation actuelle</h2>
                     <p class="index__texte-info">l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage.</p>
                 </section>
                 
@@ -85,5 +82,4 @@
 </style>
 
 <script setup>
-
 </script>
