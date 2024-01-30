@@ -86,7 +86,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: $pc-m-sm;
+            gap: $pc-m-md;
             overflow: scroll;
             border-right: 1px solid $c-main;
 

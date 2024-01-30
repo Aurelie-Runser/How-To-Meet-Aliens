@@ -6,22 +6,50 @@
             </template>
     
             <template #aside>
-                <div class="global-aside__boutons">
-                    <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
-                    <myButton type="t_button">Fermer la session</myButton>
+                <div class="mission__aside--stiuation">
+                    <p class="global-titre_texte">Situation : </p>
+                    <p class="mission__texte--aside">Spike vient d'atterrir. Il est seul.</p>
                 </div>
-                <div class="global-aside__links">
-                    <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
-                    <myButton type="t_link" size="small" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
+
+                <div class="mission__aside--objectifs">
+                    <p class="global-titre_texte">Objectifs : </p>
+                    <ul class="mission__texte--aside">
+                        <li>récupérer des ressources</li>
+                        <li>rencontrer et établir de bons rapport avec les Bourpis</li>
+                        <li>entretenir le vaisseau pour redécoller dans 10 jours</li>
+                    </ul>
+                </div>
+
+                <div class="mission__aside--etat">
+                    <p class="global-titre_texte">état de Spike : </p>
+
+                    <div class="etat">
+                        <div class="niveau">
+                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <p class="mission__texte--aside niveau__nom">nourriture</p>
+                        </div>
+
+                        <div class="niveau">
+                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <p class="mission__texte--aside niveau__nom">fatigue</p>
+                        </div>
+
+                        <div class="niveau">
+                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <p class="mission__texte--aside niveau__nom">santé mentale</p>
+                        </div>
+
+                        <div class="tete"></div>
+                    </div>
                 </div>
             </template>
 
-            <div class="mission__section" v-for="(etape, index) in jours" :key=index+1>
+            <div class="mission__jour" v-for="(etape, index) in jours" :key=index+1>
 
-                <p class="mission__section--titre global-titre_texte">Jour {{ index+1 }} :</p>
-                <p class="mission__section--texte">{{ etape.texte }}</p>
+                <p class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</p>
+                <p class="mission__texte">{{ etape.texte }}</p>
 
-                <div class="mission__section--buttons" v-if="index + 1 == jours.length">
+                <div class="mission__jour--buttons" v-if="index + 1 == jours.length">
                     <myButton type="t_button" v-for="choix in etape.jours_suivants"
                         @click="(jour = choix.id_jour) && getJour()">
 
@@ -39,12 +67,55 @@
 <style lang="scss">
 .mission{
 
-    &__section{
-        margin-bottom: $ph-m-xl;
+    &__texte{
+        color: $c-white;
 
-        &--texte{
-            color: $c-white;
+        &--aside{
+            @include recap_texte;
         }
+    }
+
+    &__aside{
+        &--etat{
+
+            .etat{
+                display: flex;
+                flex-direction: column;
+                gap: $pc-m-sm;
+    
+                .niveau{                
+                    display: flex;
+                    align-items: center;
+                    gap: $ph-m-sm;
+        
+                    &__bloc{
+                        height: 20px;
+                        width: 200px;
+                        border: 2px solid $c-main;
+                    }
+        
+                    &__variable{
+                        height: 100%;
+                        width: 50%;
+                        background: $c-main;
+                    }
+
+                    &__nom{
+                        text-transform: uppercase;
+                    }
+                }
+        
+                .tete{
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    border: 2px solid $c-main;
+                }
+            }
+        }
+    }
+
+    &__jour{
+        margin-bottom: $ph-m-xl;
 
         &--buttons{
             margin-top: $ph-m-xl;
@@ -57,7 +128,7 @@
     
     @include medium{
         
-        &__section{
+        &__jour{
             margin-bottom: $pc-m-xl;
 
             &--buttons{

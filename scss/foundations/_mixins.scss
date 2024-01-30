@@ -95,9 +95,11 @@
     font-size: $ph-f-xs;
     font-weight: $fw-regular;
     color: $c-white;
-
+    margin: 0;
+    
     @include medium{
         font-size: $pc-f-xs;
+        margin: 0;
     }
 }
 
