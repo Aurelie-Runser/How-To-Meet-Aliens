@@ -44,8 +44,9 @@
         font-style: italic;
         color: $c-main;
         text-transform: uppercase;
-        word-wrap: break-word;
-    
+        text-align: left;
+        word-break: break-word;
+
         &:hover{
             background-color: $c-main;
             color: $c-black;

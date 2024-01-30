@@ -81,11 +81,13 @@
     color: $c-main;
     text-transform: capitalize;
     text-align: left;
-    margin: $ph-m-sm 0;
+    margin-top: 0;
+    margin-bottom: $ph-m-sm;
     
     @include medium{
         font-size: $pc-f-md;
-        margin: $pc-m-sm 0;
+        margin-top: 0;
+        margin-bottom: $pc-m-sm;
     }
 }
 

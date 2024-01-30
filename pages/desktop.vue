@@ -17,7 +17,7 @@
                 </div>
             </template>
 
-            <section class="first_section">
+            <section>
                 <h2 class="global-titre_texte">Situation actuelle :</h2>
                 <p class="index__texte-info">l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage.</p>
             </section>
