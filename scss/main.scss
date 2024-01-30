@@ -8,9 +8,10 @@
 }
 
 main{
-    background: $c-black linear-gradient(transparent 50%, rgba($c-main, 15%));
+    background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
     font-family: $font, monospace;
     color: $c-white;
+
 }
 
 h1{
@@ -38,6 +39,44 @@ li{
 
 li::before {
     content: "_";
+}
+
+label{
+    font-family: $font, monospace;
+    font-size: $ph-f-md;
+    color: $c-main;
+    text-transform: uppercase;
+    
+    @include medium{
+        font-size: $pc-f-md;
+    }
+}
+
+input{
+    width: 50vw;
+    margin: 0;
+    padding: $ph-m-sm;
+    border: 2px solid $c-main;
+    background: rgba($c-white, 5%);
+    font-family: $font, monospace;
+    color: $c-white;
+    font-size: $ph-f-sm;
+    caret-color: $c-main;
+
+    &:focus{
+        background: none;
+        outline: 2px solid $c-main;
+    }
+
+    @include medium{
+        padding: $pc-m-sm;
+        font-size: $pc-f-sm;
+    }
+}
+
+.global-error{
+    font-weight: $fw-bold;
+    color: $c-error;
 }
 
 .global-ecran{
@@ -69,4 +108,14 @@ li::before {
         gap: $pc-m-sm;
     }
 }
-    
+
+*::selection{
+    color: $c-black;
+    background-color: $c-main
+}
+
+// style de la barre de défilement (seulement firefox)
+body {
+    scrollbar-width: auto;
+    scrollbar-color: $c-main transparent;
+}
