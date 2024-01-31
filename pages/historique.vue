@@ -18,34 +18,44 @@
             </template>
 
             <div class="historique__buttons">
-                <myButton type="t_button" @click="rapports(0)">Missions</myButton>
-                <myButton type="t_button" @click="rapports(1)">Rapports</myButton>
-                <myButton type="t_button" @click="rapports(2)">Fins</myButton>
+                <myButton type="t_button" @click="listeAffiche = 'missions'">Missions</myButton>
+                <myButton type="t_button" @click="listeAffiche = 'rapports'">Rapports</myButton>
+                <myButton type="t_button" @click="listeAffiche = 'fins'">Fins</myButton>
             </div>
 
-            <h3>{{ titre }}</h3>
+            
+            <div v-if="listeAffiche == 'missions'">
+                <h3>Missions passées</h3>
 
-            <ul v-if="listeAffiche == 'missions'" class="historique__liste">
-                <li v-for="m in missions" :key="m.date" class="historique__liste--item">
-                   <span class="historique__liste--item_date">{{ m.date }} :</span> {{ getMissionString(m) }}
-                </li>
-            </ul>
+                <ul class="historique__liste liste__missions">
+                    <li v-if="missions.length == 0" class="liste__missions--green">Vous n'avez réalisé aucune mission.</li>
+                    <li v-else v-for="m in missions" :key="m.date" class="historique__liste--item">
+                       {{ m.date }} : <span v-html="getMissionString(m)"></span>
+                    </li>
+                </ul>
+            </div>
 
-            <ul v-else-if="listeAffiche == 'rapports'" class="historique__liste">
-                <li v-for="j in tous_les_jours" class="historique__liste--item">
-                    <span v-if="isJourDebloque(j)" class="historique__liste--item_nom">{{ j }}</span>
-                    <span v-else class="historique__liste--item_none">Pas encore débloqué</span>
-                </li>
-            </ul>
+            <div v-else-if="listeAffiche == 'rapports'">
+                <h3>Rapports débloqués <span class="historique__titre--pourcent">{{ jours_debloques_pourcent }}%</span></h3>
 
-            <ul v-else-if="listeAffiche == 'fins'" class="historique__liste">
-                <li v-for="f in toutes_les_fins" class="historique__liste--item">
-                    <span v-if="isFinDebloque(f)" class="historique__liste--item_nom">{{ f }}</span>
-                    <span v-else class="historique__liste--item_none">Pas encore débloquée</span>
-                </li>
-            </ul>
+                <ul class="historique__liste">
+                    <li v-for="j in tous_les_jours" class="historique__liste--item">
+                        <span v-if="isJourDebloque(j)" class="historique__liste--item_nom">{{ j }}</span>
+                        <span v-else class="historique__liste--item_none">Pas encore débloqué</span>
+                    </li>
+                </ul>
+            </div>
 
+            <div v-else-if="listeAffiche == 'fins'">
+                <h3>Fins débloquées <span class="historique__titre--pourcent">{{ fins_debloques_pourcent }}%</span></h3>
 
+                <ul class="historique__liste">
+                    <li v-for="f in toutes_les_fins" class="historique__liste--item">
+                        <span v-if="isFinDebloque(f)" class="historique__liste--item_nom">{{ f }}</span>
+                        <span v-else class="historique__liste--item_none">Pas encore débloquée</span>
+                    </li>
+                </ul>
+            </div>
         </NuxtLayout>
     </div>
 </template>
@@ -60,14 +70,20 @@
         margin-bottom: $ph-m-lg;
     }
 
+    &__titre{
+
+        &--pourcent{
+            font-size: $ph-f-lg;
+            font-weight: $fw-regular;
+            font-style: italic;
+            color: $c-main;
+        }
+    }
+
     &__liste{
 
         &--item{
             margin: 1rem 0;
-
-            &_date{
-                color: $c-white;
-            }
 
             &_none{
                 font-weight: $fw-bold;
@@ -85,12 +101,42 @@
             margin-bottom: 0;
         }
     }
+
+    .liste__missions{
+        li{
+            margin: 2rem 0;
+            color: $c-white;
+
+            .nom{
+                color: $c-main;
+            }
+        }
+
+        &--green{
+            color: $c-main !important;
+        }
+        
+        &:first-child{
+            margin-top: 0;
+        }
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
     
     @include medium{
         
         &__buttons{
             gap: $pc-m-md;
             margin-bottom: $pc-m-lg;
+        }
+
+        &__titre{
+
+            &--pourcent{
+                font-size: $pc-f-lg;
+            }
         }
     }
 }
@@ -103,14 +149,24 @@ const store = useGlobalStore()
 
 const router = useRouter()
 
+// tableau qui stoque les noms de tous les jours
 const tous_les_jours = ref([])
+// tableau qui stoque les noms de toutes les fins
 const toutes_les_fins = ref([])
 
-const debloque = ref([])
+// liste des jours débloqués
+const jours_debloques = ref([])
+// nombre en pourcentage des jours débloqués
+const jours_debloques_pourcent = ref()
+// liste des fins débloqués
+const fins_debloques = ref([])
+// nombre en pourcentage des fins débloquées
+const fins_debloques_pourcent = ref()
+// liste des parties détaillées
 const missions = ref([])
 
+// variable qui permet d'afficher tel ou tel liste
 const listeAffiche = ref("missions")
-const titre = ref("Missions passées")
 
 // récupération de la liste de tous les jours
 const getJours = async () => {
@@ -130,42 +186,34 @@ const getHistorique = async () => {
     try{
         const response = await API.get(`/user/${store.token}/historique`)
         missions.value = response.data.missions.reverse()
-        debloque.value = response.data.rapports_debloques
+
+        jours_debloques.value = response.data.rapports_debloques
+        jours_debloques_pourcent.value = Math.floor((jours_debloques.value.length / tous_les_jours.value.length)*100)
+
+        fins_debloques.value = jours_debloques.value.filter(jour => jour.fin == 1)
+        fins_debloques_pourcent.value = Math.floor((fins_debloques.value.length / toutes_les_fins.value.length)*100)
     } catch (error) {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
     }
 }
 
-// change le titre en fonction de la liste a afficher
-const rapports = async(r) => {
-    if (r == 0){
-        titre.value = "Missions passées"
-        listeAffiche.value = "missions"
-    }
-    else if (r == 1){
-        titre.value = "Rapports débloqués"
-        listeAffiche.value = "rapports"
-    } else if (r == 2) {
-        titre.value = "Fins débloquées"
-        listeAffiche.value = "fins"
-    }
-}
-
-// met en forme l'historique des missions
+// met en forme la liste des missions
 const getMissionString = (m) => {
-  const date = m.date;
-  const parties = m.partie.map((jour) => jour.nom).join(' > ');
-  return `${parties}`;
+    return m.partie
+    .map(jour => {
+        return ` <span class="nom">${jour.nom}</span> `;
+    })
+    .join('>');
 };
 
 // vérifie si le jour est débloqué par l'user
 const isJourDebloque = (nom) => {
-  return debloque.value.some((jour) => jour.nom == nom);
+    return jours_debloques.value.some((jour) => jour.nom == nom)
 };
 
 // vérifie si la fin est débloquée par l'user
 const isFinDebloque = (nom) => {
-  return debloque.value.some((jour) => jour.nom == nom && jour.fin == 1);
+    return fins_debloques.value.some((jour) => jour.nom == nom)
 };
 
 // suppression du token pour déconnecter l'user
@@ -179,7 +227,7 @@ onMounted(async() => {
     // Attendre que le token soit disponible
     await store.token
     await getJours()
-
+    
     if (store.token) {
         await getHistorique()
     }
