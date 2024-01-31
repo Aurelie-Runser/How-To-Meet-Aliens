@@ -30,7 +30,11 @@
                 <ul class="historique__liste liste__missions">
                     <li v-if="missions.length == 0" class="liste__missions--green">Vous n'avez réalisé aucune mission.</li>
                     <li v-else v-for="m in missions" :key="m.date" class="historique__liste--item">
-                       {{ m.date }} : <span v-html="getMissionString(m)"></span>
+                       {{ m.date }} :
+                       <ul class="liste__missions--nom__jour">
+                            <li v-for="jour in m.partie">{{jour.nom}}</li>
+                       </ul>
+                       <MyButton type="t_link" :link="`/mission/${m.id_mission}`" size="small">Relire_les_rapports</MyButton>
                     </li>
                 </ul>
             </div>
@@ -106,9 +110,21 @@
         li{
             margin: 2rem 0;
             color: $c-white;
+        }
 
-            .nom{
+        &--nom__jour{
+            margin: 0;
+
+            li{
+                margin: 0.5rem;
+                margin-left: 2rem;
                 color: $c-main;
+
+                &::before {
+                    content: "> ";
+                    font-weight: $fw-regular;
+                    color: $c-white;
+                }
             }
         }
 
@@ -196,15 +212,6 @@ const getHistorique = async () => {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
     }
 }
-
-// met en forme la liste des missions
-const getMissionString = (m) => {
-    return m.partie
-    .map(jour => {
-        return ` <span class="nom">${jour.nom}</span> `;
-    })
-    .join('>');
-};
 
 // vérifie si le jour est débloqué par l'user
 const isJourDebloque = (nom) => {
