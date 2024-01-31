@@ -28,11 +28,6 @@
     }
 }
 
-@mixin ecran{
-    width: 100vw;
-    height: 100vh;
-}
-
 @mixin h1{
     margin: $pc-m-sm 0;
     font-size: $ph-f-md;
@@ -57,6 +52,20 @@
     @include medium{
         margin-bottom: $pc-m-lg;
         font-size: $pc-f-xl2;
+    }
+}
+
+@mixin h3{
+    margin-bottom: $ph-m-md;
+    font-size: $ph-f-xl;
+    font-weight: $fw-bold;
+    color: $c-white;
+    text-align: left;
+    text-transform: uppercase;
+    
+    @include medium{
+        margin-bottom: $pc-m-md;
+        font-size: $pc-f-xl;
     }
 }
 

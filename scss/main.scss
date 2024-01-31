@@ -22,6 +22,10 @@ h2{
     @include h2
 }
 
+h3{
+    @include h3
+}
+
 p{
     @include p    
 }
@@ -87,10 +91,6 @@ input{
 .global-error{
     font-weight: $fw-bold;
     color: $c-error;
-}
-
-.global-ecran{
-    @include ecran;
 }
 
 .global-titre_texte{

@@ -1,5 +1,5 @@
 <template>
-    <div class="global-ecran">
+    <div >
         <NuxtLayout>
             <template #header>
                 <h1>How to meet aliens ?</h1>
@@ -9,7 +9,7 @@
             <template #aside>              
                 <div class="global-aside__boutons">
                     <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
-                    <myButton type="t_button" link="/old_missions">Anciennes Missions</myButton>
+                    <myButton type="t_button" link="/historique">Historique</myButton>
                     <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">

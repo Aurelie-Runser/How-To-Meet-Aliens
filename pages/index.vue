@@ -1,5 +1,5 @@
 <template>
-    <div class="global-ecran">
+    <div>
         <NuxtLayout name="intro" class="index">
 
             <h1 class="index__h1">How to meet aliens ?</h1>
