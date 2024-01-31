@@ -129,7 +129,7 @@ const getJours = async () => {
 const getHistorique = async () => {
     try{
         const response = await API.get(`/user/${store.token}/historique`)
-        missions.value = response.data.missions
+        missions.value = response.data.missions.reverse()
         debloque.value = response.data.rapports_debloques
     } catch (error) {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
