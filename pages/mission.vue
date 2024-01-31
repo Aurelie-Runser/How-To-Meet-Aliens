@@ -102,7 +102,7 @@
                 }
         
                 .tete{
-                    width: 100%;
+                    width: 66%;
                     aspect-ratio: 1/1;
                     border: 2px solid $c-main;
                 }
@@ -123,6 +123,19 @@
     }
     
     @include medium{
+
+        &__aside{
+
+            &--etat{
+
+                .etat{
+
+                    .tete{
+                        width: 100%;
+                    }
+                }
+            }
+        }
         
         &__jour{
             margin-bottom: $pc-m-xl;

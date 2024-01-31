@@ -33,36 +33,21 @@
     &__header {
         // background: blue;
         grid-area: header;
-        padding: $ph-m-md;
     }
 
     &__aside {
         // background: red;
-        position: relative;
         grid-area: aside;  
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: $ph-m-md;
+        max-height: 33vh;
         padding: $ph-m-md;
-
-        &::before{
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 5%;
-            display: block;
-            width: 90%;
-            height: 1px;
-            background: $c-main;
-        }
-
-        &::after{
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 5%;
-            display: block;
-            width: 90%;
-            height: 1px;
-            background: $c-main;
-        }
+        border-top: solid 2px $c-main;
+        border-bottom: solid 2px $c-main;
+        overflow: scroll;
     }
 
     &__main {
@@ -80,20 +65,17 @@
         grid-template-rows: min-content auto;
         grid-template-columns: 33% auto;
 
+        &__header{
+            padding: $pc-m-sm;
+        }
+
         &__aside {
             padding: $pc-m-md;
             padding-top: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             gap: $pc-m-md;
-            overflow: scroll;
+            max-height: fit-content;
+            border: none;
             border-right: 1px solid $c-main;
-
-            &::before,
-            &::after{
-                display: none;
-            }
         }
 
         &__main {
