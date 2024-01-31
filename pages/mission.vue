@@ -23,17 +23,17 @@
 
                     <div class="etat">
                         <div class="niveau">
-                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_actuel.faimsoif) }"></div></div>
                             <p class="mission__texte--aside niveau__nom">nourriture</p>
                         </div>
 
                         <div class="niveau">
-                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_actuel.fatigue) }"></div></div>
                             <p class="mission__texte--aside niveau__nom">fatigue</p>
                         </div>
 
                         <div class="niveau">
-                            <div class="niveau__bloc"><div class="niveau__variable"></div></div>
+                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_actuel.mentale) }"></div></div>
                             <p class="mission__texte--aside niveau__nom">santé mentale</p>
                         </div>
 
@@ -50,7 +50,7 @@
                 <div class="mission__jour--buttons" v-if="index + 1 == jours.length">
                     <myButton type="t_button" v-for="choix in etape.jours_suivants"
                         @click="(jour = choix.id_jour) && getJour()">
-                        
+
                         {{ choix.texte_bouton }}
                     </myButton>
 
@@ -93,7 +93,6 @@
         
                     &__variable{
                         height: 100%;
-                        width: 50%;
                         background: $c-main;
                     }
 
@@ -158,6 +157,8 @@ const getJour = async () => {
 
     jours.value.push(response.data)
     jours_id.value.push(response.data.id_jour)
+
+
 }
 
 // envoie la liste des jours pour les ajouter à l'historique
@@ -173,6 +174,12 @@ const getDebloque = async () => {
         console.error("Erreur lors de l'ajout de la partie à l'historique :", error.message)
     }
 }
+
+// Fonction pour calculer la largeur en fonction de la valeur de faimsoif
+const level = (niv) => {
+    const width = niv * 10 + '%';
+    return width;
+};
 
 // chargement de la base de données
 onMounted(async() => {
