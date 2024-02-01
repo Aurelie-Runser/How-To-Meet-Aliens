@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 export const useGlobalStore = defineStore("global", {
   state: () => ({
     token: null, // pour la connexion
+
+    mainColor: 1,
   }),
   actions: {
 
@@ -15,10 +17,18 @@ export const useGlobalStore = defineStore("global", {
     },
 
     // déconnecte l'utilisateur
-    clearToken() {
+    clearToken(){
       this.token = null
       localStorage.setItem('Token de Connexion', this.token);
       localStorage.removeItem('Token de Connexion');
+    },
+
+    // met la couleur que l'utilisateur a choisi
+    setMainColor(color){
+      if (color){
+        this.mainColor = color;
+        localStorage.setItem('Theme', this.mainColor)
+        }
     },
   },
 });

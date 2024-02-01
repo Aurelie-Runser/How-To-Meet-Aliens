@@ -1,6 +1,6 @@
 <template>
-    <div class="desktop">
-        <NuxtLayout>
+    <div>
+        <NuxtLayout class="desktop" :class="`global_color-${store.mainColor}`">
             <template #header>
                 <h1>How to meet aliens ?</h1>
                 <h2>Bureau de &lt;<span class="desktop__pseudo">{{user.pseudo}}</span>&gt;</h2>
