@@ -8,10 +8,8 @@
 }
 
 main{
-    background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
     font-family: $font, monospace;
     color: $c-white;
-
 }
 
 h1{
@@ -90,7 +88,7 @@ input{
 
 .global-error{
     font-weight: $fw-bold;
-    color: $c-error;
+    color: $c-red;
 }
 
 .global-titre_texte{
@@ -122,10 +120,4 @@ input{
 *::selection{
     color: $c-black;
     background-color: $c-main
-}
-
-// style de la barre de défilement (seulement firefox)
-body {
-    scrollbar-width: auto;
-    scrollbar-color: $c-main transparent;
 }

@@ -33,6 +33,25 @@
                 font-size: $pc-f-xl;
             }
         }
+
+        // changement de couleur en fonction des bon et mauvais choix durant la mission
+        &.-good{
+            background: $c-blue;
+            color: black;
+
+            &:hover{
+                background: darken($c-blue, 10%);
+            }
+        }
+
+        &.-bad{
+            background: $c-red;
+            color: black;
+
+            &:hover{
+                background: darken($c-red, 10%);
+            }
+        }
     }
 
     &.-t_link{
@@ -73,6 +92,7 @@ const props = defineProps({
     href: String,
     type: String,
     size: String,
+    color: String,
 });
 
 const className = computed(() => ({
@@ -80,5 +100,7 @@ const className = computed(() => ({
     " -big": props.size === "big",
     " -t_link": props.type === "t_link",
     " -small": props.size === "small",
+    " -good": props.color === "good",
+    " -bad": props.color === "bad",
 }));
 </script>

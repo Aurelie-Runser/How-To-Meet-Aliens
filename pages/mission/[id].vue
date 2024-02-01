@@ -1,25 +1,25 @@
 <template>
-    <div class="mission">
-        <NuxtLayout>
+    <div class="mission" v-if="mission" :class="mainColor">
+        <NuxtLayout :color="jour_last.decision">
             <template #header>
                 <h1>How to meet aliens ?</h1>
             </template>
     
             <template #aside v-if="mission">
                 <div class="mission__aside--stiuation">
-                    <p class="global-titre_texte">Situation : </p>
+                    <h2 class="global-titre_texte">Situation : </h2>
                     <p class="mission__texte--aside">{{jour_last.situation}}</p>
                 </div>
 
                 <div class="mission__aside--objectifs">
-                    <p class="global-titre_texte">Objectifs : </p>
+                    <h2 class="global-titre_texte">Objectifs : </h2>
                     <ul class="mission__texte--aside">
                         <li v-for="ob in jour_last.objectifs">{{ob}}</li>
                     </ul>
                 </div>
 
                 <div class="mission__aside--etat">
-                    <p class="global-titre_texte">état de Spike : </p>
+                    <h2 class="global-titre_texte">état de Spike : </h2>
 
                     <div class="etat">
                         <div class="niveau">
@@ -46,40 +46,19 @@
                 <h3>Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h3>
     
                 <div class="mission__jour" v-for="(etape, index) in mission.partie" :key=index+1>
-                    <p class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</p>
+                    <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
                     <p class="mission__texte">{{ etape.texte }}</p>
                 </div>
     
                 <div class="mission__jour--buttons">
-                    <myButton type="t_button" link="/historique">Retour Historique</myButton>
-                    <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
+                    <myButton type="t_button" :color="jour_last.decision" link="/historique">Retour Historique</myButton>
+                    <myButton type="t_button" :color="jour_last.decision" link="/desktop">Retour Bureau</myButton>
                 </div>
             </div>
 
         </NuxtLayout>
     </div>
 </template>
-
-<style lang="scss">
-// le reste du style de la page est dans la vue pages/mission/index.vue
-.mission{
-
-    &__titre{
-
-        &--num{
-            color: $c-main;
-            text-decoration: underline;
-            font-style: italic;
-            font-weight: $fw-regular;
-        }
-
-        &--date{
-            font-weight: $fw-regular;
-            color: $c-main;
-        }
-    }
-}
-</style>
 
 <script setup>
 import {API} from '@/utils/axios'
@@ -107,6 +86,11 @@ const level = (niv) => {
     const width = niv * 10 + '%';
     return width;
 };
+
+const mainColor = computed(() => ({
+    " -good": jour_last.value.decision === "good",
+    " -bad": jour_last.value.decision === "bad",
+}));
 
 // chargement de la base de données
 onMounted(async() => {

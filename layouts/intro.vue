@@ -8,10 +8,11 @@
 
 <style lang="scss" scoped>
 .layout_intro{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: scroll;
     padding: $ph-m-xl2 $ph-m-md;
+    background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
     
     @include medium{
         padding: $pc-m-md;

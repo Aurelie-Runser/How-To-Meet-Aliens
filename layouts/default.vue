@@ -1,5 +1,5 @@
 <template>
-    <main class="layout">
+    <main class="layout" :class="mainColor">
         <header class="layout__header">
             <slot name="header"></slot>  
         </header>  
@@ -25,6 +25,7 @@
         "aside"
         "main";
     grid-template-rows: min-content min-content auto;
+    background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
 
     > * {
         margin: 0;
@@ -83,5 +84,33 @@
             padding-top: 0;
         }
     }
+    
+    // changement de couleur en fonction des bon et mauvais choix durant la mission
+    &.-bad{
+        background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent);
+
+        .layout__aside {
+            border-color: $c-red;
+        }
+    }
+    
+    &.-good{
+        background: darken($c-blue, 45%) radial-gradient(rgba($c-blue, 10%) 5%, transparent);
+
+        .layout__aside {
+            border-color: $c-blue;
+        }
+    }
 }
 </style>
+
+<script setup>
+const props = defineProps({
+    color: String,
+});
+
+const mainColor = computed(() => ({
+    " -good": props.color === "good",
+    " -bad": props.color === "bad",
+}));
+</script>

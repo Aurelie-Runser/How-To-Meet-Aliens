@@ -1,25 +1,25 @@
 <template>
-    <div class="mission">
-        <NuxtLayout>
+    <div class="mission" :class="mainColor">
+        <NuxtLayout :color="jour_actuel.decision">
             <template #header>
-                <h1>How to meet aliens ?</h1>
+                <h1 class="mission__h1">How to meet aliens ?</h1>
             </template>
     
             <template #aside>
                 <div class="mission__aside--stiuation">
-                    <p class="global-titre_texte">Situation : </p>
+                    <h2 class="global-titre_texte">Situation : </h2>
                     <p class="mission__texte--aside">{{jour_actuel.situation}}</p>
                 </div>
 
                 <div class="mission__aside--objectifs">
-                    <p class="global-titre_texte">Objectifs : </p>
+                    <h2 class="global-titre_texte">Objectifs : </h2>
                     <ul class="mission__texte--aside">
                         <li v-for="ob in jour_actuel.objectifs">{{ob}}</li>
                     </ul>
                 </div>
 
                 <div class="mission__aside--etat">
-                    <p class="global-titre_texte">état de Spike : </p>
+                    <h2 class="global-titre_texte">état de Spike : </h2>
 
                     <div class="etat">
                         <div class="niveau">
@@ -44,17 +44,17 @@
 
             <div class="mission__jour" v-for="(etape, index) in jours_joues" :key=index+1>
 
-                <p class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</p>
+                <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
                 <p class="mission__texte">{{ etape.texte }}</p>
 
                 <div class="mission__jour--buttons" v-if="index + 1 == jours_joues.length">
-                    <myButton type="t_button" v-for="choix in etape.jours_suivants"
+                    <myButton type="t_button" :color="jour_actuel.decision" v-for="choix in etape.jours_suivants"
                         @click="(jour = choix.id_jour) && getJour()">
 
                         {{ choix.texte_bouton }}
                     </myButton>
 
-                    <myButton type="t_button" v-if="etape.fin" @click="getPartie()">Retour Bureau</myButton>
+                    <myButton type="t_button" :color="jour_actuel.decision" v-if="etape.fin" @click="getPartie()">Retour Bureau</myButton>
                 </div>
             </div>
         </NuxtLayout>
@@ -63,6 +63,21 @@
 
 <style lang="scss">
 .mission{
+
+    &__titre{
+
+        &--num{
+            color: $c-main;
+            text-decoration: underline;
+            font-style: italic;
+            font-weight: $fw-regular;
+        }
+
+        &--date{
+            font-weight: $fw-regular;
+            color: $c-main;
+        }
+    }
 
     &__texte{
         color: $c-white;
@@ -146,6 +161,60 @@
             }
         }
     }
+
+    // changement de couleur si les choix sont bons
+    &.-good{
+        h1,
+        h2{
+            color: $c-blue;
+        }
+
+        .mission__titre{
+            &--num,
+            &--date{
+                color: $c-blue;
+            }
+        }
+
+        .niveau{                
+            &__bloc{
+                border-color: $c-blue;
+            }
+            &__variable{
+                background-color: $c-blue;
+            }
+        }
+        .tete{
+            border-color: $c-blue;
+        }
+    }
+
+    // changement de couleur si les choix sont mauvais
+    &.-bad{
+        h1,
+        h2{
+            color: $c-red;
+        }
+
+        .mission__titre{
+            &--num,
+            &--date{
+                color: $c-red;
+            }
+        }
+
+        .niveau{                
+            &__bloc{
+                border-color: $c-red;
+            }
+            &__variable{
+                background-color: $c-red;
+            }
+        }
+        .tete{
+            border-color: $c-red;
+        }
+    }
 }
 </style>
 
@@ -196,6 +265,11 @@ const level = (niv) => {
     const width = niv * 10 + '%';
     return width;
 };
+
+const mainColor = computed(() => ({
+    " -good": jour_actuel.value.decision === "good",
+    " -bad": jour_actuel.value.decision === "bad",
+}));
 
 // chargement de la base de données
 onMounted(async() => {
