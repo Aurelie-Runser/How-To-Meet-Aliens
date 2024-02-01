@@ -86,7 +86,10 @@
             display: block;
             margin: auto;
             margin-top: $ph-m-md;
-            background: $c-main;
+            
+            &:focus{
+                background: darken($c-main, 10%);
+            }
         }
     }
 

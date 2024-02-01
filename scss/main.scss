@@ -123,29 +123,41 @@ input{
 }
 
 .global_color-2{
-    background: $c-red !important;
+    background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+
+    h1, h2, p{
+        color: $c-red;
+    }
 }
 
 .global_color-3{
-    background: $c-blue !important;
+    background: darken($c-blue, 55%) radial-gradient(rgba($c-blue, 10%) 5%, transparent) !important;
+
+    h1, h2, p{
+        color: $c-blue;
+    }
 }
 
 .global_color-4{
-    background: $c-purple !important;
+    background: darken($c-pink, 45%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
+
+    h1, h2, p{
+        color: $c-pink;
+    }
 }
 
 .global_color-5{
-    background: $c-pink !important;
+    background: darken($c-orange, 40%) radial-gradient(rgba($c-orange, 5%) 5%, transparent) !important;
+
+    h1, h2, p{
+        color: $c-orange;
+    }
 }
 
 .global_color-6{
-    background: $c-orange !important;
-}
+    background: $c-bblack radial-gradient(lighten($c-bblack, 10%) 5%, transparent) !important;
 
-.global_color-7{
-    background: $c-bblack !important;
-}
-
-.global_color-8{
-    background: $c-bwhite !important;
+    h1, h2, p{
+        color: $c-white;
+    }
 }

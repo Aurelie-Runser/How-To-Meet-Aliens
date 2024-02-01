@@ -108,6 +108,10 @@
         &--bouton{
             @include my_button;
             margin: auto;
+
+            &:focus{
+                background: darken($c-main, 10%);
+            }
         }
     }
 

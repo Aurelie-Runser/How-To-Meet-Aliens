@@ -93,7 +93,7 @@
     }
     
     &.-good{
-        background: darken($c-blue, 45%) radial-gradient(rgba($c-blue, 10%) 5%, transparent);
+        background: darken($c-blue, 55%) radial-gradient(rgba($c-blue, 10%) 5%, transparent);
 
         .layout__aside {
             border-color: $c-blue;
