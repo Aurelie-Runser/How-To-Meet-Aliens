@@ -44,7 +44,7 @@
         flex-direction: column;
         justify-content: space-between;
         gap: $ph-m-md;
-        max-height: 33vh;
+        max-height: 25vh;
         padding: $ph-m-md;
         border-top: solid 2px $c-main;
         border-bottom: solid 2px $c-main;
@@ -65,10 +65,6 @@
             "aside main main main";
         grid-template-rows: min-content auto;
         grid-template-columns: 33% auto;
-
-        &__header{
-            padding: $pc-m-sm;
-        }
 
         &__aside {
             padding: $pc-m-md;
