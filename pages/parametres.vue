@@ -28,5 +28,23 @@
 </style>
 
 <script setup>
+import {API} from '@/utils/axios'
 
+const store = useGlobalStore()
+
+const router = useRouter()
+
+// suppression du token pour déconnecter l'utilisateur
+const deconnexion = async () => {
+    store.clearToken()
+    router.push('/login')
+}
+
+// renvoie l'user sur l'index s'il n'est pas connecté
+// definePageMeta({
+//     middleware: [
+//         function (to, from) {},
+//         'auth',
+//     ],
+// });
 </script>

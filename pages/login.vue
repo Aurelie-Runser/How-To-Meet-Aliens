@@ -13,7 +13,7 @@
                 <form class="login__form" @submit.prevent="connexion" method="post" v-if="connex">
                     <div class="login__form--input">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" name="pesudo" id="pesudo" required v-model="userCo.pseudo">
+                        <input type="text" name="pesudo" id="pesudo" maxlength="11" required v-model="userCo.pseudo">
                     </div>
 
                     <div class="login__form--input">
@@ -29,7 +29,7 @@
                 <form class="login__form" @submit.prevent="inscription" method="post" v-if="!connex">
                     <div class="login__form--input">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" name="pesudo" id="pesudo" required v-model="userNew.pseudo">
+                        <input type="text" name="pesudo" id="pesudo" maxlength="11" required v-model="userNew.pseudo">
                     </div>
 
                     <div class="login__form--input">

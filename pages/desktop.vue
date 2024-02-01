@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="desktop">
         <NuxtLayout>
             <template #header>
                 <h1>How to meet aliens ?</h1>
-                <h2>Bureau de &lt;{{user.pseudo}}&gt;</h2>
+                <h2>Bureau de &lt;<span class="desktop__pseudo">{{user.pseudo}}</span>&gt;</h2>
             </template>
     
             <template #aside>
@@ -41,6 +41,10 @@
 
 <style lang="scss">
 .desktop{
+
+    &__pseudo{
+        text-transform: none;
+    }
 
     &__section{
         margin: $ph-m-lg 0;
