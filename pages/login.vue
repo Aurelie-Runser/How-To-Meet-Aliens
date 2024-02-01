@@ -86,6 +86,7 @@
             display: block;
             margin: auto;
             margin-top: $ph-m-md;
+            background: $c-main;
         }
     }
 
