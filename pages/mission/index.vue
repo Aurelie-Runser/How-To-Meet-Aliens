@@ -233,6 +233,7 @@ let jour = 1
 
 const currentDate = new Date();
 
+
 // récupération de l'ensemble des jours
 const getJour = async () => {
     const response = await API.get(`/jour/${jour}`)
@@ -274,6 +275,11 @@ const mainColor = computed(() => ({
 // chargement de la base de données
 onMounted(async() => {
     await getJour()
+
+    // demande confirmation avant de quitter la page (avertie de la perte de la partie en cours)
+    window.onbeforeunload = function (){
+        return "";
+    };
 })
 
 // renvoie l'user sur l'index s'il n'est pas connecté
@@ -283,4 +289,5 @@ onMounted(async() => {
 //         'auth',
 //     ],
 // });
+
 </script>

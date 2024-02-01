@@ -48,15 +48,17 @@
         padding: $ph-m-md;
         border-top: solid 2px $c-main;
         border-bottom: solid 2px $c-main;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     &__main {
         // background-color: plum;
         grid-area: main;
-        overflow: scroll;
         height: auto;
         padding: $ph-m-md;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     @include medium {
