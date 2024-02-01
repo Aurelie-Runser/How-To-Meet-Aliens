@@ -8,8 +8,9 @@
     
             <template #aside>              
                 <div class="global-aside__boutons">
-                    <myButton type="t_button" link="/desktop">Retour Bureau</myButton>
+                    <myButton type="t_button" link="/desktop">Bureau</myButton>
                     <myButton type="t_button" link="/historique">Historique</myButton>
+                    <myButton type="t_button" link="/parametres">Paramètres</myButton>
                     <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">
