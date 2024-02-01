@@ -27,7 +27,7 @@
                 <ul class="index__texte-info">
                     <li>récupérer des ressources pour survivre.</li>
                     <li>rencontrer et établir de bons rapport avec l'espèces intelligente local, les Bourpis.</li>
-                    <li>entretenir le vaisseau pour redécoller dans 10 jours.</li>
+                    <li>entretenir le vaisseau pour redécoller dans 10 jours : {{ mission_date }}.</li>
                 </ul>
             </section>
     
@@ -76,6 +76,11 @@ const store = useGlobalStore()
 const router = useRouter()
 
 const user = ref([])
+
+const current_date = new Date();
+const future_date = new Date(current_date.getTime() + 10 * 24 * 60 * 60 * 1000);
+
+const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1).toString().padStart(2, '0')}-${future_date.getDate().toString().padStart(2, '0')}`;
 
 // récupération du pseudo de l'utilisateur connecté
 const getUser = async () => {
