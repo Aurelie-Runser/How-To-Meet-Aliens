@@ -150,8 +150,10 @@ const connexion = async () => {
         } else if(response.data.message == "mauvais mdp"){
             message.value = "Mauvais mot de passe."
         } else {
-            const { token } = response.data
+            const token = response.data.token
             store.setToken(token)
+            const mainColor = response.data.color
+            store.setMainColor(mainColor)
             router.push('/desktop')
         }
 

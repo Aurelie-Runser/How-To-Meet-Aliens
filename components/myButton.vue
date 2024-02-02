@@ -46,10 +46,56 @@
 
         &.-bad{
             background: $c-red;
-            color: black;
+            color: $c-bblack;
 
             &:hover{
                 background: darken($c-red, 10%);
+            }
+        }
+
+        // changement de thème en fonction du paramètrage de l'utilisateur
+        &.-main_color-2{
+            background: $c-red;
+            color: $c-bblack;
+
+            &:hover{
+                background: darken($c-red, 10%);
+            }
+        }
+
+        &.-main_color-3{
+            background: $c-blue;
+            color: $c-bblack;
+
+            &:hover{
+                background: darken($c-blue, 10%);
+            }
+        }
+
+        &.-main_color-4{
+            background: $c-pink;
+            color: $c-bblack;
+
+            &:hover{
+                background: darken($c-pink, 10%);
+            }
+        }
+
+        &.-main_color-5{
+            background: $c-orange;
+            color: $c-bblack;
+
+            &:hover{
+                background: darken($c-orange, 10%);
+            }
+        }
+
+        &.-main_color-6{
+            background: $c-white;
+            color: $c-bblack;
+
+            &:hover{
+                background: darken($c-white, 10%);
             }
         }
     }
@@ -82,6 +128,52 @@
                 font-size: $pc-f-sm;
             }
         }
+
+        // changement de thème en fonction du paramètrage de l'utilisateur
+        &.-main_color-2{
+            color: $c-red;
+
+            &:hover{
+                background-color: $c-red;
+                color: $c-bblack;
+            }
+        }
+
+        &.-main_color-3{
+            color: $c-blue;
+
+            &:hover{
+                background-color: $c-blue;
+                color: $c-bblack;
+            }
+        }
+
+        &.-main_color-4{
+            color: $c-pink;
+
+            &:hover{
+                background-color: $c-pink;
+                color: $c-bblack;
+            }
+        }
+
+        &.-main_color-5{
+            color: $c-orange;
+
+            &:hover{
+                background-color: $c-orange;
+                color: $c-bblack;
+            }
+        }
+
+        &.-main_color-6{
+            color: $c-white;
+
+            &:hover{
+                background-color: $c-white;
+                color: $c-bblack;
+            }
+        }
     }
 }
 </style>
@@ -102,5 +194,11 @@ const className = computed(() => ({
     " -small": props.size === "small",
     " -good": props.color === "good",
     " -bad": props.color === "bad",
+
+    " -main_color-2": props.color === "main_color-2",
+    " -main_color-3": props.color === "main_color-3",
+    " -main_color-4": props.color === "main_color-4",
+    " -main_color-5": props.color === "main_color-5",
+    " -main_color-6": props.color === "main_color-6",
 }));
 </script>

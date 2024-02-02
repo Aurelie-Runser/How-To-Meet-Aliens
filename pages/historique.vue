@@ -1,6 +1,6 @@
 <template>
-    <div class="historique">
-        <NuxtLayout>
+    <div>
+        <NuxtLayout class="historique" :class="`-main_color-${store.mainColor}`">
             <template #header>
                 <h1>How to meet aliens ?</h1>
                 <h2>Historique de mission</h2>
@@ -8,20 +8,20 @@
     
             <template #aside>              
                 <div class="global-aside__boutons">
-                    <myButton type="t_button" link="/desktop">Bureau</myButton>
-                    <myButton type="t_button" link="/parametres">Paramètres</myButton>
-                    <myButton type="t_button" @click="deconnexion()">Fermer la session</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/desktop">Bureau</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/parametres">Paramètres</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="deconnexion()">Fermer la session</myButton>
                 </div>
                 <div class="global-aside__links">
-                    <myButton type="t_link" size="small" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
-                    <myButton type="t_link" size="small" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
+                    <myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" link="/responsable_de_mission">Informations_sur_le_responsable_de_mission</myButton>
+                    <myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
                 </div>
             </template>
 
             <div class="historique__buttons">
-                <myButton type="t_button" @click="listeAffiche = 'missions'">Missions</myButton>
-                <myButton type="t_button" @click="listeAffiche = 'rapports'">Rapports</myButton>
-                <myButton type="t_button" @click="listeAffiche = 'fins'">Fins</myButton>
+                <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'missions'">Missions</myButton>
+                <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'rapports'">Rapports</myButton>
+                <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'fins'">Fins</myButton>
             </div>
 
             
@@ -29,13 +29,13 @@
                 <h3>Missions passées</h3>
 
                 <ul class="historique__liste liste__missions">
-                    <li v-if="missions.length == 0" class="liste__missions--green">Vous n'avez réalisé aucune mission.</li>
+                    <li v-if="missions.length == 0" class="liste__missions--main">Vous n'avez réalisé aucune mission.</li>
                     <li v-else v-for="m in missions" :key="m.date" class="historique__liste--item">
                        {{ m.date }} :
                        <ul class="liste__missions--nom__jour">
                             <li v-for="jour in m.partie">{{jour.nom}}</li>
                        </ul>
-                       <MyButton type="t_link" :link="`/mission/${m.id_mission}`" size="small">Relire_les_rapports</MyButton>
+                       <MyButton type="t_link" :color="`main_color-${store.mainColor}`" :link="`/mission/${m.id_mission}`" size="small">Relire_les_rapports</MyButton>
                     </li>
                 </ul>
             </div>
@@ -75,14 +75,11 @@
         margin-bottom: $ph-m-lg;
     }
 
-    &__titre{
-
-        &--pourcent{
-            font-size: $ph-f-lg;
-            font-weight: $fw-regular;
-            font-style: italic;
-            color: $c-main;
-        }
+    &__titre--pourcent{
+        font-size: $ph-f-lg;
+        font-weight: $fw-regular;
+        font-style: italic;
+        color: $c-main;
     }
 
     &__liste{
@@ -129,7 +126,7 @@
             }
         }
 
-        &--green{
+        &--main{
             color: $c-main !important;
         }
         
@@ -154,6 +151,61 @@
             &--pourcent{
                 font-size: $pc-f-lg;
             }
+        }
+    }
+
+    &.-main_color-2{
+
+        .historique__titre--pourcent{
+            color: $c-red;
+        }
+
+        .liste__missions--nom__jour li{
+            color: $c-red;
+        }
+    }
+
+    &.-main_color-3{
+
+        .historique__titre--pourcent{
+            color: $c-blue;
+        }
+
+        .liste__missions--nom__jour li{
+            color: $c-blue;
+        }
+    }
+
+    &.-main_color-4{
+
+        .historique__titre--pourcent{
+            color: $c-pink;
+        }
+
+        .liste__missions--nom__jour li{
+            color: $c-pink;
+        }
+    }
+
+    &.-main_color-5{
+
+        .historique__titre--pourcent{
+            color: $c-orange;
+        }
+
+        .liste__missions--nom__jour li{
+            color: $c-orange;
+        }
+    }
+
+    &.-main_color-6{
+
+        .historique__titre--pourcent{
+            color: $c-white;
+        }
+
+        .liste__missions--nom__jour li{
+            color: $c-white;
         }
     }
 }

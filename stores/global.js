@@ -19,8 +19,11 @@ export const useGlobalStore = defineStore("global", {
     // déconnecte l'utilisateur
     clearToken(){
       this.token = null
+      this.mainColor = null
       localStorage.setItem('Token de Connexion', this.token);
       localStorage.removeItem('Token de Connexion');
+      localStorage.setItem('Theme', this.mainColor);
+      localStorage.removeItem('Theme');
     },
 
     // met la couleur que l'utilisateur a choisi

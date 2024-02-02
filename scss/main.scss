@@ -51,8 +51,6 @@ ul {
     }
 }
 
-
-
 label{
     font-family: $font, monospace;
     font-size: $ph-f-md;
@@ -69,7 +67,7 @@ input{
     margin: 0;
     padding: $ph-m-sm;
     border: 2px solid $c-main;
-    background: rgba($c-white, 5%);
+    background: rgba($c-white, 10%);
     font-family: $font, monospace;
     color: $c-white;
     font-size: $ph-f-sm;
@@ -84,6 +82,14 @@ input{
         padding: $pc-m-sm;
         font-size: $pc-f-sm;
     }
+}
+
+select{
+    padding: $ph-m-sm;
+    border: none;
+    border-radius: $ph-r-md;
+    background: $c-main;
+    font-family: $font, monospace;
 }
 
 .global-error{
@@ -117,47 +123,220 @@ input{
     }
 }
 
-*::selection{
-    color: $c-black;
-    background-color: $c-main
+.global-form__bouton{
+    @include my_button;
+
+    &:focus{
+        background: darken($c-main, 10%);
+    }
 }
 
-.global_color-2{
-    background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+*::selection{
+    color: $c-black;
+    background-color: $c-main;
+}
+
+.-main_color-2{
 
     h1, h2, p{
         color: $c-red;
     }
+
+    ul{
+        color: $c-red;
+    }
+
+    label{
+        color: $c-red;
+    }
+
+    input{
+        border-color: $c-red;
+
+        &:focus{
+            outline-color: $c-red;
+        }
+    }
+
+    select{
+        background: $c-red;
+    }
+
+    .global-form__bouton{
+        background: $c-red;
+
+        &:hover,
+        &:focus{
+            background: darken($c-red, 10%);
+        }
+    }
+
+    *::selection{
+        color: $c-bblack;
+        background: $c-red;
+    }
 }
 
-.global_color-3{
-    background: darken($c-blue, 55%) radial-gradient(rgba($c-blue, 10%) 5%, transparent) !important;
+.-main_color-3{
 
     h1, h2, p{
         color: $c-blue;
     }
+
+    ul{
+        color: $c-blue;
+    }
+
+    label{
+        color: $c-blue;
+    }
+
+    input{
+        border-color: $c-blue;
+
+        &:focus{
+            outline-color: $c-blue;
+        }
+    }
+
+    select{
+        background: $c-blue;
+    }
+
+    .global-form__bouton{
+        background: $c-blue;
+
+        &:hover,
+        &:focus{
+            background: darken($c-blue, 10%);
+        }
+    }
+
+    *::selection{
+        color: $c-bblack;
+        background: $c-blue;
+    }
 }
 
-.global_color-4{
-    background: darken($c-pink, 45%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
+.-main_color-4{
 
     h1, h2, p{
         color: $c-pink;
     }
+
+    ul{
+        color: $c-pink;
+    }
+
+    label{
+        color: $c-pink;
+    }
+
+    input{
+        border-color: $c-pink;
+
+        &:focus{
+            outline-color: $c-pink;
+        }
+    }
+
+    select{
+        background: $c-pink;
+    }
+
+    .global-form__bouton{
+        background: $c-pink;
+
+        &:hover,
+        &:focus{
+            background: darken($c-pink, 10%);
+        }
+    }
+
+    *::selection{
+        color: $c-bblack;
+        background: $c-pink;
+    }
 }
 
-.global_color-5{
-    background: darken($c-orange, 40%) radial-gradient(rgba($c-orange, 5%) 5%, transparent) !important;
+.-main_color-5{
 
     h1, h2, p{
         color: $c-orange;
     }
+
+    ul{
+        color: $c-orange;
+    }
+
+    label{
+        color: $c-orange;
+    }
+
+    input{
+        border-color: $c-orange;
+
+        &:focus{
+            outline-color: $c-orange;
+        }
+    }
+
+    select{
+        background: $c-orange;
+    }
+
+    .global-form__bouton{
+        background: $c-orange;
+
+        &:hover,
+        &:focus{
+            background: darken($c-orange, 10%);
+        }
+    }
+
+    *::selection{
+        color: $c-bblack;
+        background: $c-orange;
+    }
 }
 
-.global_color-6{
-    background: $c-bblack radial-gradient(lighten($c-bblack, 10%) 5%, transparent) !important;
+.-main_color-6{
 
     h1, h2, p{
         color: $c-white;
+    }
+
+    ul{
+        color: $c-white;
+    }
+
+    label{
+        color: $c-white;
+    }
+
+    input{
+        border-color: $c-white;
+
+        &:focus{
+            outline-color: $c-white;
+        }
+    }
+
+    select{
+        background: $c-white;
+    }
+
+    .global-form__bouton{
+        background: $c-white;
+
+        &:hover,
+        &:focus{
+            background: darken($c-white, 10%);
+        }
+    }
+
+    *::selection{
+        color: $c-bblack;
+        background: $c-white;
     }
 }

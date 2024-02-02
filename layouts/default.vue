@@ -99,7 +99,50 @@
             border-color: $c-blue;
         }
     }
+
+    // changement de thème en fonction du paramètrage de l'utilisateur
+    &.-main_color-2{
+        background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+
+        .layout__aside {
+            border-color: $c-red;
+        }
+    }
+
+    &.-main_color-3{
+        background: darken($c-blue, 55%) radial-gradient(rgba($c-blue, 10%) 5%, transparent) !important;
+
+        .layout__aside {
+            border-color: $c-blue;
+        }
+    }
+ 
+    &.-main_color-4{
+        background: darken($c-pink, 35%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
+
+        .layout__aside {
+            border-color: $c-pink;
+        }
+    }
+
+    &.-main_color-5{
+        background: darken($c-orange, 37%) radial-gradient(rgba($c-orange, 5%) 5%, transparent) !important;
+    
+        .layout__aside {
+            border-color: $c-orange;
+        }
+    }
+    
+    &.-main_color-6{
+        background: $c-bblack radial-gradient(lighten($c-bblack, 10%) 5%, transparent) !important;
+    
+        .layout__aside {
+            border-color: $c-white;
+        }
+    }
 }
+
+
 </style>
 
 <script setup>
