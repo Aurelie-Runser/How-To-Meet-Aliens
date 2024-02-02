@@ -38,24 +38,42 @@
                     <p v-if="message_compte">{{ message_compte }}</p>
                 </section>
                 
-                <section>
+                <section class="parametre__bureau">
                     <h3>Bureau</h3>
 
-                    <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
-                        <div class="parametre__form--inputs">
-                            <div class="parametre__form--inputs_groupe">
-                                <label for="pseudo">Thème</label>
-                                <select name="color" id="color" v-model="user.id_color">
-                                    <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
-                                </select>
-                            </div>
-                            <!-- <div class="parametre__form--inputs_groupe">
-                                <label for="mdp">Mot de Passe</label>
-                                <input type="text" name="mdp" id="mdp" v-model="user.mdp">
-                            </div> -->
+                    <div class="parametre__bureau--form">
+                        <div class="parametre__bureau--form_color">
+                            <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
+                                <div class="parametre__form--inputs">
+                                    <div class="parametre__form--inputs_groupe">
+                                        <label for="pseudo">Thème</label>
+                                        <select name="color" id="color" v-model="user.id_color">
+                                            <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input class="global-form__bouton" type="submit" value="Modifier">
+                            </form>
+    
+                            <p v-if="!modifTheme">Débloquez 50% des rapports pour débloquer ce paramètre.</p>
                         </div>
-                        <input class="global-form__bouton" type="submit" value="Modifier">
-                    </form>
+
+                        <!-- <div class="parametre__bureau--form_texte">
+                            <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
+                                <div class="parametre__form--inputs">
+                                    <div class="parametre__form--inputs_groupe">
+                                        <label for="pseudo">Titre</label>
+                                        <select name="color" id="color" v-model="user.id_color">
+                                            <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input class="global-form__bouton" type="submit" value="Modifier">
+                            </form>
+
+                            <p v-if="!modifTheme">Vous n'avez pas accès à ce paramètre.</p>
+                        </div> -->
+                    </div>
                     <p v-if="message_bureau">{{ message_bureau }}</p>
                 </section>
             </div>
@@ -67,7 +85,7 @@
 .parametre{
     
     &__section{
-        margin-bottom: $pc-m-xl2;
+        margin-bottom: $ph-m-xl;
     }
 
     &__form{
@@ -75,7 +93,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: $ph-m-lg;
+        gap: $ph-m-md $ph-m-lg;
 
         &--inputs{
             display: flex;
@@ -101,14 +119,55 @@
         }
     }
 
-    .bureau__none{
-        background: rgba($c-bblack, 50%);
-        cursor: not-allowed;
-        pointer-events: none;
-        filter: brightness(40%);
+    &__bureau{
+
+        &--form{
+
+            &_color,
+            &_texte{
+                display: flex;
+                flex-wrap: wrap;
+                margin: $ph-m-md 0;
+                
+                p{
+                    flex: 1 1 50px;
+                    font-weight: $fw-bold;
+                    font-style: italic;
+                    color: $c-red;
+                    text-transform: uppercase;
+                }
+            }
+
+            .bureau__none{
+                background: rgba($c-bblack, 50%);
+                cursor: not-allowed;
+                filter: brightness(40%);
+                
+                * {
+                    pointer-events: none;
+                }
+            }
+        }
     }
 
+
     @include medium{
+
+        &__section{
+            margin-bottom: $pc-m-xl2;
+        }
+
+        &__bureau{
+
+            &--form{
+
+                &_color,
+                &_texte{
+                    gap: $ph-m-sm $pc-m-sm;
+                    margin: $pc-m-md 0;
+                }
+            }
+        }
 
         &__form{
             gap: $pc-m-lg;
