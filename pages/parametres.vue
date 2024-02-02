@@ -35,13 +35,13 @@
                         </div>
                         <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
                     </form>
-                    <p v-if="message">{{ message }}</p>
+                    <p v-if="message_compte">{{ message_compte }}</p>
                 </section>
                 
                 <section>
                     <h3>Bureau</h3>
 
-                    <form class="parametre__form" @submit.prevent="modifBureau" method="put">
+                    <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
                         <div class="parametre__form--inputs">
                             <div class="parametre__form--inputs_groupe">
                                 <label for="pseudo">Thème</label>
@@ -56,7 +56,7 @@
                         </div>
                         <input class="global-form__bouton" type="submit" value="Modifier">
                     </form>
-                    <p v-if="message">{{ message }}</p>
+                    <p v-if="message_bureau">{{ message_bureau }}</p>
                 </section>
             </div>
         </NuxtLayout>
@@ -72,7 +72,6 @@
 
     &__form{
         width: fit-content;
-
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -102,6 +101,13 @@
         }
     }
 
+    .bureau__none{
+        background: rgba($c-bblack, 50%);
+        cursor: not-allowed;
+        pointer-events: none;
+        filter: brightness(40%);
+    }
+
     @include medium{
 
         &__form{
@@ -128,7 +134,13 @@ const router = useRouter()
 
 const colors = ref()
 const user = ref()
-const message = ref()
+const message_compte = ref()
+const message_bureau = ref()
+
+const modifTheme = ref(false)
+if (store.raportsDebloques >= 3){
+    modifTheme.value = true
+}
 
 // récupération de la liste de toutes les couleurs
 const getColors = async () => {
@@ -146,7 +158,6 @@ const getUser = async () => {
     try{
         const response = await API.get(`/user/${store.token}`)
         user.value = response.data
-
     } catch (error) {
         console.error("Erreur lors de la récupération de l'user :", error.message)
     }
@@ -158,15 +169,15 @@ const modifCompte = async () => {
         const response = await API.put(`/user/modif_compte`, user.value);        
 
         if(response.data.message == "bien modif"){
-            message.value = "Les modifications ont bien été enregistrées."
+            message_compte.value = "Les modifications ont bien été enregistrées."
             user.value.mdp = ''
         } else {
-            message.value = "Erreur lors de la modification."
+            message_compte.value = "Erreur lors de la modification."
         }
         
     } catch (error) {
         console.error("Erreur lors de la modification :", error.message)
-        message.value = "Erreur lors de la modification."
+        message_compte.value = "Erreur lors de la modification."
     }
 }
 
@@ -176,18 +187,19 @@ const modifBureau = async () => {
         const response = await API.put(`/user/modif_bureau`, user.value);        
 
         if(response.data.message == "bien modif"){
-            store.setMainColor(user.value.id_color)
-            message.value = "Les modifications ont bien été enregistrées."
+            store.setUser(null, user.value.id_color, null)
+            message_bureau.value = "Les modifications ont bien été enregistrées."
             user.value.mdp = ''
         } else {
-            message.value = "Erreur lors de la modification."
+            message_bureau.value = "Erreur lors de la modification."
         }
         
     } catch (error) {
         console.error("Erreur lors de la modification :", error.message)
-        message.value = "Erreur lors de la modification."
+        message_bureau.value = "Erreur lors de la modification."
     }
 }
+
 
 // suppression du token pour déconnecter l'utilisateur
 const deconnexion = async () => {

@@ -130,8 +130,8 @@ const inscription = async () => {
         if(response.data.message == "deja inscrit"){
             message.value = "Ce pseudo est déjà enregistré dans la base de données. Choisissez-en un autre."
         } else {
-            const { token } = response.data
-            store.setToken(token)
+            const {token} = response.data
+            store.setUser(token, 1, 0)
             router.push('/desktop')
         }
         
@@ -150,10 +150,10 @@ const connexion = async () => {
         } else if(response.data.message == "mauvais mdp"){
             message.value = "Mauvais mot de passe."
         } else {
-            const token = response.data.token
-            store.setToken(token)
-            const mainColor = response.data.color
-            store.setMainColor(mainColor)
+            const token = response.data.id_user
+            const mainColor = response.data.id_color
+            const raportsDebloques = response.data.rapports_debloques.length
+            store.setUser(token, mainColor, raportsDebloques)
             router.push('/desktop')
         }
 

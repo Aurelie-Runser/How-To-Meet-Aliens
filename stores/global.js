@@ -5,15 +5,24 @@ export const useGlobalStore = defineStore("global", {
     token: null, // pour la connexion
 
     mainColor: 1,
+    raportsDebloques: 0,
   }),
   actions: {
 
     // connecte l'utilisateur et garde la connexion
-    setToken(token){
-      if (token){
+    setUser(token, color, rapports){
+      if (token != null){
         this.token = token
         localStorage.setItem('Token de Connexion', JSON.stringify(this.token))
-        }
+      }
+      if(color != null){
+        this.mainColor = color;
+        localStorage.setItem('Theme', this.mainColor)
+      }
+      if(rapports != null){
+        this.raportsDebloques = rapports;
+        localStorage.setItem('Rapports Débloqués', this.raportsDebloques)
+      }
     },
 
     // déconnecte l'utilisateur
@@ -24,14 +33,8 @@ export const useGlobalStore = defineStore("global", {
       localStorage.removeItem('Token de Connexion');
       localStorage.setItem('Theme', this.mainColor);
       localStorage.removeItem('Theme');
-    },
-
-    // met la couleur que l'utilisateur a choisi
-    setMainColor(color){
-      if (color){
-        this.mainColor = color;
-        localStorage.setItem('Theme', this.mainColor)
-        }
+      localStorage.setItem('Rapports Débloqués', this.raportsDebloques);
+      localStorage.removeItem('Rapports Débloqués');
     },
   },
 });

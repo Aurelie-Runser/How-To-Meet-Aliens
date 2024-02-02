@@ -255,6 +255,11 @@ const getPartie = async () => {
 
     try{
         await API.post(`/partie`, mission.value )
+        
+        // récupère la liste des rapports débloqué mise à jour
+        const response = await API.get(`/user/${store.token}`)
+        store.setUser(null, null, response.data.rapports_debloques.length)
+
         router.push("/desktop")
     } catch (error) {
         console.error("Erreur lors de l'ajout de la partie à l'historique :", error.message)

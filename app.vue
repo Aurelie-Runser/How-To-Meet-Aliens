@@ -10,8 +10,8 @@ const store = useGlobalStore()
 onMounted(() => {
     // fonction pour vérifier si l'utilisateur était connecté à sa dernière visite
     const token = localStorage.getItem("Token de Connexion")
-    store.setToken(JSON.parse(token))
     const mainColor = localStorage.getItem("Theme")
-    store.setMainColor(mainColor)
+    const raportsDebloques = localStorage.getItem('Rapports Débloqués')
+    store.setUser(token, mainColor, raportsDebloques)
 })
 </script>
