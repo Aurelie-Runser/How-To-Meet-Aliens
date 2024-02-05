@@ -37,7 +37,7 @@
                             <p class="mission__texte--aside niveau__nom">santé mentale</p>
                         </div>
 
-                        <div class="tete"></div>
+                        <div class="tete"><tete3d/></div>
                     </div>
                 </div>
             </template>

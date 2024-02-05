@@ -55,7 +55,7 @@
                                 <input class="global-form__bouton" type="submit" value="Modifier">
                             </form>
     
-                            <p v-if="!modifTheme">Débloquez 50% des rapports pour débloquer ce paramètre.</p>
+                            <p v-if="!modifTheme">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
                         </div>
 
                         <!-- <div class="parametre__bureau--form_texte">
