@@ -130,7 +130,7 @@ const inscription = async () => {
             message.value = "Ce pseudo est déjà enregistré dans la base de données. Choisissez-en un autre."
         } else {
             const {token} = response.data
-            store.setUser(token, 1, 0)
+            store.setUser(JSON.parse(token), 1, 0)
             router.push('/desktop')
         }
         
@@ -152,7 +152,7 @@ const connexion = async () => {
             const token = response.data.id_user
             const mainColor = response.data.id_color
             const raportsDebloques = response.data.rapports_debloques.length
-            store.setUser(token, mainColor, raportsDebloques)
+            store.setUser(JSON.parse(token), mainColor, raportsDebloques)
             router.push('/desktop')
         }
 

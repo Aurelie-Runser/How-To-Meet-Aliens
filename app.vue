@@ -12,6 +12,6 @@ onMounted(() => {
     const token = localStorage.getItem("Token de Connexion")
     const mainColor = localStorage.getItem("Theme")
     const raportsDebloques = localStorage.getItem('Rapports Débloqués')
-    store.setUser(token, mainColor, raportsDebloques)
+    store.setUser(JSON.parse(token), mainColor, raportsDebloques)
 })
 </script>
