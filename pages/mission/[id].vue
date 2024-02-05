@@ -1,9 +1,6 @@
 <template>
-    <div class="mission" v-if="mission" :class="mainColor">
-        <NuxtLayout :color="jour_last.decision">
-            <template #header>
-                <h1>How to meet aliens ?</h1>
-            </template>
+    <div class="mission" v-if="mission" :class="`-color-${store.mainColor}`">
+        <NuxtLayout :class="`-main_color-${store.mainColor}`">
     
             <template #aside v-if="mission">
                 <div class="mission__aside--stiuation">
@@ -43,7 +40,7 @@
             </template>
 
             <div v-if="mission">
-                <h2>Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h2>
+                <h2 class="mission__titre">Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h2>
     
                 <div class="mission__jour" v-for="(etape, index) in mission.partie" :key=index+1>
                     <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
@@ -51,8 +48,8 @@
                 </div>
     
                 <div class="mission__jour--buttons">
-                    <myButton type="t_button" :color="jour_last.decision" link="/historique">Retour Historique</myButton>
-                    <myButton type="t_button" :color="jour_last.decision" link="/desktop">Retour Bureau</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/historique">Retour Historique</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/desktop">Retour Bureau</myButton>
                 </div>
             </div>
 

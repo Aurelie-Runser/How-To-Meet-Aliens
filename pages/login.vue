@@ -54,7 +54,6 @@
     }
 
     &__h1{
-        @include h2;
         margin-bottom: $ph-m-xl2;
     }
 

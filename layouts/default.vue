@@ -88,23 +88,6 @@
             padding-top: 0;
         }
     }
-    
-    // changement de couleur en fonction des bon et mauvais choix durant la mission
-    &.-bad{
-        background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent);
-
-        .layout__aside {
-            border-color: $c-red;
-        }
-    }
-    
-    &.-good{
-        background: darken($c-blue, 55%) radial-gradient(rgba($c-blue, 10%) 5%, transparent);
-
-        .layout__aside {
-            border-color: $c-blue;
-        }
-    }
 
     // changement de thème en fonction du paramètrage de l'utilisateur
     &.-main_color-2{

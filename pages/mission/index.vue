@@ -1,6 +1,6 @@
 <template>
-    <div class="mission" :class="mainColor">
-        <NuxtLayout :color="jour_actuel.decision">
+    <div class="mission" :class="`-color-${store.mainColor}`">
+        <NuxtLayout :class="`-main_color-${store.mainColor}`">
     
             <template #aside>
                 <div class="mission__aside--stiuation">
@@ -45,13 +45,13 @@
                 <p class="mission__texte">{{ etape.texte }}</p>
 
                 <div class="mission__jour--buttons" v-if="index + 1 == jours_joues.length">
-                    <myButton type="t_button" :color="jour_actuel.decision" v-for="choix in etape.jours_suivants"
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" v-for="choix in etape.jours_suivants"
                         @click="(jour = choix.id_jour) && getJour()">
 
                         {{ choix.texte_bouton }}
                     </myButton>
 
-                    <myButton type="t_button" :color="jour_actuel.decision" v-if="etape.fin" @click="getPartie()">Retour Bureau</myButton>
+                    <myButton type="t_button" :color="`main_color-${store.mainColor}`" v-if="etape.fin" @click="getPartie()">Retour Bureau</myButton>
                 </div>
             </div>
         </NuxtLayout>
@@ -62,6 +62,7 @@
 .mission{
 
     &__titre{
+        color: $c-white;
 
         &--num{
             color: $c-main;
@@ -77,11 +78,15 @@
     }
 
     &__texte{
-        color: $c-white;
-
+        
         &--aside{
             @include recap_texte;
         }
+    }
+
+    p,
+    ul{
+        color: $c-white;
     }
 
     &__aside{
@@ -159,20 +164,35 @@
         }
     }
 
-    // changement de couleur si les choix sont bons
-    &.-good{
-        h1,
-        h2{
-            color: $c-blue;
-        }
-
+    &.-color-2{
         .mission__titre{
+            color: $c-white;
+            &--num,
+            &--date{
+                color: $c-red;
+            }
+        }
+        .niveau{                
+            &__bloc{
+                border-color: $c-red;
+            }
+            &__variable{
+                background-color: $c-red;
+            }
+        }
+        .tete{
+            border-color: $c-red;
+        }
+    }
+
+    &.-color-3{
+        .mission__titre{
+            color: $c-white;
             &--num,
             &--date{
                 color: $c-blue;
             }
         }
-
         .niveau{                
             &__bloc{
                 border-color: $c-blue;
@@ -186,30 +206,66 @@
         }
     }
 
-    // changement de couleur si les choix sont mauvais
-    &.-bad{
-        h1,
-        h2{
-            color: $c-red;
-        }
-
+    &.-color-4{
         .mission__titre{
+            color: $c-white;
             &--num,
             &--date{
-                color: $c-red;
+                color: $c-pink;
             }
         }
-
         .niveau{                
             &__bloc{
-                border-color: $c-red;
+                border-color: $c-pink;
             }
             &__variable{
-                background-color: $c-red;
+                background-color: $c-pink;
             }
         }
         .tete{
-            border-color: $c-red;
+            border-color: $c-pink;
+        }
+    }
+
+    &.-color-5{
+        .mission__titre{
+            color: $c-white;
+            &--num,
+            &--date{
+                color: $c-orange;
+            }
+        }
+        .niveau{                
+            &__bloc{
+                border-color: $c-orange;
+            }
+            &__variable{
+                background-color: $c-orange;
+            }
+        }
+        .tete{
+            border-color: $c-orange;
+        }
+    }
+
+    &.-color-6{
+        .mission__titre{
+            color: $c-white;
+            &--num,
+            &--date{
+                color: darken($c-white, 40%);
+            }
+        }
+        .niveau{                
+            &__bloc{
+                border-color: $c-white;
+            }
+            &__variable{
+                background-color: $c-white;
+            }
+        }
+        .tete{
+            border-color: $c-white;
         }
     }
 }
