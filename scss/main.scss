@@ -99,11 +99,12 @@ select{
 
 .global-aside__boutons{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: $ph-m-md;
-
+    
     @include medium{
+        flex-direction: column;
         gap: $pc-m-md;
     }
 }
