@@ -1,9 +1,6 @@
 <template>
     <div class="mission" :class="mainColor">
         <NuxtLayout :color="jour_actuel.decision">
-            <template #header>
-                <h1 class="mission__h1">How to meet aliens ?</h1>
-            </template>
     
             <template #aside>
                 <div class="mission__aside--stiuation">

@@ -2,8 +2,7 @@
     <div>
         <NuxtLayout class="parametre" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1>How to meet aliens ?</h1>
-                <h2>Paramètres</h2>
+                <h1>Paramètres</h1>
             </template>
 
             <template #aside>
@@ -20,7 +19,7 @@
 
             <div v-if="user">
                 <section class="parametre__section">
-                    <h3>Compte</h3>
+                    <h2>Compte</h2>
 
                     <form class="parametre__form" @submit.prevent="modifCompte" method="put">
                         <div class="parametre__form--inputs">
@@ -39,7 +38,7 @@
                 </section>
                 
                 <section class="parametre__bureau">
-                    <h3>Bureau</h3>
+                    <h2>Bureau</h2>
 
                     <div class="parametre__bureau--form">
                         <div class="parametre__bureau--form_color">

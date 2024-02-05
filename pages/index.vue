@@ -40,7 +40,6 @@
     width: 100%;
 
     &__h1{
-        @include h2;
         margin-bottom: $ph-m-xl2;
     }
 

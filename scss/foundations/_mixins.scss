@@ -29,20 +29,6 @@
 }
 
 @mixin h1{
-    margin: $ph-m-sm 0;
-    font-size: $ph-f-md;
-    font-weight: $fw-bold;
-    color: $c-main;
-    text-align: center;
-    text-transform: uppercase;
-    
-    @include medium{
-        margin: $pc-m-sm 0;
-        font-size: $pc-f-md;
-    }
-}
-
-@mixin h2{
     margin-bottom: $ph-m-sm;
     font-size: $ph-f-xl2;
     font-weight: $fw-bold;
@@ -56,7 +42,7 @@
     }
 }
 
-@mixin h3{
+@mixin h2{
     margin-bottom: $ph-m-md;
     font-size: $ph-f-xl;
     font-weight: $fw-bold;

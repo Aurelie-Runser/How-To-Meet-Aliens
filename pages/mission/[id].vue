@@ -43,7 +43,7 @@
             </template>
 
             <div v-if="mission">
-                <h3>Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h3>
+                <h2>Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h2>
     
                 <div class="mission__jour" v-for="(etape, index) in mission.partie" :key=index+1>
                     <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>

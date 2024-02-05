@@ -2,8 +2,7 @@
     <div>
         <NuxtLayout class="desktop" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1>How to meet aliens ?</h1>
-                <h2>Bureau de &lt;<span class="desktop__pseudo">{{user.pseudo}}</span>&gt;</h2>
+                <h1>Bureau de &lt;<span class="desktop__pseudo">{{user.pseudo}}</span>&gt;</h1>
             </template>
     
             <template #aside>

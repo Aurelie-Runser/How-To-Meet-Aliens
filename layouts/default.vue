@@ -34,6 +34,8 @@
     &__header {
         // background: blue;
         grid-area: header;
+        padding: $ph-m-sm;
+        padding-top: $ph-m-md;
     }
 
     &__aside {
@@ -67,6 +69,10 @@
             "aside main main main";
         grid-template-rows: min-content auto;
         grid-template-columns: 33% auto;
+
+        &__header{
+            padding: $pc-m-sm;
+        }
 
         &__aside {
             padding: $pc-m-md;

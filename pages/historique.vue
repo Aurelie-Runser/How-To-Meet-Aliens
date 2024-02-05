@@ -2,8 +2,7 @@
     <div>
         <NuxtLayout class="historique" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1>How to meet aliens ?</h1>
-                <h2>Historique de mission</h2>
+                <h1>Historique</h1>
             </template>
     
             <template #aside>              
@@ -26,7 +25,7 @@
 
             
             <div v-if="listeAffiche == 'missions'">
-                <h3>Missions passées</h3>
+                <h2>Missions passées</h2>
 
                 <ul class="historique__liste liste__missions">
                     <li v-if="missions.length == 0" class="liste__missions--main">Vous n'avez réalisé aucune mission.</li>
@@ -41,7 +40,7 @@
             </div>
 
             <div v-else-if="listeAffiche == 'rapports'">
-                <h3>Rapports débloqués <span class="historique__titre--pourcent">{{ jours_debloques_pourcent }}%</span></h3>
+                <h2>Rapports débloqués <span class="historique__titre--pourcent">{{ jours_debloques_pourcent }}%</span></h2>
 
                 <ul class="historique__liste">
                     <li v-for="j in tous_les_jours" class="historique__liste--item">
@@ -52,7 +51,7 @@
             </div>
 
             <div v-else-if="listeAffiche == 'fins'">
-                <h3>Fins débloquées <span class="historique__titre--pourcent">{{ fins_debloques_pourcent }}%</span></h3>
+                <h2>Fins débloquées <span class="historique__titre--pourcent">{{ fins_debloques_pourcent }}%</span></h2>
 
                 <ul class="historique__liste">
                     <li v-for="f in toutes_les_fins" class="historique__liste--item">
