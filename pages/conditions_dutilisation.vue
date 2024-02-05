@@ -36,4 +36,12 @@ const deconnexion = async () => {
     store.clearToken()
     router.push('/login')
 }
+
+useSeoMeta({
+    title: "Conditions d'Utilisation - How To Meet Aliens ?",
+    description: "Page Conditions d'Utilisation du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page Conditions d'Utilisation",
+    ogDescription: "Page Conditions d'Utilisation du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
 </script>

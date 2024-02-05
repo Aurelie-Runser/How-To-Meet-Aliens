@@ -81,4 +81,11 @@
 </style>
 
 <script setup>
+useSeoMeta({
+    title: "How To Meet Aliens ?",
+    description: "Jeu narratif où vous conseillez un astronaute pour avoir une bonne entente avec des extraterrestres et définir l'avenir de l'humanité.",
+    ogTitle: "How To Meet Aliens ?",
+    ogDescription: "Jeu narratif où vous conseillez un astronaute pour avoir une bonne entente avec des extraterrestres et définir l'avenir de l'humanité.",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
 </script>

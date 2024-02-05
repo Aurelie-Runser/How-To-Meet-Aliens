@@ -340,12 +340,19 @@ onMounted(async() => {
     };
 })
 
-// renvoie l'user sur l'index s'il n'est pas connecté
-// definePageMeta({
-//     middleware: [
-//         function (to, from) {},
-//         'auth',
-//     ],
-// });
+useSeoMeta({
+    title: "Mission - How To Meet Aliens ?",
+    description: "Une Mission du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page d'une Mission",
+    ogDescription: "Une Mission du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
 
+// renvoie l'user sur l'index s'il n'est pas connecté
+definePageMeta({
+    middleware: [
+        function (to, from) {},
+        'auth',
+    ],
+});
 </script>

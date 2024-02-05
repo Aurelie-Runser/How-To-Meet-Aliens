@@ -161,4 +161,12 @@ const connexion = async () => {
         message.value = "Erreur lors de la connexion."
     }
 }
+
+useSeoMeta({
+    title: "Login - How To Meet Aliens ?",
+    description: "Page de connexion du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page Login",
+    ogDescription: "Page de connexion du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
 </script>

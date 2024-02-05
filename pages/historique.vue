@@ -292,12 +292,20 @@ onMounted(async() => {
     }
 })
 
+useSeoMeta({
+    title: "Historique - How To Meet Aliens ?",
+    description: "Historique du joueur du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page de l'Historique",
+    ogDescription: "Historique du joueur du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
+
 // renvoie l'user sur l'index s'il n'est pas connecté
-// definePageMeta({
-//   middleware: [
-//     function (to, from) {
-//     },
-//     'auth',
-//   ],
-// });
+definePageMeta({
+  middleware: [
+    function (to, from) {
+    },
+    'auth',
+  ],
+});
 </script>

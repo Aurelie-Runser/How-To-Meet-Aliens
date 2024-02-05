@@ -264,11 +264,19 @@ onMounted(async() => {
     await getUser()
 })
 
+useSeoMeta({
+    title: "Parametres - How To Meet Aliens ?",
+    description: "Parametres du joueur du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page des Parametres",
+    ogDescription: "Parametres du joueur du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
+
 // renvoie l'user sur l'index s'il n'est pas connecté
-// definePageMeta({
-//     middleware: [
-//         function (to, from) {},
-//         'auth',
-//     ],
-// });
+definePageMeta({
+    middleware: [
+        function (to, from) {},
+        'auth',
+    ],
+});
 </script>

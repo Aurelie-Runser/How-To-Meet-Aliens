@@ -36,4 +36,12 @@ const deconnexion = async () => {
     store.clearToken()
     router.push('/login')
 }
+
+useSeoMeta({
+    title: "À Propos - How To Meet Aliens ?",
+    description: "Page À Propos du jeu narratif How To Meet Aliens ?",
+    ogTitle: "How To Meet Aliens ? Page À Propos",
+    ogDescription: "Page À Propos du jeu narratif How To Meet Aliens ?",
+    ogImage: "/how_to_meet_aliens_logo.png",
+})
 </script>
