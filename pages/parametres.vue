@@ -44,18 +44,15 @@
                     <div class="parametre__bureau--form">
                         <div class="parametre__bureau--form_color">
                             <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
-                                <div class="parametre__form--inputs">
-                                    <div class="parametre__form--inputs_groupe">
-                                        <label for="pseudo">Thème</label>
-                                        <select name="color" id="color" v-model="user.id_color">
-                                            <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <label for="pseudo">Thème</label>
+                                <select name="color" id="color" v-model="user.id_color">
+                                    <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
+                                </select>
+
                                 <input class="global-form__bouton" type="submit" value="Modifier">
+                                <p class="bureau__none--texte" v-if="!modifTheme">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
                             </form>
     
-                            <p v-if="!modifTheme">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
                         </div>
 
                         <!-- <div class="parametre__bureau--form_texte">
@@ -123,28 +120,24 @@
 
         &--form{
 
-            &_color,
-            &_texte{
-                display: flex;
-                flex-wrap: wrap;
-                margin: $ph-m-md 0;
+            .bureau__none{
+                position: relative;
+                padding: $ph-m-sm $ph-m-md;
+                background: rgba($c-bblack, 80%);
+                cursor: not-allowed;
                 
-                p{
-                    flex: 1 1 50px;
+                > * {
+                    filter: brightness(20%);
+                    pointer-events: none;
+                }
+
+                &--texte{
+                    position: absolute;
                     font-weight: $fw-bold;
                     font-style: italic;
                     color: $c-red;
                     text-transform: uppercase;
-                }
-            }
-
-            .bureau__none{
-                background: rgba($c-bblack, 50%);
-                cursor: not-allowed;
-                filter: brightness(40%);
-                
-                * {
-                    pointer-events: none;
+                    filter: brightness(100%);
                 }
             }
         }
