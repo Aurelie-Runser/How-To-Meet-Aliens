@@ -17,8 +17,7 @@
                 <p>{{ error.statusMessage }}</p>
     
                 <div class="error__content--button">
-                    <myButton v-if="store.token != null" type="t_button" size="big" link="/desktop" color="main_color-2">Bureau</myButton>
-                    <myButton v-else type="t_button" size="big" link="/" color="main_color-2">Accueil</myButton>
+                    <myButton type="t_button" size="big" @click="retourPage" color="main_color-2">Retour</myButton>
                 </div>
             </div>
 
@@ -118,10 +117,11 @@
 </style>
 
 <script setup>
-const store = useGlobalStore()
-
 const props = defineProps({
   error: Object,
 });
 
+const retourPage = () => {
+  history.back();
+};
 </script>
