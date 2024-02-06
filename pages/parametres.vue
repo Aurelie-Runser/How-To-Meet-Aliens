@@ -39,31 +39,27 @@
                 
                 <section class="parametre__bureau">
                     <h2>Bureau</h2>
+                    
+                    <form class="parametre__form" @submit.prevent="modifBureau" method="put" :class="modifTitre? '':'bureau__none'">
+                        <div class="parametre__form--inputs">
+                            <div class="parametre__form--inputs_groupe">
+                                <label for="titre">Titre</label>
+                                <input type="text" name="titre" id="titre" maxlength="25" v-model="user.titre">
+                            </div>
 
-                    <div class="parametre__bureau--form">
-                        <div class="parametre__bureau--form_texte">
-                            <form class="parametre__form" :class="modifTitre? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
-                                <label for="pseudo">Titre</label>
-                                <input v-model="user.titre" type="text" maxlength="25" placeholder="Titre de votre bureau">
+                            <p class="parametre__form--note" v-if="modifTitre">Note : pour afficher votre pseudo dans le titre du bureau, écrivez : [pseudo]</p>
 
-                                <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
-                                <p class="bureau__none--texte" v-if="!modifTitre">Réalisez une mission pour accéder à ce paramètre.</p>
-                            </form>
-                            <p class="bureau__note">Note : pour afficher votre pseudo dans le titre du bureau, écrivez : [pseudo]</p>
-                        </div>
-
-                        <div class="parametre__bureau--form_color">
-                            <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
-                                <label for="pseudo">Thème</label>
+                            <div class="parametre__form--inputs_groupe" :class="(modifTheme || (modifTheme == modifTitre))? '':'bureau__none'">
+                                <label for="mdp">Thème</label>
                                 <select name="color" id="color" v-model="user.id_color">
                                     <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
                                 </select>
-
-                                <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
-                                <p class="bureau__none--texte" v-if="!modifTheme">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
-                            </form>
+                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
+                            </div>
                         </div>
-                    </div>
+                        <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
+                        <p class="bureau__none--texte" v-if="!modifTitre">Réalisez une mission pour accéder à ces paramètres.</p>
+                    </form>
                     <p v-if="message_bureau">{{ message_bureau }}</p>
                 </section>
             </div>
@@ -84,6 +80,12 @@
         flex-wrap: wrap;
         align-items: center;
         gap: $ph-m-md $ph-m-lg;
+
+        &--note{
+            max-width: 280px;
+            margin: 0;
+            margin-bottom: $ph-m-sm;
+        }
         
         &--inputs{
             display: flex;
@@ -109,47 +111,6 @@
         }
     }
 
-    &__bureau{
-
-        &--form{
-            
-            &_texte,
-            &_color{
-                gap: $ph-m-sm;
-                margin: $ph-m-md 0;
- 
-                input{
-                    width: auto;
-                }
-            }
-
-            &_texte{
-                margin-bottom: $ph-m-xl;
-            }
-
-            .bureau__none{
-                position: relative;
-                padding: $ph-m-sm $ph-m-md;
-                background: rgba($c-bblack, 80%);
-                cursor: not-allowed;
-                
-                > * {
-                    filter: brightness(20%);
-                    pointer-events: none;
-                }
-
-                &--texte{
-                    position: absolute;
-                    font-weight: $fw-bold;
-                    font-style: italic;
-                    color: $c-red;
-                    text-transform: uppercase;
-                    filter: brightness(100%);
-                }
-            }
-        }
-    }
-
 
     @include medium{
 
@@ -157,23 +118,12 @@
             margin-bottom: $pc-m-xl2;
         }
 
-        &__bureau{
-
-            &--form{
-
-                &_texte,
-                &_colo{
-                    gap: $ph-m-sm $pc-m-sm;
-                    margin: $pc-m-md 0;
-                }
-
-                &_texte{
-                    margin-bottom: $pc-m-xl;
-                }
-
+        &__form{
+            &--note{
+                margin-bottom: $pc-m-sm;
             }
         }
-
+        
         &__form{
             gap: $pc-m-lg;
 
@@ -185,6 +135,29 @@
                 }
             }
         }
+    }
+}
+
+.bureau__none{
+    position: relative;
+    min-width: 280px;
+    min-height: 100px;
+    padding: $ph-m-sm $ph-m-md;
+    background: rgba($c-bblack, 80%);
+    cursor: not-allowed;
+    
+    > * {
+        filter: brightness(20%);
+        pointer-events: none;
+    }
+
+    &--texte{
+        position: absolute;
+        font-weight: $fw-bold;
+        font-style: italic;
+        color: $c-red;
+        text-transform: uppercase;
+        filter: brightness(100%);
     }
 }
 </style>
@@ -240,6 +213,9 @@ const modifCompte = async () => {
         if(response.data.message == "bien modif"){
             message_compte.value = "Les modifications ont bien été enregistrées."
             user.value.mdp = ''
+        } else if(response.data.message == "aucune modif"){
+            message_compte.value = "Il n'y a eu aucune modification."
+            user.value.mdp = ''
         } else {
             message_compte.value = "Erreur lors de la modification."
         }
@@ -258,7 +234,8 @@ const modifBureau = async () => {
         if(response.data.message == "bien modif"){
             store.setUser(null, user.value.id_color, null)
             message_bureau.value = "Les modifications ont bien été enregistrées."
-            user.value.mdp = ''
+        } else if(response.data.message == "aucune modif"){
+            message_bureau.value = "Il n'y a eu aucune modification."
         } else {
             message_bureau.value = "Erreur lors de la modification."
         }
