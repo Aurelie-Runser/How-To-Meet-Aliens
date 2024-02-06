@@ -1,6 +1,10 @@
 <template>
     <div class="mission" :class="`-color-${store.mainColor}`">
         <NuxtLayout :class="`-main_color-${store.mainColor}`">
+
+            <template #header>
+                <h1 class="mission__h1">Mission</h1>
+            </template>
     
             <template #aside>
                 <div class="mission__aside--stiuation">
@@ -60,6 +64,10 @@
 
 <style lang="scss">
 .mission{
+
+    &__h1{
+        display: none;
+    }
 
     &__titre{
         color: $c-white;
@@ -140,6 +148,11 @@
     }
     
     @include medium{
+        
+        h1{
+            display: block;
+            font-size: $pc-f-sm;
+        }
 
         &__aside{
 

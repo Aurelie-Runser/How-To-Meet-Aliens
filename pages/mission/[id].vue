@@ -1,6 +1,10 @@
 <template>
     <div class="mission" v-if="mission" :class="`-color-${store.mainColor}`">
         <NuxtLayout :class="`-main_color-${store.mainColor}`">
+
+            <template #header>
+                <h1 class="mission__h1">Mission</h1>
+            </template>
     
             <template #aside v-if="mission">
                 <div class="mission__aside--stiuation">

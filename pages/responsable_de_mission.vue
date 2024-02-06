@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <NuxtLayout :class="`-main_color-${store.mainColor}`">
             <template #header>
                 <h1>Responsable de Mission</h1>

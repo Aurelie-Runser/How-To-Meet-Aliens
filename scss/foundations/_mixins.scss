@@ -29,7 +29,7 @@
 }
 
 @mixin h1{
-    margin-bottom: $ph-m-sm;
+    margin: $ph-m-sm 0;
     font-size: $ph-f-xl2;
     font-weight: $fw-bold;
     color: $c-main;
@@ -37,7 +37,7 @@
     text-transform: uppercase;
     
     @include medium{
-        margin-bottom: $pc-m-md;
+        margin: $pc-m-md 0;
         font-size: $pc-f-xl2;
     }
 }
