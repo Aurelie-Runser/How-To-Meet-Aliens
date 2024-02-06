@@ -18,6 +18,7 @@
     
                 <div class="error__content--button">
                     <myButton type="t_button" size="big" @click="retourPage" color="main_color-2">Retour</myButton>
+                    <myButton type="t_button" size="big" link="/" color="main_color-2">Accueil</myButton>
                 </div>
             </div>
 
@@ -47,11 +48,16 @@
         }
 
         &--button{
-            width: fit-content;
+            width: 100%;
+            height: fit-content;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: $pc-m-md;
         }
     
         .glitch {
