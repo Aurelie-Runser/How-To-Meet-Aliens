@@ -25,6 +25,7 @@
         "aside"
         "main";
     grid-template-rows: min-content min-content auto;
+    grid-template-columns: 100vw;
     background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
 
     > * {
@@ -34,6 +35,7 @@
     &__header {
         // background: blue;
         grid-area: header;
+        width: 100%;
     }
 
     &__aside {
@@ -85,7 +87,7 @@
 
     // changement de thème en fonction du paramètrage de l'utilisateur
     &.-main_color-2{
-        background: darken($c-red, 40%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+        background: darken($c-red, 45%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
 
         .layout__aside {
             border-color: $c-red;
@@ -101,7 +103,7 @@
     }
  
     &.-main_color-4{
-        background: darken($c-pink, 35%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
+        background: darken($c-pink, 40%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
 
         .layout__aside {
             border-color: $c-pink;

@@ -41,6 +41,17 @@
                     <h2>Bureau</h2>
 
                     <div class="parametre__bureau--form">
+                        <div class="parametre__bureau--form_texte">
+                            <form class="parametre__form" :class="modifTitre? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
+                                <label for="pseudo">Titre</label>
+                                <input v-model="user.titre" type="text" maxlength="25" placeholder="Titre de votre bureau">
+
+                                <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
+                                <p class="bureau__none--texte" v-if="!modifTitre">Réalisez une mission pour accéder à ce paramètre.</p>
+                            </form>
+                            <p class="bureau__note">Note : pour afficher votre pseudo dans le titre du bureau, écrivez : [pseudo]</p>
+                        </div>
+
                         <div class="parametre__bureau--form_color">
                             <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
                                 <label for="pseudo">Thème</label>
@@ -48,27 +59,10 @@
                                     <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
                                 </select>
 
-                                <input class="global-form__bouton" type="submit" value="Modifier">
+                                <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
                                 <p class="bureau__none--texte" v-if="!modifTheme">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
                             </form>
-    
                         </div>
-
-                        <!-- <div class="parametre__bureau--form_texte">
-                            <form class="parametre__form" :class="modifTheme? '':'bureau__none'" @submit.prevent="modifBureau" method="put">
-                                <div class="parametre__form--inputs">
-                                    <div class="parametre__form--inputs_groupe">
-                                        <label for="pseudo">Titre</label>
-                                        <select name="color" id="color" v-model="user.id_color">
-                                            <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <input class="global-form__bouton" type="submit" value="Modifier">
-                            </form>
-
-                            <p v-if="!modifTheme">Vous n'avez pas accès à ce paramètre.</p>
-                        </div> -->
                     </div>
                     <p v-if="message_bureau">{{ message_bureau }}</p>
                 </section>
@@ -90,13 +84,13 @@
         flex-wrap: wrap;
         align-items: center;
         gap: $ph-m-md $ph-m-lg;
-
+        
         &--inputs{
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: $ph-m-md;
-
+            
             &_groupe{
                 width: fit-content;
                 display: flex;
@@ -118,6 +112,20 @@
     &__bureau{
 
         &--form{
+            
+            &_texte,
+            &_color{
+                gap: $ph-m-sm;
+                margin: $ph-m-md 0;
+ 
+                input{
+                    width: auto;
+                }
+            }
+
+            &_texte{
+                margin-bottom: $ph-m-xl;
+            }
 
             .bureau__none{
                 position: relative;
@@ -153,11 +161,16 @@
 
             &--form{
 
-                &_color,
-                &_texte{
+                &_texte,
+                &_colo{
                     gap: $ph-m-sm $pc-m-sm;
                     margin: $pc-m-md 0;
                 }
+
+                &_texte{
+                    margin-bottom: $pc-m-xl;
+                }
+
             }
         }
 
@@ -187,6 +200,11 @@ const colors = ref()
 const user = ref()
 const message_compte = ref()
 const message_bureau = ref()
+
+const modifTitre = ref(false)
+if (store.raportsDebloques >= 1){
+    modifTitre.value = true
+}
 
 const modifTheme = ref(false)
 if (store.raportsDebloques >= 3){

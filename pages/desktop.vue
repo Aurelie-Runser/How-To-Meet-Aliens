@@ -2,7 +2,7 @@
     <div>
         <NuxtLayout class="desktop" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1>Bureau de &lt;<span class="desktop__pseudo">{{user.pseudo}}</span>&gt;</h1>
+                <h1 class="desktop__h1">{{ titreBureau }}</h1>
             </template>
     
             <template #aside>
@@ -41,7 +41,8 @@
 <style lang="scss">
 .desktop{
 
-    &__pseudo{
+    &__h1{
+        word-wrap: break-word;
         text-transform: none;
     }
 
@@ -80,6 +81,7 @@ const store = useGlobalStore()
 const router = useRouter()
 
 const user = ref([])
+const titreBureau = ref("")
 
 const current_date = new Date();
 const future_date = new Date(current_date.getTime() + 10 * 24 * 60 * 60 * 1000);
@@ -90,6 +92,7 @@ const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1
 const getUser = async () => {
     const response = await API.get(`/user/${store.token}`)
     user.value = response.data
+    titreBureau.value = user.value.titre.replace("[pseudo]", user.value.pseudo);
 }
 
 // suppression du token pour déconnecter l'utilisateur
