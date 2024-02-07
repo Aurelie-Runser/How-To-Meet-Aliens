@@ -29,10 +29,13 @@
 
                 <ul class="historique__liste liste__missions">
                     <li v-if="missions.length == 0" class="liste__missions--main">Vous n'avez réalisé aucune mission.</li>
+
+                    
                     <li v-else v-for="m in missions" :key="m.date" class="historique__liste--item">
-                       {{ m.date }} :
+                        {{ m.date }} :
                        <ul class="liste__missions--nom__jour">
-                            <li v-for="jour in m.partie">{{jour.nom}}</li>
+                            <li v-for="jour in m.partie">{{jour.nom}}, {{ jour.decision }}</li>
+                            <li class="liste__missions--resultat">{{ m.resultat }}</li>
                        </ul>
                        <MyButton type="t_link" :color="`main_color-${store.mainColor}`" :link="`/mission/${m.id_mission}`" size="small">Relire_les_rapports</MyButton>
                     </li>
@@ -123,6 +126,13 @@
                     color: $c-white;
                 }
             }
+            
+            .liste__missions--resultat{
+                color: $c-white;
+                font-weight: $fw-bold;
+                text-transform: uppercase;
+                font-size: $ph-f-md;
+            }
         }
 
         &--main{
@@ -149,6 +159,16 @@
 
             &--pourcent{
                 font-size: $pc-f-lg;
+            }
+        }
+
+        .liste__missions{
+            
+            &--nom__jour{
+                
+                .liste__missions--resultat{
+                    font-size: $pc-f-md;
+                }
             }
         }
     }

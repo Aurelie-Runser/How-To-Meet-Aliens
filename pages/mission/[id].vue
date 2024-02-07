@@ -38,13 +38,14 @@
                             <p class="mission__texte--aside niveau__nom">santé mentale</p>
                         </div>
 
-                        <div class="tete"></div>
+                        <div class="tete"><tete3d/></div>
                     </div>
                 </div>
             </template>
 
             <div v-if="mission">
                 <h2 class="mission__titre">Mission n°<span class="mission__titre--num">{{ mission.id_mission }}</span> du <span class="mission__titre--date">{{ mission.date }}</span></h2>
+                <h2 class="mission__titre">Resultat : <span class="mission__titre--date">{{ mission.resultat }}</span></h2>
     
                 <div class="mission__jour" v-for="(etape, index) in mission.partie" :key=index+1>
                     <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
