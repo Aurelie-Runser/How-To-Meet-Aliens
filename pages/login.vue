@@ -20,8 +20,9 @@
                         <label for="mdp">Mot de Passe</label>
                         <input type="text" name="mdp" id="mdp" required v-model="userCo.mdp">
                     </div>
-
-                    <input class="login__form--bouton" type="submit" value="Je me connecte">
+                    
+                    <p v-if="chargement" class="login__form--charge">Chargement</p>
+                    <input v-else class="login__form--bouton" type="submit" value="Je me connecte">
 
                     <myButton type="t_link" size="small" @click="connex = false">Je_n'ai_pas_de_compte.</myButton>
                 </form>
@@ -37,7 +38,8 @@
                         <input type="text" name="mdp" id="mdp" required v-model="userNew.mdp">
                     </div>
 
-                    <input class="login__form--bouton" type="submit" value="Je m'inscris">
+                    <p v-if="chargement" class="login__form--charge">Chargement</p>
+                    <input v-else class="login__form--bouton" type="submit" value="Je m'inscris">
 
                     <myButton type="t_link" size="small" @click="connex = true">J'ai_un_compte.</myButton>
                 </form>
@@ -90,6 +92,18 @@
                 background: darken($c-main, 10%);
             }
         }
+
+        &--charge{
+            // display: none;
+            margin-inline: auto;
+            text-transform: uppercase;
+            font-size: $pc-f-lg;
+
+            &::after{
+                content: "";
+                animation: animCharge 2s infinite;
+            }
+        }
     }
 
     @include medium{
@@ -109,6 +123,21 @@
         }
     }
 }
+
+@keyframes animCharge{
+    0% {
+        content: '';
+    }
+    25% {
+        content: '.';
+    }
+    50% {
+        content: '..';
+    }
+    75% {
+        content: '...';
+    }
+}
 </style>
 
 <script setup>
@@ -116,6 +145,7 @@ import {API} from '@/utils/axios'
 const store = useGlobalStore()
 
 const connex = ref(true)
+const chargement = ref(false)
 
 const router = useRouter()
 const userNew = ref({})
@@ -123,6 +153,7 @@ const userCo = ref({})
 const message = ref("")
 
 const inscription = async () => {
+    chargement.value = true
     try {
         const response = await API.post(`/user/add`, userNew.value);        
 
@@ -133,14 +164,17 @@ const inscription = async () => {
             store.setUser(JSON.parse(token), 1, 0)
             router.push('/desktop')
         }
+        chargement.value = false
         
     } catch (error) {
         console.error("Erreur lors de l'inscription :", error.message)
         message.value = "Erreur lors de l'inscription."
+        chargement.value = false
     }
 }
 
 const connexion = async () => {
+    chargement.value = true
     try {
         const response = await API.post(`/login`, userCo.value)
 
@@ -155,10 +189,13 @@ const connexion = async () => {
             store.setUser(JSON.parse(token), mainColor, raportsDebloques)
             router.push('/desktop')
         }
-
+        
+        chargement.value = false
+        
     } catch (error) {
         console.error("Erreur lors de la connexion :", error.message)
         message.value = "Erreur lors de la connexion."
+        chargement.value = false
     }
 }
 
