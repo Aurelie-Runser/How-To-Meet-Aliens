@@ -94,10 +94,10 @@
         }
 
         &--charge{
-            // display: none;
             margin-inline: auto;
+            font-weight: $fw-bold;
             text-transform: uppercase;
-            font-size: $pc-f-lg;
+            font-size: $ph-f-xl;
 
             &::after{
                 content: "";
@@ -118,6 +118,10 @@
             &--bouton{
                 margin-top: $pc-m-sm;
                 padding: $pc-m-sm $pc-m-lg;
+                font-size: $pc-f-xl;
+            }
+
+            &--charge{
                 font-size: $pc-f-xl;
             }
         }

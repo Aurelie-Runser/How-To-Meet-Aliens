@@ -87,7 +87,7 @@
 
     // changement de thème en fonction du paramètrage de l'utilisateur
     &.-main_color-2{
-        background: darken($c-red, 45%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+        background: darken($c-red, 53%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
 
         .layout__aside {
             border-color: $c-red;
@@ -103,7 +103,7 @@
     }
  
     &.-main_color-4{
-        background: darken($c-pink, 40%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
+        background: darken($c-pink, 47%) radial-gradient(rgba($c-pink, 10%) 5%, transparent) !important;
 
         .layout__aside {
             border-color: $c-pink;
