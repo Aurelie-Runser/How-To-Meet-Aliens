@@ -1,5 +1,9 @@
 <template>
-    <div>
+    <div class="in">
+        <div class="in_overlay">
+            <div class="in_overlay--pixels"></div>
+        </div>
+
         <NuxtLayout name="intro" class="index">
 
             <h1 class="index__h1">How to meet aliens ?</h1>
@@ -23,7 +27,7 @@
                     <h2 class="global-titre_texte">Vos objectifs :</h2>
                     <ul class="index__texte-info">
                         <li>bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bon rapport avec les Bourpis.</li>
-                        <li>bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de XYZ est programmer dans 10 jours.</li>
+                        <li>bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de XYZ est programmer dans 10 jours: {{ mission_date }}.</li>
                     </ul>
                 </section>
             </div>
@@ -37,7 +41,6 @@
 
 <style lang="scss">
 .index{
-    width: 100%;
 
     &__h1{
         margin-bottom: $ph-m-xl2;
@@ -78,9 +81,100 @@
         }
     }
 }
+
+.in{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    
+    &_overlay{
+        background-color: black;
+        animation: animEcran 3s linear;
+
+        &--pixels{
+            position: absolute;
+            background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
+            animation: animPixels 3s linear;
+
+        }
+    }
+}
+
+@keyframes animEcran{
+    0%{
+        width: 100%;
+        height: 100%;
+    }
+    99%{
+        width: 100%;
+        height: 100%;
+    }
+    100%{
+        width: 0;
+        height: 0;
+    }
+}
+
+@keyframes animPixels{
+    0%{
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+    }
+
+    20%{
+        top: 50%;
+        left: 50%;
+        width: 3px;
+        height: 3px;
+    }
+
+    40%{
+        top: 50%;
+        left: 50%;
+        width: 3px;
+        height: 3px;
+    }
+
+    50%{
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+    }
+
+    70%{
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+    }
+
+    90%{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    100%{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 </style>
 
 <script setup>
+const current_date = new Date();
+const future_date = new Date(current_date.getTime() + 10 * 24 * 60 * 60 * 1000);
+
+const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1).toString().padStart(2, '0')}-${future_date.getDate().toString().padStart(2, '0')}`;
+
 useSeoMeta({
     title: "How To Meet Aliens ?",
     description: "Jeu narratif où vous conseillez un astronaute pour avoir une bonne entente avec des extraterrestres et définir l'avenir de l'humanité.",
