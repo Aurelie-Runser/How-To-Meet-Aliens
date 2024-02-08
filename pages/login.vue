@@ -165,7 +165,8 @@ const inscription = async () => {
             message.value = "Ce pseudo est déjà enregistré dans la base de données. Choisissez-en un autre."
         } else {
             const {token} = response.data
-            store.setUser(JSON.parse(token), 1, 0)
+            const pseudo = userNew.value.pseudo
+            store.setUser(JSON.parse(token), pseudo, 1, 0)
             router.push('/desktop')
         }
         chargement.value = false
@@ -188,9 +189,10 @@ const connexion = async () => {
             message.value = "Mauvais mot de passe."
         } else {
             const token = response.data.id_user
+            const pseudo = userCo.value.pseudo
             const mainColor = response.data.id_color
             const raportsDebloques = response.data.rapports_debloques.length
-            store.setUser(JSON.parse(token), mainColor, raportsDebloques)
+            store.setUser(JSON.parse(token), pseudo, mainColor, raportsDebloques)
             router.push('/desktop')
         }
         

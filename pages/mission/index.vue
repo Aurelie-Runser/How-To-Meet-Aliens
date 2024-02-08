@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="niveau">
-                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_actuel.fatigue) }"></div></div>
-                            <p class="mission__texte--aside niveau__nom">fatigue</p>
+                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_actuel.physique) }"></div></div>
+                            <p class="mission__texte--aside niveau__nom">physique</p>
                         </div>
 
                         <div class="niveau">
@@ -46,7 +46,7 @@
             <div class="mission__jour" v-for="(etape, index) in jours_joues" :key=index+1>
 
                 <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
-                <p class="mission__texte">{{ etape.texte }}</p>
+                <p class="mission__texte" v-html="etape.texte"></p>
 
                 <div class="mission__jour--buttons" v-if="index + 1 == jours_joues.length">
                     <myButton type="t_button" :color="`main_color-${store.mainColor}`" v-for="choix in etape.jours_suivants"
@@ -299,12 +299,13 @@ let jour = 1
 
 const currentDate = new Date();
 
-
 // récupération de l'ensemble des jours
 const getJour = async () => {
     const response = await API.get(`/jour/${jour}`)
     response.data.objectifs = response.data.objectifs.split(',').map(objectif => objectif.trim());
     jour_actuel.value = response.data
+    jour_actuel.value = response.data
+    jour_actuel.value.texte = jour_actuel.value.texte.replace("[pseudo]", store.pseudo);
 
     jours_joues.value.push(response.data)
     jours_joues_id.value.push(response.data.id_jour)

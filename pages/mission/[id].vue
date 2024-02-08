@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="niveau">
-                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_last.fatigue) }"></div></div>
-                            <p class="mission__texte--aside niveau__nom">fatigue</p>
+                            <div class="niveau__bloc"><div class="niveau__variable" :style="{ width: level(jour_last.physique) }"></div></div>
+                            <p class="mission__texte--aside niveau__nom">physique</p>
                         </div>
 
                         <div class="niveau">
@@ -49,7 +49,7 @@
     
                 <div class="mission__jour" v-for="(etape, index) in mission.partie" :key=index+1>
                     <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
-                    <p class="mission__texte">{{ etape.texte }}</p>
+                    <p class="mission__texte" v-html="etape.texte"></p>
                 </div>
     
                 <div class="mission__jour--buttons">
