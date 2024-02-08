@@ -54,7 +54,7 @@
                                 <select name="color" id="color" v-model="user.id_color">
                                     <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
                                 </select>
-                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% des rapports pour accéder à ce paramètre.</p>
+                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% des fins pour accéder à ce paramètre.</p>
                             </div>
                         </div>
                         <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
@@ -180,7 +180,7 @@ if (store.raportsDebloques >= 1){
 }
 
 const modifTheme = ref(false)
-if (store.raportsDebloques >= 3){
+if (store.raportsDebloques >= 11){
     modifTheme.value = true
 }
 
@@ -232,7 +232,7 @@ const modifBureau = async () => {
         const response = await API.put(`/user/modif_bureau`, user.value);        
 
         if(response.data.message == "bien modif"){
-            store.setUser(null, user.value.id_color, null)
+            store.setUser(null, null, user.value.id_color, null)
             message_bureau.value = "Les modifications ont bien été enregistrées."
         } else if(response.data.message == "aucune modif"){
             message_bureau.value = "Il n'y a eu aucune modification."

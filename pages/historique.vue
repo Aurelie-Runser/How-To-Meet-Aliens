@@ -128,7 +128,7 @@
             }
             
             .liste__missions--resultat{
-                color: $c-white;
+                color: $c-white !important;
                 font-weight: $fw-bold;
                 text-transform: uppercase;
                 font-size: $ph-f-md;

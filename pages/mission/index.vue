@@ -325,7 +325,7 @@ const getPartie = async () => {
         
         // récupère la liste des rapports débloqué mise à jour
         const response = await API.get(`/user/${store.token}`)
-        store.setUser(null, null, response.data.rapports_debloques.length)
+        store.setUser(null, null, null, response.data.rapports_debloques.length)
 
         router.push("/desktop")
     } catch (error) {
