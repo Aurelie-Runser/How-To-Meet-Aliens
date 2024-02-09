@@ -6,36 +6,52 @@
 
         <NuxtLayout name="intro" class="index">
 
-            <h1 class="index__h1">How to meet aliens ?</h1>
+            <h1 class="index__h1"><titleAnimation debut="1.5" texte="How to meet aliens ?"/></h1>
 
             <div class="index__textes">
                 <section class="index__section">
-                    <h2 class="global-titre_texte index__texte-title">Situation actuelle</h2>
-                    <p class="index__texte-info">l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage.</p>
+                    <h2 class="global-titre_texte index__texte-title">
+                        <texteAnimtion debut="4.5" texte="Situation actuelle :"/>
+                    </h2>
+                    <p class="index__texte-info">
+                        <texteAnimtion debut="5.5" texte="l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage."/>
+                    </p>
+
                 </section>
                 
                 <section class="index__section">
-                    <h2 class="global-titre_texte">Objectifs de la mission :</h2>
+                    <h2 class="global-titre_texte">
+                        <texteAnimtion debut="4.5" texte="Objectifs de la mission :"/>
+                    </h2>
                     <ul class="index__texte-info">
-                        <li>récupérer des ressources pour survivre.</li>
-                        <li>rencontrer et établir de bons rapport avec l'espèces intelligente local, les Bourpis.</li>
-                        <li>entretenir le vaisseau pour redécoller dans 10 jours.</li>
+                        <li v-if="item_1">
+                            <texteAnimtion debut="0" texte="trouver et passez un accord de paix avec l'espèce intelligente locale, les Bourpis."/>
+                        </li>
+                        <li v-if="item_2">
+                            <texteAnimtion debut="0" texte="faire revenir l'astronaute Spike Spiegel vivant sur Terre."/>
+                        </li>
                     </ul>
                 </section>
 
                 <section class="index__section">
-                    <h2 class="global-titre_texte">Vos objectifs :</h2>
+                    <h2 class="global-titre_texte">
+                        <texteAnimtion debut="4.5" texte="Vos objectifs :"/>
+                    </h2>
                     <ul class="index__texte-info">
-                        <li>bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bon rapport avec les Bourpis.</li>
-                        <li>bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de XYZ est programmer dans 10 jours: {{ mission_date }}.</li>
+                        <li v-if="item_3">
+                            <texteAnimtion debut="0" texte="bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bons rapports avec les Bourpis."/>
+                        </li>
+                        <li v-if="item_4">
+                            <texteAnimtion debut="0" :texte="`bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de VMK_0324 est programmé dans 7 jours : ${ mission_date }.`"/>
+                        </li>
                     </ul>
                 </section>
             </div>
 
-            <div class="index__button">
-                <myButton link="/login" type="t_button" size="big">Se connecter</myButton>
+            <div v-if="bouton" class="index__button">
+                <myButton link="/login" type="t_button" size="big">Accepter la mission</myButton>
             </div>
-        </NuxtLayout >
+        </NuxtLayout>
     </div>
 </template>
 
@@ -47,7 +63,7 @@
     }
 
     &__textes{
-        width: fit-content;
+        width: auto;
         max-width: 1000px;
         margin: auto;
     }
@@ -63,6 +79,11 @@
 
     &__texte-info{
         margin-top: 0;
+
+        &--item_1
+        &--item_2{
+            // display: none;
+        }
     }
 
     &__button{
@@ -120,15 +141,9 @@
     0%{
         top: 50%;
         left: 50%;
-        width: 0;
-        height: 0;
-    }
-
-    20%{
-        top: 50%;
-        left: 50%;
         width: 3px;
         height: 3px;
+        background: $c-main;
     }
 
     40%{
@@ -136,6 +151,7 @@
         left: 50%;
         width: 3px;
         height: 3px;
+        background: $c-main;
     }
 
     50%{
@@ -157,6 +173,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+        background: $c-black radial-gradient(rgba($c-main, 10%) 5%, transparent);
     }
 
     100%{
@@ -166,14 +183,38 @@
         height: 100%;
     }
 }
-
 </style>
 
 <script setup>
 const current_date = new Date();
-const future_date = new Date(current_date.getTime() + 10 * 24 * 60 * 60 * 1000);
+const future_date = new Date(current_date.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1).toString().padStart(2, '0')}-${future_date.getDate().toString().padStart(2, '0')}`;
+
+const item_1 = ref(false);
+const item_2 = ref(false);
+const item_3 = ref(false);
+const item_4 = ref(false);
+const bouton = ref(false);
+
+onMounted(() => {
+    setTimeout(() => {
+        item_1.value = true;
+        item_3.value = true;
+    }, 5500);
+
+    setTimeout(() => {
+        item_2.value = true;
+    }, 8500);
+
+    setTimeout(() => {
+        item_4.value = true;
+    }, 9000);
+
+    setTimeout(() => {
+        bouton.value = true;
+    }, 14000);
+});
 
 useSeoMeta({
     title: "How To Meet Aliens ?",

@@ -1,7 +1,8 @@
 <template>
     <div>
         <NuxtLayout name="intro" class="login">
-            <h1 class="login__h1">How to meet aliens ?</h1>
+            <h1 class="login__h1"><titleAnimation debut="0" texte="How to meet aliens ?"/></h1>
+
     
             <div class="login__content">
                 <div class="login__content--textes">

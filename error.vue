@@ -28,7 +28,7 @@
 
 <style lang="scss">
 .error{
-    background: darken($c-red, 45%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
+    background: darken($c-red, 53%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
 
     &__content{
         position: relative;
@@ -90,7 +90,7 @@
                     }
                     85% {
                         transform: translateX(random(10) - 5px);
-                        color: $c-white;
+                        color: $c-pink;
                     }
                     90% {
                         transform: translateX(random(10) - 5px);

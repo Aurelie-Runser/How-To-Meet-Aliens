@@ -84,7 +84,7 @@ const user = ref([])
 const titreBureau = ref("")
 
 const current_date = new Date();
-const future_date = new Date(current_date.getTime() + 10 * 24 * 60 * 60 * 1000);
+const future_date = new Date(current_date.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1).toString().padStart(2, '0')}-${future_date.getDate().toString().padStart(2, '0')}`;
 
