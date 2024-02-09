@@ -54,7 +54,7 @@
                                 <select name="color" id="color" v-model="user.id_color">
                                     <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
                                 </select>
-                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% des fins pour accéder à ce paramètre.</p>
+                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% du jeu pour accéder à ce paramètre.</p>
                             </div>
                         </div>
                         <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
@@ -180,7 +180,7 @@ if (store.raportsDebloques >= 1){
 }
 
 const modifTheme = ref(false)
-if (store.raportsDebloques >= 11){
+if (store.raportsDebloques >= 22){
     modifTheme.value = true
 }
 

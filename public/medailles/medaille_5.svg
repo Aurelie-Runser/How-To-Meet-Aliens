@@ -1,0 +1,14 @@
+<svg width="100%" height="auto" viewBox="0 0 500 855" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M75 399H425V855L250 644.48L75 855V399Z" fill="#444444"/>
+<path d="M115 375H105V385V735V762.566L122.674 741.412L250 589.014L377.326 741.412L395 762.566V735V385V375H385H115Z" fill="#444444" stroke="black" stroke-width="20"/>
+<circle cx="250" cy="250" r="240" fill="#444444" stroke="black" stroke-width="20"/>
+<path d="M75.0002 295C58.4317 295 45.0002 281.569 45.0002 265L45.0002 225C45.0002 208.431 58.4317 195 75.0002 195V195L75.0002 295V295Z" fill="#A1A1A1"/>
+<path d="M425 195C441.569 195 455 208.431 455 225V265C455 281.569 441.569 295 425 295V295V195V195Z" fill="#A1A1A1"/>
+<ellipse cx="250" cy="245" rx="185" ry="160" transform="rotate(-180 250 245)" fill="#DCDCDC"/>
+<path d="M350 360C350 387.614 327.614 410 300 410H200C172.386 410 150 387.614 150 360V322H350V360Z" fill="#A1A1A1"/>
+<ellipse cx="250" cy="245" rx="150" ry="100" transform="rotate(-180 250 245)" fill="#1D1D1D"/>
+<line x1="151.768" y1="220.232" x2="208.336" y2="276.801" stroke="#DCDCDC" stroke-width="5"/>
+<line x1="148.232" y1="276.801" x2="204.801" y2="220.232" stroke="#DCDCDC" stroke-width="5"/>
+<line x1="294.768" y1="220.232" x2="351.336" y2="276.801" stroke="#DCDCDC" stroke-width="5"/>
+<line x1="291.232" y1="276.801" x2="347.801" y2="220.232" stroke="#DCDCDC" stroke-width="5"/>
+</svg>

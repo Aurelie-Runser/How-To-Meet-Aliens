@@ -4,7 +4,7 @@
             <template #header>
                 <h1 class="desktop__h1" v-if="titreBureau"><titleAnimation debut="0" :texte="titreBureau"/></h1>
             </template>
-    
+
             <template #aside>
                 <div class="global-aside__boutons">
                     <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/historique">Historique</myButton>
@@ -25,12 +25,11 @@
             <section class="desktop__section">
                 <h2 class="global-titre_texte">Objectifs de la mission :</h2>
                 <ul class="index__texte-info">
-                    <li>récupérer des ressources pour survivre.</li>
-                    <li>rencontrer et établir de bons rapport avec l'espèces intelligente local, les Bourpis.</li>
-                    <li>entretenir le vaisseau pour redécoller dans 10 jours : {{ mission_date }}.</li>
+                    <li>trouver et passer un accord de paix avec l'espèce intelligente locale, les Bourpis.</li>
+                    <li>faire revenir l'astronaute Spike Spiegel vivant sur Terre d'ici 7 jours : {{ mission_date }}.</li>
                 </ul>
             </section>
-    
+
             <div class="desktop__button">
                 <myButton type="t_button" :color="`main_color-${store.mainColor}`" size="big" link="/mission">Commencer la mission</myButton>
             </div>

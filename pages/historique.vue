@@ -21,6 +21,7 @@
                 <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'missions'">Missions</myButton>
                 <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'rapports'">Rapports</myButton>
                 <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'fins'">Fins</myButton>
+                <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'medailles'">Medailles</myButton>
             </div>
 
             
@@ -60,6 +61,16 @@
                     <li v-for="f in toutes_les_fins" class="historique__liste--item">
                         <span v-if="isFinDebloque(f)" class="historique__liste--item_nom">{{ f }}</span>
                         <span v-else class="historique__liste--item_none">Pas encore débloquée</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div v-else-if="listeAffiche == 'medailles'">
+                <h2>Médailles gagnées</h2>
+
+                <ul class="historique__liste_medaille">
+                    <li v-for="m in medailles" class="historique__liste_medaille--item">
+                        <myMedaille :id="m.id_medaille" :nom="m.nom"/>
                     </li>
                 </ul>
             </div>
@@ -103,6 +114,20 @@
 
         &:last-child{
             margin-bottom: 0;
+        }
+    }
+
+    &__liste_medaille{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: $ph-m-md;
+
+        &--item{
+
+            &::before{
+                display: none;
+            }
         }
     }
 
@@ -160,6 +185,10 @@
             &--pourcent{
                 font-size: $pc-f-lg;
             }
+        }
+
+        &__liste_medaille{
+            gap: $pc-m-lg;
         }
 
         .liste__missions{
@@ -253,6 +282,9 @@ const fins_debloques_pourcent = ref()
 // liste des parties détaillées
 const missions = ref([])
 
+// liste les medailles
+const medailles = ref([])
+
 // variable qui permet d'afficher tel ou tel liste
 const listeAffiche = ref("missions")
 
@@ -295,6 +327,16 @@ const isFinDebloque = (nom) => {
     return fins_debloques.value.some((jour) => jour.nom == nom)
 };
 
+// récupération de la liste de tous les jours
+const getMedailles = async () => {
+    try{
+        const response = await API.get(`/medailles`)
+        medailles.value = response.data
+    } catch (error) {
+        console.error("Erreur lors de la récupération de la liste des medailles :", error.message)
+    }
+}
+
 // suppression du token pour déconnecter l'user
 const deconnexion = async () => {
     store.clearToken()
@@ -306,6 +348,7 @@ onMounted(async() => {
     // Attendre que le token soit disponible
     await store.token
     await getJours()
+    await getMedailles()
     
     if (store.token) {
         await getHistorique()
