@@ -16,7 +16,7 @@ const props = defineProps({
   
 const texte = ref('');
 const contenu = props.texte;
-const vitesse = 25; // Vitesse de frappe en millisecondes
+const vitesse = 10; // Vitesse de frappe en millisecondes
   
 onMounted(() => {
     setTimeout(() => {
