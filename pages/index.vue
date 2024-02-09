@@ -5,51 +5,50 @@
         </div>
 
         <NuxtLayout name="intro" class="index">
-
             <h1 class="index__h1"><titleAnimation debut="1.5" texte="How to meet aliens ?"/></h1>
 
             <div class="index__textes">
                 <section class="index__section">
                     <h2 class="global-titre_texte index__texte-title">
-                        <texteAnimtion debut="4.5" texte="Situation actuelle :"/>
+                        <texteAnimation debut="4.5" texte="Situation actuelle :"/>
                     </h2>
                     <p class="index__texte-info">
-                        <texteAnimtion debut="5.5" texte="l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage."/>
+                        <texteAnimation debut="5" texte="l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage."/>
                     </p>
 
                 </section>
                 
                 <section class="index__section">
                     <h2 class="global-titre_texte">
-                        <texteAnimtion debut="4.5" texte="Objectifs de la mission :"/>
+                        <texteAnimation debut="4.5" texte="Objectifs de la mission :"/>
                     </h2>
                     <ul class="index__texte-info">
                         <li v-if="item_1">
-                            <texteAnimtion debut="0" texte="trouver et passez un accord de paix avec l'espèce intelligente locale, les Bourpis."/>
+                            <texteAnimation debut="0" texte="trouver et passer un accord de paix avec l'espèce intelligente locale, les Bourpis."/>
                         </li>
                         <li v-if="item_2">
-                            <texteAnimtion debut="0" texte="faire revenir l'astronaute Spike Spiegel vivant sur Terre."/>
+                            <texteAnimation debut="0" texte="faire revenir l'astronaute Spike Spiegel vivant sur Terre."/>
                         </li>
                     </ul>
                 </section>
 
                 <section class="index__section">
                     <h2 class="global-titre_texte">
-                        <texteAnimtion debut="4.5" texte="Vos objectifs :"/>
+                        <texteAnimation debut="4.5" texte="Vos objectifs :"/>
                     </h2>
                     <ul class="index__texte-info">
                         <li v-if="item_3">
-                            <texteAnimtion debut="0" texte="bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bons rapports avec les Bourpis."/>
+                            <texteAnimation debut="0" texte="bien conseiller l'astronaute Spike Spiegel afin qu'il établisse de bons rapports avec les Bourpis."/>
                         </li>
                         <li v-if="item_4">
-                            <texteAnimtion debut="0" :texte="`bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de VMK_0324 est programmé dans 7 jours : ${ mission_date }.`"/>
+                            <texteAnimation debut="0" :texte="`bien conseiller l'astronaute Spike Spiegel afin qu'il revienne vivant sur Terre. Son départ de VMK_0324 est programmé dans 7 jours : ${ mission_date }.`"/>
                         </li>
                     </ul>
                 </section>
             </div>
 
             <div v-if="bouton" class="index__button">
-                <myButton link="/login" type="t_button" size="big">Accepter la mission</myButton>
+                <myButton link="/login?fromIndex=true" type="t_button" size="big">Accepter la mission</myButton>
             </div>
         </NuxtLayout>
     </div>
@@ -196,24 +195,25 @@ const item_2 = ref(false);
 const item_3 = ref(false);
 const item_4 = ref(false);
 const bouton = ref(false);
+const fromIndex = true
 
 onMounted(() => {
     setTimeout(() => {
         item_1.value = true;
         item_3.value = true;
-    }, 5500);
+    }, 5000);
 
     setTimeout(() => {
         item_2.value = true;
-    }, 8500);
+    }, 6500);
 
     setTimeout(() => {
         item_4.value = true;
-    }, 9000);
+    }, 6500);
 
     setTimeout(() => {
         bouton.value = true;
-    }, 14000);
+    }, 9500);
 });
 
 useSeoMeta({

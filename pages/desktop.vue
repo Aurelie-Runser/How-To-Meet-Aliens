@@ -2,7 +2,7 @@
     <div>
         <NuxtLayout class="desktop" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1 class="desktop__h1">{{ titreBureau }}</h1>
+                <h1 class="desktop__h1" v-if="titreBureau"><titleAnimation debut="0" :texte="titreBureau"/></h1>
             </template>
     
             <template #aside>

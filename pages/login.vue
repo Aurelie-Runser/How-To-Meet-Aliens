@@ -1,31 +1,35 @@
 <template>
     <div>
         <NuxtLayout name="intro" class="login">
-            <h1 class="login__h1"><titleAnimation debut="0" texte="How to meet aliens ?"/></h1>
-
+            <h1 class="login__h1">How to meet aliens ?</h1>
     
             <div class="login__content">
                 <div class="login__content--textes">
-                    <p>Pour accéder à votre bureau, veuillez vous connecter.</p>
-                    <p>Vous pourrez communiquer avec l'astronaute Spike Spiegel et avoir accès à l'historique de vos précédentes missions.</p>
+                    <!--soit le texte s'anime s'i l'utilisateur vient de la page d'accueil, soit il s'affiche en entier s'il vient d'une autre page-->
+                    <p v-if="texte1Affiche">Pour accéder à votre bureau, veuillez vous connecter.</p>
+                    <p v-else><texteAnimation debut="0.5" texte="Pour accéder à votre bureau, veuillez vous connecter."/></p>
+
+                    <p v-if="texte2Affiche">Vous pourrez communiquer avec l'astronaute Spike Spiegel et avoir accès à l'historique de vos précédentes missions.</p>
+                    <p v-else><texteAnimation debut="1.5" texte="Vous pourrez communiquer avec l'astronaute Spike Spiegel et avoir accès à l'historique de vos précédentes missions."/></p>
+
                     <p class="global-error" v-if="message">Message : {{ message }}</p>
                 </div>
             
                 <form class="login__form" @submit.prevent="connexion" method="post" v-if="connex">
-                    <div class="login__form--input">
+                    <div v-if="pseudoAffiche" class="login__form--input">
                         <label for="pseudo">Pseudo</label>
                         <input type="text" name="pesudo" id="pesudo" maxlength="11" required v-model="userCo.pseudo">
                     </div>
 
-                    <div class="login__form--input">
+                    <div v-if="mdpAffiche" class="login__form--input">
                         <label for="mdp">Mot de Passe</label>
                         <input type="text" name="mdp" id="mdp" required v-model="userCo.mdp">
                     </div>
                     
                     <p v-if="chargement" class="login__form--charge">Chargement</p>
-                    <input v-else class="login__form--bouton" type="submit" value="Je me connecte">
+                    <input v-if="!chargement && connectAffiche" class="login__form--bouton" type="submit" value="Je me connecte">
 
-                    <myButton type="t_link" size="small" @click="connex = false">Je_n'ai_pas_de_compte.</myButton>
+                    <myButton v-if="autreAffiche" type="t_link" size="small" @click="connex = false">Je_n'ai_pas_de_compte.</myButton>
                 </form>
             
                 <form class="login__form" @submit.prevent="inscription" method="post" v-if="!connex">
@@ -52,7 +56,8 @@
 <style lang="scss">
 .login{
     &__content{
-        width: fit-content;
+        width: auto;
+        max-width: 1000px;
         margin: auto;       
     }
 
@@ -148,6 +153,7 @@
 <script setup>
 import {API} from '@/utils/axios'
 const store = useGlobalStore()
+const route = useRoute();
 
 const connex = ref(true)
 const chargement = ref(false)
@@ -156,6 +162,13 @@ const router = useRouter()
 const userNew = ref({})
 const userCo = ref({})
 const message = ref("")
+
+const texte1Affiche = ref()
+const texte2Affiche = ref()
+const pseudoAffiche = ref()
+const mdpAffiche = ref()
+const connectAffiche = ref()
+const autreAffiche = ref()
 
 const inscription = async () => {
     chargement.value = true
@@ -205,6 +218,36 @@ const connexion = async () => {
         chargement.value = false
     }
 }
+
+const fromIndex = route.query.fromIndex == 'true';
+
+onMounted(() => {
+    // si l'utilisateur vient de l'index, animer le texte et les boutons
+    if (fromIndex) {
+        setTimeout(() => {
+            pseudoAffiche.value = true;
+        }, 3600);
+    
+        setTimeout(() => {
+            mdpAffiche.value = true;
+        }, 4100);
+    
+        setTimeout(() => {
+            connectAffiche.value = true;
+        }, 4600);
+    
+        setTimeout(() => {
+            autreAffiche.value = true;
+        }, 5100);
+    } else {
+        texte1Affiche.value = true;
+        texte2Affiche.value = true;
+        pseudoAffiche.value = true;
+        mdpAffiche.value = true;
+        connectAffiche.value = true;
+        autreAffiche.value = true;
+    }
+});
 
 useSeoMeta({
     title: "Login - How To Meet Aliens ?",
