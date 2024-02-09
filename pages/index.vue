@@ -78,11 +78,6 @@
 
     &__texte-info{
         margin-top: 0;
-
-        &--item_1
-        &--item_2{
-            // display: none;
-        }
     }
 
     &__button{

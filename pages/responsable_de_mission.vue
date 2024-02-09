@@ -1,8 +1,8 @@
 <template>
     <div>
-        <NuxtLayout :class="`-main_color-${store.mainColor}`">
+        <NuxtLayout class="apropos" :class="`-main_color-${store.mainColor}`">
             <template #header>
-                <h1>Responsable de Mission</h1>
+                <h1 class="apropos__h1">Responsable de Mission</h1>
             </template>
     
             <template #aside>              
@@ -17,13 +17,35 @@
                 </div>
             </template>
     
-            <p>HELLO WORLD</p>
+            <p>La responsable de la mission est <span class="apropos__avant">Aurélie Runser</span>. C'est elle qui a créé ce programme du début à la fin, de l'idée à la conception à la réalisation, en tant que projet de fin de 3ème année en BUT MMI à l'<myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" href="https://mmimontbeliard.com">IUT_de_Montbéliard</myButton>, en 3 semaines.</p>
+            <p>Pour en savoir plus sur elle, ses compétences et autres projets, vous pouvez consulter <myButton type="t_link" :color="`main_color-${store.mainColor}`" href="https://portfolio.aurelierunser.fr">le_CV_d_Aurélie_Runser</myButton>.</p>
+            <p>Le seul élément du projet qui ne vient pas d'elle est le model 3D. This work is based on "<myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" href="https://sketchfab.com/3d-models/cute-astronaut-11bba8ead8a74de58ed3d4a2ea83f50c">Cute_Astronaut</myButton>" by <myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" href="https://sketchfab.com/farooq.smurf">farooq.smurf</myButton> licensed under <myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" href="http://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</myButton><div class=""></div></p>
+            
+            <div class="apropos__contact">
+                <p>Pour rentrer en contact avec <span class="apropos__avant">Aurélie Runser</span>, vous pouvez utilisez :</p>
+                <ul>
+                    <li><myButton type="t_link" :color="`main_color-${store.mainColor}`" href="https://portfolio.aurelierunser.fr">Portfolio</myButton></li>
+                    <li><myButton type="t_link" :color="`main_color-${store.mainColor}`" href="https://www.linkedin.com/in/aur%C3%A9lie-runser">linkedin</myButton></li>
+                    <li><myButton type="t_link" :color="`main_color-${store.mainColor}`" href="https://www.instagram.com/aurelie.runser_pro">instagram</myButton></li>
+                    <li><myButton type="t_link" :color="`main_color-${store.mainColor}`" href="https://github.com/Aurelie-Runser">Github</myButton></li>
+                </ul>
+            </div>
         </NuxtLayout>
     </div>
 </template>
 
 <style lang="scss">
+.apropos{
 
+    &__avant{
+        color: $c-white;
+        text-transform: uppercase;
+    }
+
+    &__contact{
+        margin: $pc-m-lg 0;
+    }
+}
 </style>
   
 <script setup>
