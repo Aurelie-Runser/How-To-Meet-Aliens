@@ -46,7 +46,9 @@
             <div class="mission__jour" v-for="(etape, index) in jours_joues" :key=index+1>
 
                 <h2 class="mission__jour--titre global-titre_texte">Jour {{ index+1 }} :</h2>
-                <p class="mission__texte" v-html="etape.texte"></p>
+                <p class="mission__texte">
+                    <rapportAnimation debut="0" :texte="etape.texte"/>
+                </p>
 
                 <div class="mission__jour--buttons" v-if="index + 1 == jours_joues.length">
                     <myButton type="t_button" :color="`main_color-${store.mainColor}`" v-for="choix in etape.jours_suivants"
