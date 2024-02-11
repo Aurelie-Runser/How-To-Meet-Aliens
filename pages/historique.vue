@@ -24,7 +24,6 @@
                 <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="listeAffiche = 'medailles'">Medailles</myButton>
             </div>
 
-            
             <div v-if="listeAffiche == 'missions'">
                 <h2>Missions passées</h2>
 
@@ -312,6 +311,8 @@ const getHistorique = async () => {
 
         fins_debloques.value = jours_debloques.value.filter(jour => jour.fin == 1)
         fins_debloques_pourcent.value = Math.floor((fins_debloques.value.length / toutes_les_fins.value.length)*100)
+
+        medailles.value = response.data.medailles_debloquees
     } catch (error) {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
     }
@@ -327,16 +328,6 @@ const isFinDebloque = (nom) => {
     return fins_debloques.value.some((jour) => jour.nom == nom)
 };
 
-// récupération de la liste de tous les jours
-const getMedailles = async () => {
-    try{
-        const response = await API.get(`/medailles`)
-        medailles.value = response.data
-    } catch (error) {
-        console.error("Erreur lors de la récupération de la liste des medailles :", error.message)
-    }
-}
-
 // suppression du token pour déconnecter l'user
 const deconnexion = async () => {
     store.clearToken()
@@ -348,7 +339,6 @@ onMounted(async() => {
     // Attendre que le token soit disponible
     await store.token
     await getJours()
-    await getMedailles()
     
     if (store.token) {
         await getHistorique()

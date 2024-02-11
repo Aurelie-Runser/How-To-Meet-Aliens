@@ -2,7 +2,6 @@
     <div class="myMedaille">
         <img :src="`/medailles/medaille_${id}.svg`" :alt="`icon de la médaille numéro ${id}`">
         <p class="myMedaille__nom">{{nom}}</p>
-        <p class="myMedaille__mission">Obtenu le</p>
     </div>
 </template>
 
@@ -16,10 +15,14 @@
         font-weight: $fw-bold;
         color: $c-white;
         text-align: center;
-    }
+    }    
     
     @include medium{
         width: 200px;
+
+        &__nom{
+            font-size: $pc-f-md;
+        }
     }
 }
 </style>
@@ -27,6 +30,6 @@
 <script setup>
 const props = defineProps({
     id: String,
-    nom: String,
+    nom: String
 });
 </script>
