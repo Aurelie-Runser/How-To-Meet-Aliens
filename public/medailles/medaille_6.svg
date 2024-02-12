@@ -1,6 +1,6 @@
-<svg width="100%" height="auto" viewBox="0 0 500 855" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="506" height="855" viewBox="0 0 506 855" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M81 399H431V855L256 644.48L81 855V399Z" fill="#96D9FF"/>
-<path d="M121 375H111V385V735V762.566L128.674 741.412L256 589.013L383.326 741.412L401 762.566V735V385V375H391H121Z" fill="#96D9FF" stroke="#5FC5FF" stroke-width="20"/>
+<path d="M121 375H111V385V735V762.566L128.674 741.412L256 589.013L383.326 741.412L401 762.566V735V385V375H391H121Z" stroke="#5FC5FF" stroke-width="20"/>
 <circle cx="256" cy="250" r="240" fill="#96D9FF" stroke="#5FC5FF" stroke-width="20"/>
 <rect x="491.988" y="173.817" width="192.9" height="69" transform="rotate(146.53 491.988 173.817)" fill="#0A8442"/>
 <ellipse cx="270.064" cy="278.581" rx="110.386" ry="54.3657" transform="rotate(146.53 270.064 278.581)" fill="#0A8442"/>

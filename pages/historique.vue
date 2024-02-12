@@ -34,7 +34,7 @@
                     <li v-else v-for="m in missions" :key="m.date" class="historique__liste--item">
                         {{ m.date }} :
                        <ul class="liste__missions--nom__jour">
-                            <li v-for="jour in m.partie">{{jour.nom}}, {{ jour.decision }}</li>
+                            <li v-for="jour in m.partie">{{jour.nom }}</li>
                             <li class="liste__missions--resultat">{{ m.resultat }}</li>
                        </ul>
                        <MyButton type="t_link" :color="`main_color-${store.mainColor}`" :link="`/mission/${m.id_mission}`" size="small">Relire_les_rapports</MyButton>
@@ -65,7 +65,7 @@
             </div>
 
             <div v-else-if="listeAffiche == 'medailles'">
-                <h2>Médailles gagnées</h2>
+                <h2>Médailles gagnées <span class="historique__titre--pourcent">{{ medailles.length }}/14</span></h2>
 
                 <ul class="historique__liste_medaille">
                     <li v-for="m in medailles" class="historique__liste_medaille--item">
