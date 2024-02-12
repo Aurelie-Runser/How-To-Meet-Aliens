@@ -313,7 +313,7 @@ const getHistorique = async () => {
         fins_debloques.value = jours_debloques.value.filter(jour => jour.fin == 1)
         fins_debloques_pourcent.value = Math.floor((fins_debloques.value.length / toutes_les_fins.value.length)*100)
 
-        medailles.value = response.data.medailles_debloquees.reverse()
+        medailles.value = response.data.medailles_debloquees.sort((a, b) => a.id_mission - b.id_mission).reverse();
     } catch (error) {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
     }

@@ -11,18 +11,13 @@
     height: auto;
 
     &__nom{
-        font-size: $ph-f-md;
         font-weight: $fw-bold;
         color: $c-white;
         text-align: center;
     }    
     
     @include medium{
-        width: 200px;
-
-        &__nom{
-            font-size: $pc-f-md;
-        }
+        width: 150px;
     }
 }
 </style>
