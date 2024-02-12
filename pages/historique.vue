@@ -187,6 +187,7 @@
         }
 
         &__liste_medaille{
+            justify-content: flex-start;
             gap: $pc-m-lg;
         }
 
@@ -312,7 +313,7 @@ const getHistorique = async () => {
         fins_debloques.value = jours_debloques.value.filter(jour => jour.fin == 1)
         fins_debloques_pourcent.value = Math.floor((fins_debloques.value.length / toutes_les_fins.value.length)*100)
 
-        medailles.value = response.data.medailles_debloquees
+        medailles.value = response.data.medailles_debloquees.reverse()
     } catch (error) {
         console.error("Erreur lors de la récupération de l'historique de l'utilisateur :", error.message)
     }
