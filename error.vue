@@ -1,18 +1,22 @@
 <template>
     <div>
         <NuxtLayout name="intro" class="error">
+            <div class="error__glitch-erreur"></div>
+            <div class="error__glitch-404"></div>
+            <div class="error__glitch-500"></div>
+            <div class="error__glitch-page"></div>
 
             <div class="error__content">
                 <h1 class="glitch">
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
-                    <span class="line">ERREUR {{ error.statusCode }}</span>
+                    <span class="line" data-error="ERREUR">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
+                    <span class="line">ERROR {{ error.statusCode }}</span>
                 </h1>
                 <p>{{ error.statusMessage }}</p>
     
@@ -28,6 +32,7 @@
 
 <style lang="scss">
 .error{
+    position: relative;
     background: darken($c-red, 53%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
 
     &__content{
@@ -118,6 +123,103 @@
             }
         }
     }
+
+    &__glitch-erreur{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+
+        &::after {
+            content: "Error";
+            @include h2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            color: $c-white;
+            animation: noise .3s linear infinite;
+        }
+
+        @include medium{
+            top: 30%;
+            left: 15%;
+        }
+    }
+
+    &__glitch-404{
+        position: absolute;
+        bottom: 10%;
+        right: 30%;
+        @include h1;
+
+        &::after {
+            content: "404";
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            color: $c-white;
+            animation: noise .3s .1s linear infinite;
+        }
+
+        @include medium{
+            bottom: 30%;
+            right: 20%;
+        }
+    }
+
+    &__glitch-500{
+        position: absolute;
+        bottom: 60%;
+        left: 15%;
+        @include h1;
+
+        &::after {
+            content: "500";
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            color: $c-white;
+            animation: noise .3s .2s linear infinite;
+        }
+
+        @include medium{
+            bottom: 20%;
+            left: 5%;
+        }
+    }
+
+    &__glitch-page{
+        position: absolute;
+        top: 25%;
+        right: 30%;
+        @include p;
+
+        &::after {
+            content: "Page not found";
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            color: $c-white;
+            animation: noise .3s .2s linear infinite;
+        }
+
+        @include medium{
+            top: 25%;
+            right: 30%;
+        }
+    }
+
+}
+
+@keyframes noise {
+  0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
+  10% {opacity: .1; transform: skewX(90deg);}
+  50% {opacity: .5; left: -6px; transform: skewX(0deg);}
+  80% {opacity: .3; ;}
+  100% {opacity: .6; left: 2px;}
 }
 
 </style>
