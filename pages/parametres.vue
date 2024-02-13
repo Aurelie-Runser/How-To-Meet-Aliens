@@ -54,7 +54,7 @@
                                 <select name="color" id="color" v-model="user.id_color">
                                     <option v-for="c in colors" :value="c.id_color">{{ c.nom }}</option>
                                 </select>
-                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 50% du jeu pour accéder à ce paramètre.</p>
+                                <p class="bureau__none--texte" v-if="!(modifTheme || (modifTheme == modifTitre))">Débloquez 25% du jeu pour accéder à ce paramètre.</p>
                             </div>
                         </div>
                         <input class="global-form__bouton parametre__form--bouton" type="submit" value="Modifier">
@@ -64,7 +64,7 @@
                 </section>
 
                 <section class="parametre__danger">
-                    <h2 class="parametre__danger--texte">Danger Zone</h2>
+                    <h2 class="parametre__danger--titre">Danger Zone</h2>
 
                     <myButton v-if="store.mainColor != 2" type="t_button" color="main_color-2" @click="isSuppCompte = true">Supprimer mon Compte</myButton>
                     <myButton v-else type="t_button" color="main_color-4" @click="isSuppCompte = true">Supprimer mon Compte</myButton>
@@ -100,7 +100,7 @@
         border-top: $c-red solid 2px;
         padding: $ph-m-lg 0;
 
-        &--texte{
+        &--titre{
             color: $c-red !important;
         }
 
@@ -134,6 +134,11 @@
 
                 input{
                     max-width: 300px;
+                    border: $c-white 2px solid;
+    
+                    &:focus{
+                        outline-color: $c-white;
+                    }
                 }
             }
 
@@ -232,9 +237,14 @@
             &--titre{
                 color: $c-pink !important;
             }
+
+            &--popup{
+                background: darken($c-pink, 10%);
+                border-color: darken($c-pink, 30%);
+            }
         }
     }
-
+    
     &.-main_color-2,
     &.-main_color-3,
     &.-main_color-4,
@@ -250,17 +260,6 @@
 
                 &__texte{
                     color: $c-white;
-                }
-
-                &__inputs{
-
-                    input{
-                        border: $c-white 2px solid;
-
-                        &:focus{
-                            outline-color: $c-white;
-                        }
-                    }
                 }
             }
         }
@@ -309,7 +308,7 @@ if (store.raportsDebloques >= 1){
 }
 
 const modifTheme = ref(false)
-if (store.raportsDebloques >= 22){
+if (store.raportsDebloques >= 11){
     modifTheme.value = true
 }
 
