@@ -101,7 +101,7 @@ select{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: $ph-m-md;
+    gap: $ph-m-md $ph-m-sm;
     
     @include medium{
         flex-direction: column;
