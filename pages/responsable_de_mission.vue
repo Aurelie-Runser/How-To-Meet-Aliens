@@ -12,9 +12,6 @@
                     <myButton type="t_button" :color="`main_color-${store.mainColor}`" link="/parametres">Paramètres</myButton>
                     <myButton type="t_button" :color="`main_color-${store.mainColor}`" @click="deconnexion()">Fermer la session</myButton>
                 </div>
-                <div class="global-aside__links">
-                    <myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" link="/conditions_dutilisation">Conditions_d'utilisation_de_la_machine</myButton>
-                </div>
             </template>
     
             <p>La responsable de la mission est <span class="apropos__avant">Aurélie Runser</span>. C'est elle qui a créé ce programme du début à la fin, de l'idée au design à la réalisation, en tant que projet de fin de 3ème année en BUT MMI à l'<myButton type="t_link" size="small" :color="`main_color-${store.mainColor}`" href="https://mmimontbeliard.com">IUT_de_Montbéliard</myButton>, en 3 semaines.</p>
