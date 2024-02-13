@@ -98,6 +98,15 @@
                 background: darken($c-white, 10%);
             }
         }
+
+        &.-main_color-7{
+            background: $c-bblack;
+            color: $c-white;
+
+            &:hover{
+                background: lighten($c-bblack, 10%);
+            }
+        }
     }
 
     &.-t_link{
@@ -200,5 +209,6 @@ const className = computed(() => ({
     " -main_color-4": props.color === "main_color-4",
     " -main_color-5": props.color === "main_color-5",
     " -main_color-6": props.color === "main_color-6",
+    " -main_color-7": props.color === "main_color-7",
 }));
 </script>

@@ -18,7 +18,7 @@
             </template>
 
             <div v-if="user">
-                <section class="parametre__section">
+                <section class="parametre__compte">
                     <h2>Compte</h2>
 
                     <form class="parametre__form" @submit.prevent="modifCompte" method="put">
@@ -62,6 +62,29 @@
                     </form>
                     <p v-if="message_bureau">{{ message_bureau }}</p>
                 </section>
+
+                <section class="parametre__danger">
+                    <h2 class="parametre__danger--texte">Danger Zone</h2>
+
+                    <myButton v-if="store.mainColor != 2" type="t_button" color="main_color-2" @click="isSuppCompte = true">Supprimer mon Compte</myButton>
+                    <myButton v-else type="t_button" color="main_color-4" @click="isSuppCompte = true">Supprimer mon Compte</myButton>
+
+                    <div v-if="isSuppCompte" class="parametre__danger--popup">
+                        <p class="parametre__danger--popup__texte">Vous perdriez toutes les missions que vous avez effectuées, les rapports débloqués et les médailles gagnées. Votre pseudo pourra être utilisé par un nouvel utilisateur.</p>
+                        <p class="parametre__danger--popup__texte">Pour supprimer définitivement votre compte, écrivez <span class="parametre__danger--popup__texte--value">Supp{{ user.pseudo }}</span></p>
+
+                        <div class="parametre__danger--popup__inputs">
+                            <input type="text" name="supp" id="supp" v-model="user.supp">
+                            <myButton type="t_button" color="main_color-7" @click="suppCompte()">Supprimer</myButton>
+
+                            {{ user.supp }}
+                        </div>
+
+                        <div class="parametre__danger--popup__button">
+                            <myButton type="t_button" size="big" color="main_color-6" @click="isSuppCompte = false">Annuler</myButton>
+                        </div>
+                    </div>
+                </section>
             </div>
         </NuxtLayout>
     </div>
@@ -69,9 +92,58 @@
 
 <style lang="scss">
 .parametre{
+    position: relative;
     
-    &__section{
-        margin-bottom: $ph-m-xl;
+    &__bureau{
+        margin: $ph-m-xl 0;
+    }
+
+    &__danger{
+        border-top: $c-red solid 2px;
+        padding: $ph-m-lg 0;
+
+        &--texte{
+            color: $c-red !important;
+        }
+
+        &--popup{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 100%;
+            max-width: 800px;
+            padding: $pc-m-sm;
+            background-color: $c-red;
+            border: darken($c-red, 30%) 5px solid;
+
+            &__texte{
+                color: $c-white;
+                font-weight: $fw-bold;
+
+                &--value{
+                    color: $c-bblack;
+                    user-select: none;
+                }
+            }
+
+            &__inputs{
+                display: flex;
+                flex-wrap: wrap;
+                gap: $ph-m-sm;
+                width: fit-content;
+                margin: auto;
+
+                input{
+                    max-width: 300px;
+                }
+            }
+
+            &__button{
+                width: fit-content;
+                margin: $ph-m-md auto;
+            }
+        }
     }
 
     &__form{
@@ -114,8 +186,25 @@
 
     @include medium{
 
-        &__section{
-            margin-bottom: $pc-m-xl2;
+        &__bureau{
+            margin: $pc-m-xl2 0;
+        }
+
+        &__danger{
+            padding: $pc-m-lg 0;
+
+            &--popup{
+                bottom: 50%;
+                transform: translate(-50%, 50%);
+
+                &__inputs{
+                    gap: $pc-m-sm;
+                }
+
+                &__button{
+                    margin: $pc-m-md auto;
+                }
+            }
         }
 
         &__form{
@@ -132,6 +221,48 @@
                 
                 &_groupe{
                     gap: $pc-m-sm;
+                }
+            }
+        }
+    }
+
+    &.-main_color-2{
+
+        .parametre__danger{
+            border-color: $c-pink;
+            
+            &--titre{
+                color: $c-pink !important;
+            }
+        }
+    }
+
+    &.-main_color-2,
+    &.-main_color-3,
+    &.-main_color-4,
+    &.-main_color-5,
+    &.-main_color-6{
+        h2{
+            color: $c-white;
+        }
+
+        .parametre__danger{
+
+            &--popup{
+
+                &__texte{
+                    color: $c-white;
+                }
+
+                &__inputs{
+
+                    input{
+                        border: $c-white 2px solid;
+
+                        &:focus{
+                            outline-color: $c-white;
+                        }
+                    }
                 }
             }
         }
@@ -183,6 +314,8 @@ const modifTheme = ref(false)
 if (store.raportsDebloques >= 22){
     modifTheme.value = true
 }
+
+const isSuppCompte = ref(false)
 
 // récupération de la liste de toutes les couleurs
 const getColors = async () => {
@@ -246,6 +379,22 @@ const modifBureau = async () => {
     }
 }
 
+const suppCompte = async() => {
+    // console.log()
+    if (user.value.supp == `Supp${user.value.pseudo}`){
+        try {
+            const response = await API.delete(`/user/${store.token}/supp`);        
+    
+            if(response.data.message == "user supprime"){
+                store.clearToken()
+                router.push('/')
+            }
+            
+        } catch (error) {
+            console.error("Erreur lors de la supression :", error.message)
+        }
+    }
+}
 
 // suppression du token pour déconnecter l'utilisateur
 const deconnexion = async () => {
