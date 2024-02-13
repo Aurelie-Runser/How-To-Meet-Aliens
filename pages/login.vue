@@ -23,7 +23,11 @@
 
                     <div v-if="mdpAffiche" class="login__form--input">
                         <label for="mdp">Mot de Passe</label>
-                        <input type="text" name="mdp" id="mdp" required v-model="userCo.mdp">
+                        <input :type="mdpVisible" name="mdp" id="mdp" required v-model="userCo.mdp">
+                        <div class="login__form--input__mdpvisible">
+                            <button v-if="mdpVisible == 'password'" type="t_button" @click="mdpVisible = 'text'">voir</button>
+                            <button v-if="mdpVisible == 'text'" type="t_button" @click="mdpVisible = 'password'">cacher</button>
+                        </div>
                     </div>
                     
                     <p v-if="chargement" class="login__form--charge">Chargement</p>
@@ -40,7 +44,11 @@
 
                     <div class="login__form--input">
                         <label for="mdp">Mot de Passe</label>
-                        <input type="text" name="mdp" id="mdp" required v-model="userNew.mdp">
+                        <input :type="mdpVisible" name="mdp" id="mdp" required v-model="userNew.mdp">
+                        <div class="login__form--input__mdpvisible">
+                            <button v-if="mdpVisible == 'password'" type="t_button" @click="mdpVisible = 'text'">voir</button>
+                            <button v-if="mdpVisible == 'text'" type="t_button" @click="mdpVisible = 'password'">cacher</button>
+                        </div>
                     </div>
 
                     <p v-if="chargement" class="login__form--charge">Chargement</p>
@@ -74,15 +82,33 @@
         gap: $ph-m-md;
         
         &--input{
+            position: relative;
             margin: $ph-m-sm;
             display: flex;
             align-items: center;
             justify-content: flex-end;
             flex-wrap: wrap;
             gap: $ph-m-sm;
+            overflow: hidden;
 
             input{
                 max-width: 400px
+            }
+
+            &__mdpvisible{
+                position: absolute;
+                right: 0;
+
+                button {
+                    @include my_button;
+                    font-size: $ph-f-xs;
+                    padding: $ph-m-md $ph-m-sm;
+                    border-radius: 0;
+
+                    &:hover{
+                        background: darken($c-main, 10%)
+                    }
+                }
             }
         }
 
@@ -119,6 +145,17 @@
 
             &--input{
                 gap: $pc-m-sm;
+
+                &__mdpvisible{
+
+                    button {
+                        display: block;
+                        font-size: $pc-f-sm;
+                        padding: $pc-m-md $pc-m-sm;
+                        border-radius: 0;
+                    }
+                }
+
             }
 
             &--bouton{
@@ -157,6 +194,7 @@ const route = useRoute();
 
 const connex = ref(true)
 const chargement = ref(false)
+const mdpVisible = ref("password")
 
 const router = useRouter()
 const userNew = ref({})
