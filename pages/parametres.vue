@@ -76,8 +76,6 @@
                         <div class="parametre__danger--popup__inputs">
                             <input type="text" name="supp" id="supp" v-model="user.supp">
                             <myButton type="t_button" color="main_color-7" @click="suppCompte()">Supprimer</myButton>
-
-                            {{ user.supp }}
                         </div>
 
                         <div class="parametre__danger--popup__button">
