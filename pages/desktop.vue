@@ -90,7 +90,7 @@ const mission_date = `${future_date.getFullYear()}-${(future_date.getMonth() + 1
 const getUser = async () => {
     const response = await API.get(`/user/${store.token}`)
     user.value = response.data
-    titreBureau.value = user.value.titre.replace("[pseudo]", store.pseudo);
+    titreBureau.value = user.value.titre.replace("[pseudo]", user.value.pseudo);
 }
 
 // suppression du token pour déconnecter l'utilisateur
