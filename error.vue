@@ -1,45 +1,46 @@
 <template>
-    <div>
-        <NuxtLayout name="intro" class="error">
-            <div class="error__glitch-erreur"></div>
-            <div class="error__glitch-404"></div>
-            <div class="error__glitch-500"></div>
-            <div class="error__glitch-page"></div>
+    <main class="error">
+        <div class="error__glitch-erreur"></div>
+        <div class="error__glitch-404"></div>
+        <div class="error__glitch-500"></div>
+        <div class="error__glitch-page"></div>
 
-            <div class="error__content">
-                <h1 class="glitch">
-                    <span class="line" data-error="ERREUR">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                    <span class="line">ERROR {{ error.statusCode }}</span>
-                </h1>
-                <p>{{ error.statusMessage }}</p>
-    
-                <div class="error__content--button">
-                    <myButton type="t_button" size="big" @click="retourPage" color="main_color-2">Retour</myButton>
-                    <myButton type="t_button" size="big" link="/" color="main_color-2">Accueil</myButton>
-                </div>
+        <div class="error__content">
+            <h1 class="glitch">
+                <span class="line" data-error="ERREUR">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+                <span class="line">ERROR {{ error.statusCode }}</span>
+            </h1>
+            <p>{{ error.statusMessage }}</p>
+
+            <div class="error__content--button">
+                <myButton type="t_button" size="big" @click="retourPage" color="main_color-2">Retour</myButton>
+                <myButton type="t_button" size="big" link="/" color="main_color-2">Accueil</myButton>
             </div>
-
-        </NuxtLayout>
-    </div>
+        </div>
+    </main>
 </template>
 
 <style lang="scss">
 .error{
+    width: 100vw;
+    height: 100vh;
+    padding: $ph-m-xl2 $ph-m-sm;
+    overflow: hidden;
     position: relative;
     background: darken($c-red, 53%) radial-gradient(rgba($c-red, 10%) 5%, transparent) !important;
-
+    
     &__content{
         position: relative;
         width: fit-content;
-        height: 85vh;
-        margin: auto;
+        height: 100%;
+        margin: 0 auto;
         
         p{
             width: fit-content;
@@ -193,12 +194,13 @@
     &__glitch-page{
         position: absolute;
         top: 25%;
-        right: 30%;
+        right: 35%;
         @include p;
-
+        
         &::after {
             content: "Page not found";
             position: absolute;
+            width: max-content;
             top: 0;
             left: 0;
             opacity: 0;
