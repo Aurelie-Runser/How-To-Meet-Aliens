@@ -16,6 +16,8 @@
                 </div>
             
                 <form class="login__form" @submit.prevent="connexion" method="post" v-if="connex">
+                    <myButton v-if="autreAffiche" type="t_link" size="small" @click="connex = false">Je_n'ai_pas_de_compte.</myButton>
+
                     <div v-if="pseudoAffiche" class="login__form--input">
                         <label for="pseudo">Pseudo</label>
                         <input type="text" name="pesudo" id="pesudo" maxlength="11" required v-model="userCo.pseudo">
@@ -32,11 +34,11 @@
                     
                     <p v-if="chargement" class="login__form--charge">Chargement</p>
                     <input v-if="!chargement && connectAffiche" class="login__form--bouton" type="submit" value="Je me connecte">
-
-                    <myButton v-if="autreAffiche" type="t_link" size="small" @click="connex = false">Je_n'ai_pas_de_compte.</myButton>
                 </form>
             
                 <form class="login__form" @submit.prevent="inscription" method="post" v-if="!connex">
+                    <myButton type="t_link" size="small" @click="connex = true">J'ai_un_compte.</myButton>
+
                     <div class="login__form--input">
                         <label for="pseudo">Pseudo</label>
                         <input type="text" name="pesudo" id="pesudo" maxlength="11" required v-model="userNew.pseudo">
@@ -53,8 +55,6 @@
 
                     <p v-if="chargement" class="login__form--charge">Chargement</p>
                     <input v-else class="login__form--bouton" type="submit" value="Je m'inscris">
-
-                    <myButton type="t_link" size="small" @click="connex = true">J'ai_un_compte.</myButton>
                 </form>
             </div>
         </NuxtLayout>
