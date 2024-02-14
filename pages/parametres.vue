@@ -342,6 +342,9 @@ const modifCompte = async () => {
         if(response.data.message == "bien modif"){
             message_compte.value = "Les modifications ont bien été enregistrées."
             user.value.mdp = ''
+        } else if(response.data.message == "pseudo deja"){
+            message_compte.value = "Ce Pseudo est déjà utilisé."
+            user.value.mdp = ''
         } else if(response.data.message == "aucune modif"){
             message_compte.value = "Il n'y a eu aucune modification."
             user.value.mdp = ''
