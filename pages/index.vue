@@ -5,22 +5,22 @@
         </div>
 
         <NuxtLayout name="intro" class="index">
-            <h1 class="index__h1"><titleAnimation debut="1.5" texte="How to meet aliens ?"/></h1>
+            <h1 class="index__h1"><titleAnimation debut="2" texte="How to meet aliens ?"/></h1>
 
             <div class="index__textes">
                 <section class="index__section">
                     <h2 class="global-titre_texte index__texte-title">
-                        <texteAnimation debut="4.5" texte="Situation actuelle :"/>
+                        <texteAnimation debut="5" texte="Situation actuelle :"/>
                     </h2>
                     <p class="index__texte-info">
-                        <texteAnimation debut="5" texte="l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage."/>
+                        <texteAnimation debut="5.5" texte="l'astronaute Spike Spiegel vient d'arriver sur la planète VMK_0324. Il est le seul survivant de son équipage."/>
                     </p>
 
                 </section>
                 
                 <section class="index__section">
                     <h2 class="global-titre_texte">
-                        <texteAnimation debut="4.5" texte="Objectifs de la mission :"/>
+                        <texteAnimation debut="5" texte="Objectifs de la mission :"/>
                     </h2>
                     <ul class="index__texte-info">
                         <li v-if="item_1">
@@ -34,7 +34,7 @@
 
                 <section class="index__section">
                     <h2 class="global-titre_texte">
-                        <texteAnimation debut="4.5" texte="Vos objectifs :"/>
+                        <texteAnimation debut="5" texte="Vos objectifs :"/>
                     </h2>
                     <ul class="index__texte-info">
                         <li v-if="item_3">
@@ -196,19 +196,19 @@ onMounted(() => {
     setTimeout(() => {
         item_1.value = true;
         item_3.value = true;
-    }, 5000);
+    }, 5500);
 
     setTimeout(() => {
         item_2.value = true;
-    }, 6500);
+    }, 7000);
 
     setTimeout(() => {
         item_4.value = true;
-    }, 6500);
+    }, 7000);
 
     setTimeout(() => {
         bouton.value = true;
-    }, 9500);
+    }, 10000);
 });
 
 useSeoMeta({
