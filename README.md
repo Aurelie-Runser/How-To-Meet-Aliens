@@ -1,75 +1,34 @@
-# Nuxt 3 Minimal Starter
+# Projet de 6ème semestre de BUT
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+En 3ème année de BUT MMI, nous avions dû en 1 mois réaliser un site, avancé technologiquement, pour illustrer le maximum de nos compétences en développement web.
+<br/>
+Pour cela, j'ai développé les fonctionnalités suivantes :
+- système de connexion, d'inscription et suppression de compte
+- affichage progressif
+- histoire intéractive / "dont vous êtes le héro"
+- un système de médailles
+- un historique des histoires terminées
+- personnalisation de l'interface / thème
+- affichage d'un personnage en 3D
 
-## Setup
+<br/>
+<br/>
 
-Make sure to install the dependencies:
+Pour implémenter toutes ces fonctionnalités, j'ai utilisé les technologies suivantes.
+<br/>
+Pour le front-end :
+- Nuxt.js
+- Sass
+- Axios
+- Three.js
 
-```bash
-# npm
-npm install
+Pour le back-end :
+- Node.js
+- Express
+- SQLite
 
-# pnpm
-pnpm install
+<br/>
+<br/>
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Voici le lien vers le site final : https://how-to-meet-aliens.aurelierunser.fr
+(Étant sur un hébergeur gratuit, la connexion au serveur peut prendre jusqu'à 1 minute.) 
